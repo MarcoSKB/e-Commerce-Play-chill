@@ -20,7 +20,7 @@ const Input: React.FC<Props> = (props) => {
   return (
     <div className="relative flex w-full h-16">
       <input
-        className={`absolute w-full h-full z-10 bg-darkGray rounded-2xl p-5 focus:outline-none ${className}`}
+        className={`absolute w-full h-full z-10 bg-darkGray rounded-2xl p-5 pr-[54px] focus:outline-none ${className}`}
         placeholder={placeholder}
         onChange={(e) => inputHandler(e)}
         value={inputValue}
@@ -29,7 +29,7 @@ const Input: React.FC<Props> = (props) => {
       <img
         src={iconURL}
         alt="Input icon"
-        className="absolute w-6 h-6 z-20 right-6 top-5 opacity-20"
+        className="absolute w-6 h-6 z-20 right-6 top-5 opacity-20 pointer-events-none"
       />
     </div>
   );

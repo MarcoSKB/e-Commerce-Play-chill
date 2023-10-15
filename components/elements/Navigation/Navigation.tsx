@@ -30,7 +30,9 @@ const Navigation = () => {
     <ul className="flex gap-8">
       {navList.map((item) => (
         <li key={item.href}>
-          <Link href={item.href}>{item.title}</Link>
+          <Link href={item.href} className="hover:text-blue transition-colors">
+            {item.title}
+          </Link>
         </li>
       ))}
     </ul>

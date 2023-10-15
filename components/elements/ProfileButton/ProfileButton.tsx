@@ -3,23 +3,27 @@ import React from "react";
 import Image from "next/image";
 
 interface Props {
-  isAuth?: boolean;
+  isAuth: boolean;
   profileName?: string;
   avatarImage?: React.ReactNode;
 }
 
 const ProfileButton: React.FC<Props> = (props) => {
   const { isAuth, profileName, avatarImage } = props;
+  if (isAuth === false) {
+    return <span>Sing in</span>;
+  }
+
   return (
     <button
-      className="flex items-center gap-6"
+      className="flex items-center gap-6 hover:text-blue transition-colors"
       type="button"
       onClick={() => console.log("Profile clicked!")}
     >
       <span>Hanzed Rules</span>
       <div className="rounded-full w-[34px] h-[34px]">
         <Image
-          className="w-full h-full"
+          className="w-full h-full outline outline-2 outline-green rounded-full"
           src="/images/template-profile.png"
           width={34}
           height={34}
