@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IGameCard } from "@/types/IGameCard";
+import { IGameCard } from "@/src/types/IGameCard";
 
 const GameCard: React.FC<IGameCard> = (props) => {
   const { previewImageURL, title, price, href } = props;

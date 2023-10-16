@@ -5,7 +5,7 @@ import {
   ProfileButton,
   Input,
   IconLink,
-} from "@/components/elements";
+} from "@/src/components/elements";
 
 // TODO:
 // Make a adaptive

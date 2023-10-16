@@ -2,7 +2,7 @@ import "./globals.css";
 import { Manrope } from "next/font/google";
 import type { Metadata } from "next";
 
-import { Header, Footer } from "@/components/modules";
+import { Header, Footer } from "@/src/components/modules";
 
 const manrope = Manrope({
   weight: ["200", "400", "500", "600", "700", "800"],
