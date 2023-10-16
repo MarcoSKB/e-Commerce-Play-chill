@@ -1,14 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { IGameCard } from "@/types/IGameCard";
 
-interface Props {
-  previewImageURL: string;
-  title: string;
-  price: number;
-  href: string;
-}
-
-const GameCard: React.FC<Props> = (props) => {
+const GameCard: React.FC<IGameCard> = (props) => {
   const { previewImageURL, title, price, href } = props;
   return (
     <Link href={href} className="flex flex-col gap-5">

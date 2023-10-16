@@ -1,16 +1,16 @@
 "use client";
 
 import { GameCard } from "@/components/elements";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Home() {
-  // const API_KEY = process.env.NEXT_PUBLIC_RAWG_API_KEY;
-  // useEffect(() => {
-  //   fetch(`https://rawg.io/api/games?token&key=${API_KEY}&page=3`)
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data))
-  //     .catch((error) => console.error("Error:", error));
-  // }, []);
+  const API_KEY = process.env.NEXT_PUBLIC_RAWG_API_KEY;
+  useEffect(() => {
+    fetch(`https://rawg.io/api/games?token&key=${API_KEY}&page=3`)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
 
   return (
     <main>
