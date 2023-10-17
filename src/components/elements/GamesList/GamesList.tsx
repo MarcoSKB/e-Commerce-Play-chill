@@ -1,6 +1,6 @@
 import React from "react";
-import { IGameCard } from "@/src/types/IGameCard";
 import { GameCard } from "@/src/components/elements";
+import { IGameCard } from "@/src/types/IGameCard";
 
 interface IGamesList {
   gameData: IGameCard[];

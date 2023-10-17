@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 interface IConfig {
   url: string;
   method: string;
-  axiosInstance: string;
+  axiosInstance: AxiosInstance;
   requestConfig: AxiosRequestConfig;
 }
 
@@ -21,10 +21,9 @@ export const useAxios = (config: IConfig) => {
 
     const fetchData = async () => {
       try {
-        const response = await axios({
-          method,
-          url,
+        const response = await axiosInstance(url, {
           ...requestConfig,
+          method,
         });
         setResponse(response.data);
       } catch (error) {
@@ -34,7 +33,8 @@ export const useAxios = (config: IConfig) => {
       }
     };
 
-    return () => {};
+    fetchData();
+    return () => controller.abort();
   }, []);
 
   return [response, error, loading];
