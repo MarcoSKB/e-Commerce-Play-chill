@@ -1,17 +1,23 @@
 import React from "react";
 import { GameCard } from "@/src/components/elements";
-import { IGameCard } from "@/src/types/IGameCard";
+import { GameDataInfo } from "@/src/types/GameDataInfo";
 
-interface IGamesList {
-  gameData: IGameCard[];
+interface GamesListProps {
+  data: GameDataInfo[];
+  className?: string;
 }
 
-const GamesList: React.FC<IGamesList> = (props) => {
-  const { gameData } = props;
+const GamesList: React.FC<GamesListProps> = (props) => {
+  const { data, className } = props;
   return (
-    <ul>
-      {gameData.map((game) => (
-        <GameCard previewImageURL={""} title={""} price={0} href={""} />
+    <ul className={`${className}`}>
+      {data.map((game) => (
+        <GameCard
+          previewImageURL={game.background_image}
+          title={game.name}
+          price={game.id}
+          href={game.slug}
+        />
       ))}
     </ul>
   );

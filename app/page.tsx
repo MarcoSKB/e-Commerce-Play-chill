@@ -1,7 +1,4 @@
-"use client";
-
 import { GameCard } from "@/src/components/elements";
-import { useEffect } from "react";
 
 export default function Home() {
   return (

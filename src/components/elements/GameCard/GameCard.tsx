@@ -1,18 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IGameCard } from "@/src/types/IGameCard";
 
-const GameCard: React.FC<IGameCard> = (props) => {
-  const { previewImageURL, title, price, href } = props;
+interface Props {
+  href: string;
+  previewImageURL: string;
+  price: number;
+  title: string;
+}
+
+const GameCard: React.FC<Props> = (props) => {
+  const { href, previewImageURL, price, title } = props;
   return (
     <Link href={href} className="flex flex-col gap-5">
       <div className="w-[300px] h-[400px] flex rounded-xl overflow-hidden">
         <Image
           priority
-          className="object-cover object-[80%]"
+          className="object-cover object-center"
           src={previewImageURL}
-          height={800}
-          width={600}
+          height={1000}
+          width={800}
           alt="Game preview image"
         />
       </div>

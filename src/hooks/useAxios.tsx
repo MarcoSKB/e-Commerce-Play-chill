@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from "react";
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { useEffect, useState } from "react";
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from "axios";
 
 interface IConfig {
   url: string;
-  method: string;
+  method: AxiosRequestConfig["method"];
   axiosInstance: AxiosInstance;
-  requestConfig: AxiosRequestConfig;
+  requestConfig?: AxiosRequestConfig;
 }
+type AxiosLoading = boolean;
 
-export const useAxios = (config: IConfig) => {
-  const { url, method, axiosInstance, requestConfig = {} } = config;
+export function useAxios<T>(config: IConfig) {
+  const { url = "", method, axiosInstance, requestConfig = {} } = config;
 
-  const [response, setResponse] = useState<[]>([]);
-  const [error, setError] = useState<unknown>("");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [response, setResponse] = useState<T>();
+  const [error, setError] = useState<AxiosError>();
+  const [loading, setLoading] = useState<AxiosLoading>(true);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -26,8 +32,10 @@ export const useAxios = (config: IConfig) => {
           method,
         });
         setResponse(response.data);
-      } catch (error) {
-        setError(error);
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          setError(err);
+        }
       } finally {
         setLoading(false);
       }
@@ -37,7 +45,7 @@ export const useAxios = (config: IConfig) => {
     return () => controller.abort();
   }, []);
 
-  return [response, error, loading];
-};
+  return { response, error, loading };
+}
 
 export default useAxios;
