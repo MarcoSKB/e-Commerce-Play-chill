@@ -11,7 +11,7 @@ interface Props {
 const GameCard: React.FC<Props> = (props) => {
   const { href, previewImageURL, price, title } = props;
   return (
-    <Link href={href} className="flex flex-col gap-5">
+    <Link href={`/products/${href}`} className="flex flex-col gap-5">
       <div className="w-[300px] h-[400px] flex rounded-xl overflow-hidden">
         <Image
           priority

@@ -8,8 +8,8 @@ interface INavList {
 
 const navList: INavList[] = [
   {
-    title: "Reviews",
-    href: "reviews",
+    title: "Games catalog",
+    href: "products",
   },
   {
     title: "Guarantees",
@@ -30,7 +30,10 @@ const Navigation = () => {
     <ul className="flex gap-8">
       {navList.map((item) => (
         <li key={item.href}>
-          <Link href={item.href} className="hover:text-blue transition-colors">
+          <Link
+            href={`/${item.href}`}
+            className="hover:text-blue transition-colors"
+          >
             {item.title}
           </Link>
         </li>

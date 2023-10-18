@@ -5,6 +5,7 @@ import Input from "./Input/Input";
 import IconLink from "./IconLink/IconLink";
 import GameCard from "./GameCard/GameCard";
 import GamesList from "./GamesList/GamesList";
+import Button from "./Button/Button";
 
 export {
   Navigation,
@@ -14,4 +15,5 @@ export {
   IconLink,
   GameCard,
   GamesList,
+  Button,
 };
