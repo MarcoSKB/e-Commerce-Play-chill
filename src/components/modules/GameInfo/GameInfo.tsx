@@ -21,17 +21,29 @@ const GameInfo: React.FC<Props> = (props) => {
           src={productImage}
           className="object-cover object-center"
           alt={"Preview image game"}
-          width={700}
-          height={928}
+          width={1200}
+          height={1428}
         />
       </div>
       <div className="flex flex-col gap-5">
         <h1 className="text-4xl font-extrabold">{title}</h1>
-        <p className="text-sm font-normal">In stock</p>
-        <span className="">{price} $</span>
-        <div className="flex gap-3">
+        <p className="relative pl-[20px] text-sm font-normal before:content-[''] before:block before:absolute before:left-0 before:top-[5px] before:w-3 before:h-3 before:rounded-full before:bg-green">
+          In stock
+        </p>
+        <span className="text-4xl font-bold">{price} $</span>
+        <div className="flex gap-3 mb-[20px]">
           <Button title="Buy" onClick={() => {}} />
           <Button title="Add to cart" type="outline" onClick={() => {}} />
+        </div>
+        <div className="flex gap-x-[75px]">
+          <div className="flex flex-col gap-y-2">
+            <span className="text-lg">Genre</span>
+            <span className="font-semibold text-xl">{genre}</span>
+          </div>
+          <div className="flex flex-col gap-y-2">
+            <span className="text-lg">Platform</span>
+            <span className="font-semibold text-xl">{platform}</span>
+          </div>
         </div>
       </div>
     </div>

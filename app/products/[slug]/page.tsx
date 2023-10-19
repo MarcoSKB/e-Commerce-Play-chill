@@ -6,6 +6,7 @@ import useAxios from "@/src/hooks/useAxios";
 import { getGameAxios } from "@/src/api/getGameAxios";
 import { GameDataInfo } from "@/src/types/GameDataInfo";
 import { GameInfo } from "@/src/components/modules";
+import { Container } from "@/src/components/elements";
 
 interface Props {
   params: {
@@ -23,26 +24,31 @@ const Page: NextPage<Props> = ({ params }) => {
   if (loading === true) {
     return <div>Loading</div>;
   }
-
+  // min-h remove
   return (
-    <div className="relative min-h-[1200px]">
+    <div className="relative min-h-[1200px] py-20">
       {response && (
         <>
-          <Image
-            src={response.background_image_additional}
-            className="absolute w-full h-[923px] object-cover z-[-1] opacity-[0.31] bg-gradient-to-t from-[#06030F] from-[25.56%] to-black to-[93.8%]"
-            alt="Background image"
-            width={1920}
-            height={1080}
-          />
-          <GameInfo
-            id={response.id}
-            productImage={response.background_image}
-            title={response.name}
-            price={response.id}
-            genre={response.genres[0].name}
-            platform={response.platforms[0].platform.name}
-          />
+          <div className="absolute top-0 left-0 w-full h-[960px] overflow-hidden opacity-[0.31] -z-10 ">
+            <Image
+              src={response.background_image_additional}
+              className="w-full h-full object-cover"
+              alt="Background image"
+              width={1920}
+              height={1080}
+            />
+            <div className="absolute top-0 left-0 w-full h-full background-gradient "></div>
+          </div>
+          <Container>
+            <GameInfo
+              id={response.id}
+              productImage={response.background_image}
+              title={response.name}
+              price={response.id}
+              genre={response.genres[0].name}
+              platform={response.platforms[0].platform.name}
+            />
+          </Container>
         </>
       )}
     </div>

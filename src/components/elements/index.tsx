@@ -6,8 +6,10 @@ import IconLink from "./IconLink/IconLink";
 import GameCard from "./GameCard/GameCard";
 import GamesList from "./GamesList/GamesList";
 import Button from "./Button/Button";
+import Container from "./Container/Container";
 
 export {
+  Container,
   Navigation,
   Logotype,
   ProfileButton,
