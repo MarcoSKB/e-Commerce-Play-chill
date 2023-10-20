@@ -4,7 +4,7 @@ import useAxios from "@/src/hooks/useAxios";
 import { getGameAxios } from "@/src/api/getGameAxios";
 import { GameDataInfo } from "@/src/types/GameDataInfo";
 
-import { GameInfo } from "@/src/components/modules";
+import { GameDetails, GameInfo } from "@/src/components/modules";
 import { BgImage, Container } from "@/src/components/elements";
 
 interface Props {
@@ -40,6 +40,7 @@ const Page: NextPage<Props> = ({ params }) => {
               platform={game.platforms[0].platform.name}
               metacritic={game.metacritic}
             />
+            <GameDetails />
           </Container>
         </>
       )}

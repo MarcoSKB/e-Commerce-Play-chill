@@ -20,7 +20,7 @@ const GameInfo: React.FC<Props> = (props) => {
         <Image
           priority
           src={productImage}
-          className="object-cover object-center"
+          className="object-cover"
           alt={"Preview image game"}
           width={1200}
           height={1428}
