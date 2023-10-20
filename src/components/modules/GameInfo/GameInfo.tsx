@@ -9,10 +9,11 @@ interface Props {
   price: number;
   genre: string;
   platform: string;
+  metacritic: number;
 }
 
 const GameInfo: React.FC<Props> = (props) => {
-  const { id, productImage, title, price, genre, platform } = props;
+  const { id, productImage, title, price, genre, platform, metacritic } = props;
   return (
     <div className="flex gap-x-[60px]">
       <div className="w-[350px] h-[464px] flex rounded-2xl overflow-hidden">
@@ -43,6 +44,12 @@ const GameInfo: React.FC<Props> = (props) => {
           <div className="flex flex-col gap-y-2">
             <span className="text-lg">Platform</span>
             <span className="font-semibold text-xl">{platform}</span>
+          </div>
+          <div className="flex flex-col gap-y-2 items-start">
+            <span className="text-lg">Metascore</span>
+            <span className="font-semibold text-xl px-3 py-1 border-solid border-[1px] rounded-md border-green">
+              {metacritic}
+            </span>
           </div>
         </div>
       </div>

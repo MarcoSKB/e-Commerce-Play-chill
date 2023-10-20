@@ -14,11 +14,13 @@ interface IConfig {
 }
 type AxiosLoading = boolean;
 
-export function useAxios<T>(config: IConfig) {
+export function useAxios<T>(
+  config: IConfig
+): [T | null, AxiosError | null, AxiosLoading] {
   const { url = "", method, axiosInstance, requestConfig = {} } = config;
 
-  const [response, setResponse] = useState<T>();
-  const [error, setError] = useState<AxiosError>();
+  const [response, setResponse] = useState<T | null>(null);
+  const [error, setError] = useState<AxiosError | null>(null);
   const [loading, setLoading] = useState<AxiosLoading>(true);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export function useAxios<T>(config: IConfig) {
     return () => controller.abort();
   }, []);
 
-  return { response, error, loading };
+  return [response, error, loading];
 }
 
 export default useAxios;

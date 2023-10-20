@@ -1,12 +1,11 @@
 "use client";
 import { NextPage } from "next";
-import Image from "next/image";
-
 import useAxios from "@/src/hooks/useAxios";
 import { getGameAxios } from "@/src/api/getGameAxios";
 import { GameDataInfo } from "@/src/types/GameDataInfo";
+
 import { GameInfo } from "@/src/components/modules";
-import { Container } from "@/src/components/elements";
+import { BgImage, Container } from "@/src/components/elements";
 
 interface Props {
   params: {
@@ -15,7 +14,7 @@ interface Props {
 }
 
 const Page: NextPage<Props> = ({ params }) => {
-  const { response, error, loading } = useAxios<GameDataInfo>({
+  const [game, error, loading] = useAxios<GameDataInfo>({
     url: params.slug,
     method: "GET",
     axiosInstance: getGameAxios,
@@ -24,29 +23,22 @@ const Page: NextPage<Props> = ({ params }) => {
   if (loading === true) {
     return <div>Loading</div>;
   }
+
   // min-h remove
   return (
-    <div className="relative min-h-[1200px] py-20">
-      {response && (
+    <div className="relative py-20">
+      {game && (
         <>
-          <div className="absolute top-0 left-0 w-full h-[960px] overflow-hidden opacity-[0.31] -z-10 ">
-            <Image
-              src={response.background_image_additional}
-              className="w-full h-full object-cover"
-              alt="Background image"
-              width={1920}
-              height={1080}
-            />
-            <div className="absolute top-0 left-0 w-full h-full background-gradient "></div>
-          </div>
+          <BgImage imgURL={game.background_image_additional} />
           <Container>
             <GameInfo
-              id={response.id}
-              productImage={response.background_image}
-              title={response.name}
-              price={response.id}
-              genre={response.genres[0].name}
-              platform={response.platforms[0].platform.name}
+              id={game.id}
+              productImage={game.background_image}
+              title={game.name}
+              price={game.id}
+              genre={game.genres[0].name}
+              platform={game.platforms[0].platform.name}
+              metacritic={game.metacritic}
             />
           </Container>
         </>

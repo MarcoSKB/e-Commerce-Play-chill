@@ -7,6 +7,7 @@ import GameCard from "./GameCard/GameCard";
 import GamesList from "./GamesList/GamesList";
 import Button from "./Button/Button";
 import Container from "./Container/Container";
+import BgImage from "./BgImage/BgImage";
 
 export {
   Container,
@@ -18,4 +19,5 @@ export {
   GameCard,
   GamesList,
   Button,
+  BgImage,
 };
