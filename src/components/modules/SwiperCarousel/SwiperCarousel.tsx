@@ -17,11 +17,7 @@ interface Props {
 const SwiperCarousel: React.FC<Props> = ({ data }) => {
   return (
     <div className="relative">
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={3.5}
-        onSlideChange={() => console.log("slide change")}
-      >
+      <Swiper spaceBetween={50} slidesPerView={3.5}>
         <SwiperButton
           toSide="Prev"
           className="flex items-center justify-center w-[40px] h-[40px] rounded-full overflow-hidden bg-white absolute left-[20px] top-[41%] z-[9999] opacity-50 transition-opacity hover:opacity-100 disabled:opacity-50"

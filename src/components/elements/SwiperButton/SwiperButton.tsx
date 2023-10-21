@@ -12,23 +12,31 @@ interface Props {
 
 const SwiperButton: React.FC<Props> = (props) => {
   const { children, className, toSide } = props;
-  const { slideNext, slidePrev, isBeginning, isEnd } = useSwiper();
-  //   const [endSlide, setEndSlide] = useState(false);
+  const swiper = useSwiper();
+  const [endSlide, setEndSlide] = useState(false);
 
   function onSwipeHandler(side: toSide): void {
     if (side === "Next") {
-      slideNext();
-      // setEndSlide(isEnd);
+      swiper.slideNext();
     }
     if (side === "Prev") {
-      slidePrev();
-      // setEndSlide(isBeginning);
+      swiper.slidePrev();
     }
   }
 
+  function onSlideChangeHandler(side: toSide) {
+    if (side === "Next") {
+      setEndSlide(swiper.isEnd);
+    }
+    if (side === "Prev") {
+      setEndSlide(swiper.isBeginning);
+    }
+  }
+
+  swiper.on("slideChange", () => onSlideChangeHandler(toSide));
   return (
     <button
-      disabled={isEnd}
+      disabled={endSlide}
       type="button"
       className={`${className}`}
       onClick={() => onSwipeHandler(toSide)}
