@@ -1,9 +1,9 @@
 import React from "react";
 import { GameCard } from "@/src/components/elements";
-import { GamePreviewDataInfo } from "@/src/types/GamePreviewDataInfo";
+import { GamePreviewInfo } from "@/src/types/GamePreviewDataInfo";
 
 interface GamesListProps {
-  data: GamePreviewDataInfo[];
+  data: GamePreviewInfo[];
   className?: string;
 }
 

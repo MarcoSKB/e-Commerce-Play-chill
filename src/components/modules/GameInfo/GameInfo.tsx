@@ -10,12 +10,22 @@ interface Props {
   genre: string;
   platform: string;
   metacritic: number;
+  className?: string;
 }
 
 const GameInfo: React.FC<Props> = (props) => {
-  const { id, productImage, title, price, genre, platform, metacritic } = props;
+  const {
+    id,
+    productImage,
+    title,
+    price,
+    genre,
+    platform,
+    metacritic,
+    className,
+  } = props;
   return (
-    <div className="flex gap-x-[60px]">
+    <div className={`flex gap-x-[60px] ${className}`}>
       <div className="w-[350px] h-[464px] flex rounded-2xl overflow-hidden">
         <Image
           priority

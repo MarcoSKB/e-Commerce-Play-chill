@@ -31,16 +31,18 @@ const Page: NextPage<Props> = ({ params }) => {
         <>
           <BgImage imgURL={game.background_image_additional} />
           <Container>
-            <GameInfo
-              id={game.id}
-              productImage={game.background_image}
-              title={game.name}
-              price={game.id}
-              genre={game.genres[0].name}
-              platform={game.platforms[0].platform.name}
-              metacritic={game.metacritic}
-            />
-            <GameDetails />
+            <div className="mb-20">
+              <GameInfo
+                id={game.id}
+                productImage={game.background_image}
+                title={game.name}
+                price={game.id}
+                genre={game.genres[0].name}
+                platform={game.platforms[0].platform.name}
+                metacritic={game.metacritic}
+              />
+            </div>
+            <GameDetails id={game.id} />
           </Container>
         </>
       )}

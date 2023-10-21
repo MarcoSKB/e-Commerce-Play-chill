@@ -1,4 +1,6 @@
-export interface GamePreviewDataInfo {
+import { GamesDataResponse } from "./GamesDataResponse";
+
+export interface GamePreviewInfo {
   id: number;
   slug: string;
   name: string;
@@ -12,4 +14,8 @@ export interface GamePreviewDataInfo {
   metacritic: number;
   suggestions_count: number;
   platforms: unknown[];
+}
+
+export interface GamePreviewData extends GamesDataResponse {
+  results: GamePreviewInfo[];
 }

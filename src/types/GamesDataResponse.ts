@@ -1,8 +1,5 @@
-import { GamePreviewDataInfo } from "@/src/types/GamePreviewDataInfo";
-
-export interface GamesDataResponse<T = GamePreviewDataInfo> {
-  count: string;
-  next: string;
-  previous: string;
-  results: T[];
+export interface GamesDataResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
 }

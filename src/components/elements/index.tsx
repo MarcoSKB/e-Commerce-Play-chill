@@ -8,6 +8,7 @@ import GamesList from "./GamesList/GamesList";
 import Button from "./Button/Button";
 import Container from "./Container/Container";
 import BgImage from "./BgImage/BgImage";
+import SwiperButton from "./SwiperButton/SwiperButton";
 
 export {
   Container,
@@ -20,4 +21,5 @@ export {
   GamesList,
   Button,
   BgImage,
+  SwiperButton,
 };
