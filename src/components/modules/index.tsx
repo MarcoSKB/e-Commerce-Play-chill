@@ -3,7 +3,7 @@ import Footer from "./Footer/Footer";
 import CatalogProducts from "./CatalogProducts/CatalogProducts";
 import GameInfo from "./GameInfo/GameInfo";
 import GameDetails from "./GameDetails/GameDetails";
-import SwiperCarousel from "./SwiperCarousel/SwiperCarousel";
+import GameScreenshots from "./GameScreenshots/GameScreenshots";
 
 export {
   Header,
@@ -11,5 +11,5 @@ export {
   CatalogProducts,
   GameInfo,
   GameDetails,
-  SwiperCarousel,
+  GameScreenshots,
 };

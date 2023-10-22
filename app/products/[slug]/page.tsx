@@ -4,7 +4,11 @@ import useAxios from "@/src/hooks/useAxios";
 import { getGameAxios } from "@/src/api/getGameAxios";
 import { GameDataInfo } from "@/src/types/GameDataInfo";
 
-import { GameDetails, GameInfo } from "@/src/components/modules";
+import {
+  GameInfo,
+  GameScreenshots,
+  GameDetails,
+} from "@/src/components/modules";
 import { BgImage, Container } from "@/src/components/elements";
 
 interface Props {
@@ -20,11 +24,17 @@ const Page: NextPage<Props> = ({ params }) => {
     axiosInstance: getGameAxios,
   });
 
+  function getRequirements(platforms: GameDataInfo["platforms"]) {
+    const platformPC = platforms.find(
+      (platform) => platform.platform.slug === "pc"
+    );
+    return platformPC?.requirements;
+  }
+
   if (loading === true) {
     return <div>Loading</div>;
   }
 
-  // min-h remove
   return (
     <div className="relative py-20">
       {game && (
@@ -42,7 +52,13 @@ const Page: NextPage<Props> = ({ params }) => {
                 metacritic={game.metacritic}
               />
             </div>
-            <GameDetails id={game.id} />
+            <div className="mb-[70px]">
+              <GameScreenshots id={game.id} />
+            </div>
+            <GameDetails
+              description={game.description}
+              requirements={getRequirements(game.platforms)}
+            />
           </Container>
         </>
       )}

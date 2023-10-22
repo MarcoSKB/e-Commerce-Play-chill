@@ -1,4 +1,4 @@
-interface platformType {
+export interface platformType {
   platform: {
     id: number;
     slug: string;
@@ -42,7 +42,7 @@ export interface GameDataInfo {
   slug: string;
   name: string;
   name_original: string;
-  description_raw: string;
+  description: string;
   metacritic: number;
   metacritic_platforms: metacritic[];
   released: string;
