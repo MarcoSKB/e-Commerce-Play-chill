@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 
 interface IConfig {
   url: string;
@@ -14,9 +9,9 @@ interface IConfig {
 }
 type AxiosLoading = boolean;
 
-export function useAxios<T>(
-  config: IConfig
-): [T | null, AxiosError | null, AxiosLoading] {
+type useAxiosResult<T> = [T | null, AxiosError | null, AxiosLoading];
+
+export function useAxios<T>(config: IConfig): useAxiosResult<T> {
   const { url = "", method, axiosInstance, requestConfig = {} } = config;
 
   const [response, setResponse] = useState<T | null>(null);

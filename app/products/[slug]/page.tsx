@@ -25,10 +25,21 @@ const Page: NextPage<Props> = ({ params }) => {
   });
 
   function getRequirements(platforms: GameDataInfo["platforms"]) {
-    const platformPC = platforms.find(
-      (platform) => platform.platform.slug === "pc"
-    );
-    return platformPC?.requirements;
+    const platformPC = platforms.find(({ platform }) => {
+      return platform.id === 4;
+    });
+    const checkKeysInObject =
+      platformPC === undefined ||
+      platformPC.requirements === null ||
+      platformPC.requirements["minimum"] === undefined;
+
+    if (checkKeysInObject) {
+      return {
+        minimum: "123",
+        recommended: "456",
+      };
+    }
+    return platformPC.requirements;
   }
 
   if (loading === true) {
@@ -52,7 +63,7 @@ const Page: NextPage<Props> = ({ params }) => {
                 metacritic={game.metacritic}
               />
             </div>
-            <div className="mb-[70px]">
+            <div className="mb-[50px]">
               <GameScreenshots id={game.id} />
             </div>
             <GameDetails
