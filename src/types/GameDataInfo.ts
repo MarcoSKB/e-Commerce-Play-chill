@@ -16,7 +16,7 @@ interface metacritic {
   url: string;
 }
 
-interface genres {
+export interface genres {
   id: number;
   games_count: number;
   image_background: string;

@@ -10,6 +10,7 @@ import {
   GameScreenshots,
   GameDetails,
   Section,
+  GameRecommended,
 } from "@/src/components/modules";
 import { BgImage, Container } from "@/src/components/elements";
 
@@ -34,6 +35,7 @@ const Page: NextPage<Props> = ({ params }) => {
     return <div>Something went wrong! Please try again.</div>;
   }
 
+  console.log("Genres of game", game?.genres);
   return (
     <div className="relative py-20">
       {game && (
@@ -56,7 +58,9 @@ const Page: NextPage<Props> = ({ params }) => {
               description={game.description}
               requirements={getRequirements(game.platforms)}
             />
-            <Section title="You will be interested">q</Section>
+            <Section title="You will be interested">
+              <GameRecommended genresData={game.genres} />
+            </Section>
           </Container>
         </>
       )}
