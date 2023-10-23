@@ -12,9 +12,8 @@ const GamesList: React.FC<GamesListProps> = (props) => {
   return (
     <ul className={className}>
       {data.map((game) => (
-        <li>
+        <li key={game.id}>
           <GameCard
-            key={game.id}
             previewImageURL={game.background_image}
             title={game.name}
             price={game.id}
