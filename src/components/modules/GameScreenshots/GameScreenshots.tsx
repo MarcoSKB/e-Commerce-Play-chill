@@ -11,9 +11,10 @@ import "swiper/css";
 
 interface Props {
   id: number;
+  className?: string;
 }
 
-const GameScreenshots: React.FC<Props> = ({ id }) => {
+const GameScreenshots: React.FC<Props> = ({ id, className }) => {
   const [screenshotsData, error, loading] = useAxios<GameScreenshotData>({
     axiosInstance: getGameAxios,
     method: "GET",
@@ -22,7 +23,7 @@ const GameScreenshots: React.FC<Props> = ({ id }) => {
 
   if (screenshotsData) {
     return (
-      <div className="relative">
+      <div className={`relative ${className}`}>
         <Swiper spaceBetween={50} slidesPerView={3.5}>
           <SwiperButton
             toSide="Prev"

@@ -3,11 +3,13 @@ import { NextPage } from "next";
 import useAxios from "@/src/hooks/useAxios";
 import { getGameAxios } from "@/src/api/getGameAxios";
 import { GameDataInfo } from "@/src/types/GameDataInfo";
+import { getRequirements } from "@/src/utils/getRequirements";
 
 import {
   GameInfo,
   GameScreenshots,
   GameDetails,
+  Section,
 } from "@/src/components/modules";
 import { BgImage, Container } from "@/src/components/elements";
 
@@ -24,26 +26,12 @@ const Page: NextPage<Props> = ({ params }) => {
     axiosInstance: getGameAxios,
   });
 
-  function getRequirements(platforms: GameDataInfo["platforms"]) {
-    const platformPC = platforms.find(({ platform }) => {
-      return platform.id === 4;
-    });
-    const checkKeysInObject =
-      platformPC === undefined ||
-      platformPC.requirements === null ||
-      platformPC.requirements["minimum"] === undefined;
-
-    if (checkKeysInObject) {
-      return {
-        minimum: "123",
-        recommended: "456",
-      };
-    }
-    return platformPC.requirements;
+  if (loading) {
+    return <div>Loading</div>;
   }
 
-  if (loading === true) {
-    return <div>Loading</div>;
+  if (error) {
+    return <div>Something went wrong! Please try again.</div>;
   }
 
   return (
@@ -52,24 +40,23 @@ const Page: NextPage<Props> = ({ params }) => {
         <>
           <BgImage imgURL={game.background_image_additional} />
           <Container>
-            <div className="mb-20">
-              <GameInfo
-                id={game.id}
-                productImage={game.background_image}
-                title={game.name}
-                price={game.id}
-                genre={game.genres[0].name}
-                platform={game.platforms[0].platform.name}
-                metacritic={game.metacritic}
-              />
-            </div>
-            <div className="mb-[50px]">
-              <GameScreenshots id={game.id} />
-            </div>
+            <GameInfo
+              id={game.id}
+              productImage={game.background_image}
+              title={game.name}
+              price={game.id}
+              genre={game.genres[0].name}
+              platform={game.platforms[0].platform.name}
+              metacritic={game.metacritic}
+              className="mb-20"
+            />
+            <GameScreenshots className="mb-[50px]" id={game.id} />
             <GameDetails
+              className="mb-[70px]"
               description={game.description}
               requirements={getRequirements(game.platforms)}
             />
+            <Section title="You will be interested">q</Section>
           </Container>
         </>
       )}
