@@ -35,7 +35,6 @@ const Page: NextPage<Props> = ({ params }) => {
     return <div>Something went wrong! Please try again.</div>;
   }
 
-  console.log("Genres of game", game?.genres);
   return (
     <div className="relative py-20">
       {game && (
@@ -59,7 +58,10 @@ const Page: NextPage<Props> = ({ params }) => {
               requirements={getRequirements(game.platforms)}
             />
             <Section title="You will be interested">
-              <GameRecommended genresData={game.genres} />
+              <GameRecommended
+                genresData={game.genres}
+                currentGame={params.slug}
+              />
             </Section>
           </Container>
         </>
