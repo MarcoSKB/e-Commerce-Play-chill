@@ -8,37 +8,35 @@ interface INavList {
 
 const navList: INavList[] = [
   {
-    title: "Games catalog",
+    title: "Catalog",
     href: "products",
   },
   {
-    title: "Guarantees",
-    href: "guarantees",
+    title: "Advantages",
+    href: "advantages",
   },
   {
-    title: "How to buy",
-    href: "how-to-buy",
-  },
-  {
-    title: "Earn",
-    href: "earn",
+    title: "Reviews",
+    href: "reviews",
   },
 ];
 
 const Navigation = () => {
   return (
-    <ul className="flex gap-8">
-      {navList.map((item) => (
-        <li key={item.href}>
-          <Link
-            href={`/${item.href}`}
-            className="hover:text-blue transition-colors"
-          >
-            {item.title}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <ul className="flex gap-8">
+        {navList.map((item) => (
+          <li key={item.href}>
+            <Link
+              href={`/${item.href}`}
+              className="hover:text-blue transition-colors"
+            >
+              {item.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 

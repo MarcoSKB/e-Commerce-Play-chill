@@ -36,7 +36,7 @@ const Page: NextPage<Props> = ({ params }) => {
   }
 
   return (
-    <div className="relative py-20">
+    <main className="relative py-20">
       {game && (
         <>
           <BgImage imgURL={game.background_image_additional} />
@@ -66,7 +66,7 @@ const Page: NextPage<Props> = ({ params }) => {
           </Container>
         </>
       )}
-    </div>
+    </main>
   );
 };
 export default Page;
