@@ -6,6 +6,7 @@ import GameDetails from "./GameDetails/GameDetails";
 import GameScreenshots from "./GameScreenshots/GameScreenshots";
 import Section from "./Section/Section";
 import GameRecommended from "./GameRecommended/GameRecommended";
+import FaqSection from "./FaqSection/FaqSection";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   GameScreenshots,
   GameRecommended,
   Section,
+  FaqSection,
 };

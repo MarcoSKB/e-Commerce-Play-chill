@@ -1,31 +1,11 @@
 import Link from "next/link";
-import React from "react";
-
-interface INavList {
-  title: string;
-  href: string;
-}
-
-const navList: INavList[] = [
-  {
-    title: "Catalog",
-    href: "products",
-  },
-  {
-    title: "Advantages",
-    href: "advantages",
-  },
-  {
-    title: "Reviews",
-    href: "reviews",
-  },
-];
+import { navigationLinks } from "@/src/data/navigationLinks";
 
 const Navigation = () => {
   return (
     <nav>
       <ul className="flex gap-8">
-        {navList.map((item) => (
+        {navigationLinks.map((item) => (
           <li key={item.href}>
             <Link
               href={`/${item.href}`}

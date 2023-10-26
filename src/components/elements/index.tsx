@@ -9,6 +9,8 @@ import Button from "./Button/Button";
 import Container from "./Container/Container";
 import BgImage from "./BgImage/BgImage";
 import SwiperButton from "./SwiperButton/SwiperButton";
+import AdvantageCard from "./AdvantageCard/AdvantageCard";
+import FaqDisclosure from "./FaqDisclosure/FaqDisclosure";
 
 export {
   Container,
@@ -22,4 +24,6 @@ export {
   Button,
   BgImage,
   SwiperButton,
+  AdvantageCard,
+  FaqDisclosure,
 };

@@ -10,7 +10,7 @@ import {
 
 const Header: React.FC = () => {
   return (
-    <header className="py-6">
+    <header className="py-6 bg-black">
       <Container>
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-between">
