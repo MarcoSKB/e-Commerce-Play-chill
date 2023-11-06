@@ -49,18 +49,22 @@ const GameInfo: React.FC<Props> = (props) => {
         <div className="flex gap-x-[75px]">
           <div className="flex flex-col gap-y-2">
             <span className="text-lg">Genre</span>
-            <span className="font-semibold text-xl">{genre}</span>
+            <span className="font-semibold text-xl">
+              {genre ? genre : "Is unknown"}
+            </span>
           </div>
           <div className="flex flex-col gap-y-2">
             <span className="text-lg">Platform</span>
             <span className="font-semibold text-xl">{platform}</span>
           </div>
-          <div className="flex flex-col gap-y-2 items-start">
-            <span className="text-lg">Metascore</span>
-            <span className="font-semibold text-xl px-3 py-1 border-solid border-[1px] rounded-md border-green">
-              {metacritic}
-            </span>
-          </div>
+          {metacritic && (
+            <div className="flex flex-col gap-y-2 items-start">
+              <span className="text-lg">Metascore</span>
+              <span className="font-semibold text-xl px-3 py-1 border-solid border-[1px] rounded-md border-green">
+                {metacritic}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>

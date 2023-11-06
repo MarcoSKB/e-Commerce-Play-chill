@@ -4,12 +4,12 @@ import { navigationLinks } from "@/src/data/navigationLinks";
 const Navigation = () => {
   return (
     <nav>
-      <ul className="flex gap-8">
+      <ul className="flex items-center gap-8">
         {navigationLinks.map((item) => (
-          <li key={item.href}>
+          <li key={item.href} className="flex">
             <Link
               href={`/${item.href}`}
-              className="hover:text-blue transition-colors"
+              className="hover:text-blue transition-colors py-[6px]"
             >
               {item.title}
             </Link>

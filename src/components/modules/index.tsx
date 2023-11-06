@@ -7,6 +7,7 @@ import GameScreenshots from "./GameScreenshots/GameScreenshots";
 import Section from "./Section/Section";
 import GameRecommended from "./GameRecommended/GameRecommended";
 import FaqSection from "./FaqSection/FaqSection";
+import MajorSearch from "./MajorSearch/MajorSearch";
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   GameRecommended,
   Section,
   FaqSection,
+  MajorSearch,
 };

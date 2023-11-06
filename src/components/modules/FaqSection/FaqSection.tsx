@@ -1,4 +1,3 @@
-"use client";
 import { faqData } from "@/src/data/faqData";
 import { FaqDisclosure } from "@/src/components/elements";
 

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
 
@@ -6,13 +7,20 @@ interface IConfig {
   method: AxiosRequestConfig["method"];
   axiosInstance: AxiosInstance;
   requestConfig?: AxiosRequestConfig;
+  dependency?: unknown[];
 }
 type AxiosLoading = boolean;
 
 type useAxiosResult<T> = [T | null, AxiosError | null, AxiosLoading];
 
-export function useAxios<T>(config: IConfig): useAxiosResult<T> {
-  const { url = "", method, axiosInstance, requestConfig = {} } = config;
+export function useAxios<T = unknown>(config: IConfig): useAxiosResult<T> {
+  const {
+    url = "",
+    method,
+    axiosInstance,
+    requestConfig = {},
+    dependency = [],
+  } = config;
 
   const [response, setResponse] = useState<T | null>(null);
   const [error, setError] = useState<AxiosError | null>(null);
@@ -40,7 +48,7 @@ export function useAxios<T>(config: IConfig): useAxiosResult<T> {
 
     fetchData();
     return () => controller.abort();
-  }, []);
+  }, [...dependency]);
 
   return [response, error, loading];
 }

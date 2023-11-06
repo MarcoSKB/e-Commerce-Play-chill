@@ -1,7 +1,6 @@
 import Navigation from "./Navigation/Navigation";
 import Logotype from "./Logotype/Logotype";
 import ProfileButton from "./ProfileButton/ProfileButton";
-import Input from "./Input/Input";
 import IconLink from "./IconLink/IconLink";
 import GameCard from "./GameCard/GameCard";
 import GamesList from "./GamesList/GamesList";
@@ -11,13 +10,15 @@ import BgImage from "./BgImage/BgImage";
 import SwiperButton from "./SwiperButton/SwiperButton";
 import AdvantageCard from "./AdvantageCard/AdvantageCard";
 import FaqDisclosure from "./FaqDisclosure/FaqDisclosure";
+import SearchForm from "./SearchForm/SearchForm";
+import SearchResultList from "./SearchResultList/SearchResultList";
+import SearchItem from "./SearchItem/SearchItem";
 
 export {
   Container,
   Navigation,
   Logotype,
   ProfileButton,
-  Input,
   IconLink,
   GameCard,
   GamesList,
@@ -26,4 +27,7 @@ export {
   SwiperButton,
   AdvantageCard,
   FaqDisclosure,
+  SearchForm,
+  SearchResultList,
+  SearchItem,
 };
