@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import useAxios from "@/src/hooks/useAxios";
 import { useDebounce } from "@/src/hooks/useDebounce";

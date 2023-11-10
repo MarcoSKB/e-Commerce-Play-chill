@@ -13,6 +13,7 @@ import FaqDisclosure from "./FaqDisclosure/FaqDisclosure";
 import SearchForm from "./SearchForm/SearchForm";
 import SearchResultList from "./SearchResultList/SearchResultList";
 import SearchItem from "./SearchItem/SearchItem";
+import FilterByOrder from "./FilterByOrder/FilterByOrder";
 
 export {
   Container,
@@ -30,4 +31,5 @@ export {
   SearchForm,
   SearchResultList,
   SearchItem,
+  FilterByOrder,
 };

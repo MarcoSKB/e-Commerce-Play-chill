@@ -3,7 +3,7 @@ import { getGameAxios } from "@/src/api/getGameAxios";
 import { GamePreviewData } from "@/src/types/GamePreviewDataInfo";
 
 import useAxios from "@/src/hooks/useAxios";
-import { Container, GamesList } from "@/src/components/elements";
+import { GamesList } from "@/src/components/elements";
 
 const CatalogProducts = () => {
   const [games, error, loading] = useAxios<GamePreviewData>({
@@ -12,16 +12,7 @@ const CatalogProducts = () => {
     url: "",
   });
 
-  return (
-    <div>
-      <Container>
-        <h1 className="font-bold text-4xl mb-11">Product catalog</h1>
-        {games && (
-          <GamesList className="grid grid-cols-3" data={games.results} />
-        )}
-      </Container>
-    </div>
-  );
+  return <>{games && <GamesList data={games.results} />}</>;
 };
 
 export default CatalogProducts;
