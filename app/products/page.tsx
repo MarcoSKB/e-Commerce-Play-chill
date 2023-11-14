@@ -1,7 +1,7 @@
 import { CatalogProducts, GameFilters } from "@/src/components/modules";
 import { Container, FilterByOrder } from "@/src/components/elements";
 
-const Earn = () => {
+const Products = () => {
   return (
     <div className="pt-[80px]">
       <Container className="flex gap-5">
@@ -18,4 +18,4 @@ const Earn = () => {
   );
 };
 
-export default Earn;
+export default Products;
