@@ -4,6 +4,7 @@ import {
   FilterByQuery,
   FilterByTags,
   FilterByMetacritic,
+  FilterByPlatforms,
 } from "@/src/components/elements";
 
 const GameFilters = () => {
@@ -13,6 +14,7 @@ const GameFilters = () => {
       <FilterByMetacritic />
       <FilterByGenres />
       <FilterByTags />
+      <FilterByPlatforms />
     </div>
   );
 };

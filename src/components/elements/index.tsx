@@ -19,6 +19,7 @@ import FilterByTags from "./FilterGames/FilterByTags/FilterByTags";
 import FilterByGenres from "./FilterGames/FilterByGenres/FilterByGenres";
 import FilterByMetacritic from "./FilterGames/FilterByMetacritic/FilterByMetacritic";
 import RangeSlider from "./RangeSlider/RangeSlider";
+import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
 
 export {
   Container,
@@ -41,5 +42,6 @@ export {
   FilterByTags,
   FilterByGenres,
   FilterByMetacritic,
+  FilterByPlatforms,
   RangeSlider,
 };
