@@ -33,7 +33,6 @@ const Products = () => {
     },
   });
 
-  console.log(removeEmptyStringProperties(filters));
   return (
     <Container className="flex gap-5 pt-[80px]">
       <GameFilters setFilters={setFilters} filters={filters} />
