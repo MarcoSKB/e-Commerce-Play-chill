@@ -10,10 +10,111 @@
       rgba(6, 3, 15, 1) 93.8%
     );
   }
+  /* Custom gradient for advantages page */
   .advantages-gradient {
     background: linear-gradient(180deg, rgba(10, 3, 15, 0) 0%, #06030f 62.38%);
   }
   .input-transition {
     transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Slider for input */
+  .input-slider {
+    position: absolute;
+    width: 100%;
+    pointer-events: none;
+    appearance: none;
+    height: 100%;
+    opacity: 0;
+    z-index: 3;
+    padding: 0;
+  }
+  .input-slider::-ms-track {
+    appearance: none;
+    background: transparent;
+    border: transparent;
+  }
+  .input-slider::-moz-range-track {
+    appearance: none;
+    background: transparent;
+    border: transparent;
+  }
+  .input-slider:focus::-webkit-slider-runnable-track {
+    appearance: none;
+    background: transparent;
+    border: transparent;
+  }
+
+  .input-slider::-ms-thumb {
+    appearance: none;
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    border-radius: 0px;
+    border: 0 none;
+    cursor: grab;
+    background-color: red;
+  }
+
+  .input-slider::-ms-thumb:active {
+    cursor: grabbing;
+  }
+
+  .input-slider::-moz-range-thumb {
+    appearance: none;
+    pointer-events: all;
+    width: 16px;
+    height: 16px;
+    border-radius: 0px;
+    border: 0 none;
+    cursor: grab;
+    background-color: red;
+  }
+
+  .input-slider::-moz-range-thumb:active {
+    cursor: grabbing;
+  }
+
+  .input-slider::-webkit-slider-thumb {
+    appearance: none;
+    pointer-events: all;
+    width: 16px;
+    height: 16px;
+    border-radius: 0px;
+    border: 0 none;
+    cursor: grab;
+    background-color: red;
+  }
+
+  .input-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+  }
+
+  /* Disable arrows on number type input */
+  .remove-arrow-number-input::-webkit-outer-spin-button,
+  .remove-arrow-number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .remove-arrow-number-input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Custom scroll style */
+  .custom-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #1e1c27 transparent;
+  }
+  .custom-scroll::-webkit-scrollbar {
+    height: 96px;
+    width: 8px;
+  }
+  .custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background-color: #1e1c27;
+    border-radius: 100px;
   }
 }

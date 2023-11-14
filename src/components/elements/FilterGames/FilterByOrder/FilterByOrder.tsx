@@ -16,7 +16,7 @@ const FilterByOrder = () => {
   return (
     <Listbox
       as="div"
-      className="absolute flex flex-col max-w-max"
+      className="relative flex items-start max-w-max"
       value={selectedOrder}
       onChange={setSelectedOrder}
     >
@@ -30,7 +30,7 @@ const FilterByOrder = () => {
       </Listbox.Button>
       <Listbox.Options
         static
-        className="flex flex-col max-w-[100%] pb-[11px] pt-3 bg-darkPurple relative rounded-b-[10px] mt-[-8px]"
+        className="absolute top-full flex flex-col w-full max-w-[100%] pb-[11px] pt-3 bg-darkPurple rounded-b-[10px] overflow-hidden transition-opacity opacity-0 pointer-events-none ui-open:opacity-100 ui-open:pointer-events-auto"
       >
         {orderTypes.map((order) => (
           <Listbox.Option

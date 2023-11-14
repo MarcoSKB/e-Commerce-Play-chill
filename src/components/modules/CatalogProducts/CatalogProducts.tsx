@@ -10,9 +10,20 @@ const CatalogProducts = () => {
     axiosInstance: getGameAxios,
     method: "GET",
     url: "",
+    requestConfig: {
+      params: {
+        page_size: "12",
+      },
+    },
   });
 
-  return <>{games && <GamesList data={games.results} />}</>;
+  return (
+    <>
+      {games && (
+        <GamesList className="flex flex-wrap gap-5" data={games.results} />
+      )}
+    </>
+  );
 };
 
 export default CatalogProducts;

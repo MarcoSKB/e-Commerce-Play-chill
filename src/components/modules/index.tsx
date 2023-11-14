@@ -8,6 +8,7 @@ import Section from "./Section/Section";
 import GameRecommended from "./GameRecommended/GameRecommended";
 import FaqSection from "./FaqSection/FaqSection";
 import MajorSearch from "./MajorSearch/MajorSearch";
+import GameFilters from "./GameFilters/GameFilters";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   Section,
   FaqSection,
   MajorSearch,
+  GameFilters,
 };

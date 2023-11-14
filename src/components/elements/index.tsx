@@ -13,7 +13,12 @@ import FaqDisclosure from "./FaqDisclosure/FaqDisclosure";
 import SearchForm from "./SearchForm/SearchForm";
 import SearchResultList from "./SearchResultList/SearchResultList";
 import SearchItem from "./SearchItem/SearchItem";
-import FilterByOrder from "./FilterByOrder/FilterByOrder";
+import FilterByOrder from "./FilterGames/FilterByOrder/FilterByOrder";
+import FilterByQuery from "./FilterGames/FilterByQuery/FilterByQuery";
+import FilterByTags from "./FilterGames/FilterByTags/FilterByTags";
+import FilterByGenres from "./FilterGames/FilterByGenres/FilterByGenres";
+import FilterByMetacritic from "./FilterGames/FilterByMetacritic/FilterByMetacritic";
+import RangeSlider from "./RangeSlider/RangeSlider";
 
 export {
   Container,
@@ -32,4 +37,9 @@ export {
   SearchResultList,
   SearchItem,
   FilterByOrder,
+  FilterByQuery,
+  FilterByTags,
+  FilterByGenres,
+  FilterByMetacritic,
+  RangeSlider,
 };
