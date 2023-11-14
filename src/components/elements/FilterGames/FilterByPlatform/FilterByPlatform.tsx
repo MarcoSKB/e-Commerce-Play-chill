@@ -27,7 +27,7 @@ const FilterByPlatforms = () => {
       multiple
       as="div"
     >
-      <Listbox.Button className="flex justify-between items-center w-full mb-4 py-1">
+      <Listbox.Button className="flex justify-between items-center w-full py-1 ui-open:mb-4">
         <span className="text-xl font-semibold">Platforms</span>
         <img
           className="ml-4 rotate-0 ui-open:rotate-180 transition-transform"

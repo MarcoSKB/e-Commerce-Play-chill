@@ -27,7 +27,7 @@ const FilterByGenres = () => {
       multiple
       as="div"
     >
-      <Listbox.Button className="flex justify-between items-center w-full mb-4 py-1">
+      <Listbox.Button className="flex justify-between items-center w-full ui-open:mb-4 py-1">
         <span className="text-xl font-semibold">Genres</span>
         <img
           className="ml-4 rotate-0 ui-open:rotate-180 transition-transform"
