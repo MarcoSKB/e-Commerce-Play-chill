@@ -1,4 +1,6 @@
 "use client";
+import { FiltersType } from "@/src/types/FiltersType";
+
 import {
   FilterByGenres,
   FilterByQuery,
@@ -7,14 +9,20 @@ import {
   FilterByPlatforms,
 } from "@/src/components/elements";
 
-const GameFilters = () => {
+interface Props {
+  setFilters: (value: FiltersType) => void;
+  filters: FiltersType;
+}
+
+const GameFilters: React.FC<Props> = (props) => {
+  const { setFilters, filters } = props;
   return (
     <div className="flex flex-col gap-10 max-w-[300px] w-full">
-      <FilterByQuery />
-      <FilterByMetacritic />
-      <FilterByGenres />
-      <FilterByTags />
-      <FilterByPlatforms />
+      <FilterByQuery setFilters={setFilters} filters={filters} />
+      <FilterByMetacritic setFilters={setFilters} filters={filters} />
+      <FilterByGenres setFilters={setFilters} filters={filters} />
+      <FilterByTags setFilters={setFilters} filters={filters} />
+      <FilterByPlatforms setFilters={setFilters} filters={filters} />
     </div>
   );
 };

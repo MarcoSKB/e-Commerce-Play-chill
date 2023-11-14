@@ -47,7 +47,7 @@ const Page: NextPage<Props> = ({ params }) => {
               title={game.name}
               price={game.id}
               genre={game.genres[0]?.name}
-              platform={game.platforms[0].platform.name}
+              platform={game.platforms[0]?.platform.name}
               metacritic={game.metacritic}
               className="mb-20"
             />

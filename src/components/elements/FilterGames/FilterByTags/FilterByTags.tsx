@@ -1,19 +1,38 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 
 import useAxios from "@/src/hooks/useAxios";
+import { useDebounce } from "@/src/hooks/useDebounce";
+
 import { rawgApiAxios } from "@/src/api/rawgApiAxios";
 import { GameTagsResponse } from "@/src/types/GameTagsResponse";
+import { FiltersType } from "@/src/types/FiltersType";
 
-const FilterByTags = () => {
-  const [selectedTags, setSelectedTags] = useState([]);
+interface Props {
+  setFilters: (value: FiltersType) => void;
+  filters: FiltersType;
+}
+
+const FilterByTags: React.FC<Props> = (props) => {
+  const { setFilters, filters } = props;
+  const [selectedTags, setSelectedTags] = useState<GameTagsResponse["results"]>(
+    []
+  );
+  const debouncedValue = useDebounce(selectedTags, 1000);
+
   const [gameTags, error, loading] = useAxios<GameTagsResponse>({
     url: "/tags",
     method: "GET",
     axiosInstance: rawgApiAxios,
   });
+
+  useEffect(() => {
+    setFilters({
+      ...filters,
+      tags: debouncedValue.map((value) => value.slug).join(","),
+    });
+  }, [debouncedValue]);
 
   if (loading) {
     return <div>Loading</div>;
@@ -47,7 +66,7 @@ const FilterByTags = () => {
           {gameTags?.results.map((tag) => (
             <Listbox.Option
               key={tag.id}
-              value={tag.name}
+              value={tag}
               className="flex items-center gap-4 snap-center cursor-pointer text-lg opacity-20 transition-opacity hover:opacity-80 ui-selected:opacity-100"
             >
               <div className="w-6 h-6 rounded-[6px] border-solid border-2 border-white transition-colors ui-selected:bg-green ui-selected:border-green"></div>

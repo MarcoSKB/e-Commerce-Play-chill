@@ -1,19 +1,38 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 
 import useAxios from "@/src/hooks/useAxios";
+import { useDebounce } from "@/src/hooks/useDebounce";
+
 import { rawgApiAxios } from "@/src/api/rawgApiAxios";
 import { GameGenresResponse } from "@/src/types/GameGenresResonse";
+import { FiltersType } from "@/src/types/FiltersType";
 
-const FilterByGenres = () => {
-  const [selectedGenre, setSelectedGenre] = useState([]);
+interface Props {
+  setFilters: (value: FiltersType) => void;
+  filters: FiltersType;
+}
+
+const FilterByGenres: React.FC<Props> = (props) => {
+  const { setFilters, filters } = props;
+  const [selectedGenre, setSelectedGenre] = useState<
+    GameGenresResponse["results"]
+  >([]);
+  const debouncedValue = useDebounce(selectedGenre, 1000);
+
   const [gameGenres, error, loading] = useAxios<GameGenresResponse>({
     url: "/genres",
     method: "GET",
     axiosInstance: rawgApiAxios,
   });
+
+  useEffect(() => {
+    setFilters({
+      ...filters,
+      genres: debouncedValue.map((value) => value.slug).join(","),
+    });
+  }, [debouncedValue]);
 
   if (loading) {
     return <div>Loading</div>;
@@ -47,7 +66,7 @@ const FilterByGenres = () => {
           {gameGenres?.results.map((genre) => (
             <Listbox.Option
               key={genre.id}
-              value={genre.name}
+              value={genre}
               className="flex items-center gap-4 snap-center cursor-pointer text-lg opacity-20 transition-opacity hover:opacity-80 ui-selected:opacity-100"
             >
               <div className="w-6 h-6 rounded-[6px] border-solid border-2 border-white transition-colors ui-selected:bg-green ui-selected:border-green"></div>

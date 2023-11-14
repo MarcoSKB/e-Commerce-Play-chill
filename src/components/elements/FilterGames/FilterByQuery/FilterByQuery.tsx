@@ -1,9 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDebounce } from "@/src/hooks/useDebounce";
+import { FiltersType } from "@/src/types/FiltersType";
 
-const FilterByQuery = () => {
+interface Props {
+  setFilters: (value: FiltersType) => void;
+  filters: FiltersType;
+}
+
+const FilterByQuery: React.FC<Props> = (props) => {
+  const { setFilters, filters } = props;
   const [queryValue, setQueryValue] = useState("");
+
+  const debouncedValue = useDebounce(queryValue, 1000);
+
+  useEffect(() => {
+    setFilters({ ...filters, search: debouncedValue });
+  }, [debouncedValue]);
 
   return (
     <input

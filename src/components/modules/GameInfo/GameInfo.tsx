@@ -55,7 +55,9 @@ const GameInfo: React.FC<Props> = (props) => {
           </div>
           <div className="flex flex-col gap-y-2">
             <span className="text-lg">Platform</span>
-            <span className="font-semibold text-xl">{platform}</span>
+            <span className="font-semibold text-xl">
+              {platform ? platform : "Is unknown"}
+            </span>
           </div>
           {metacritic && (
             <div className="flex flex-col gap-y-2 items-start">

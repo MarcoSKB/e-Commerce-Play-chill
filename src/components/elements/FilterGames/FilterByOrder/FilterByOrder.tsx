@@ -2,23 +2,29 @@
 import { useState } from "react";
 import { Listbox } from "@headlessui/react";
 
-const orderTypes: { id: number; label: string }[] = [
-  { id: 1, label: "By Name" },
-  { id: 2, label: "By released" },
-  { id: 3, label: "By added" },
-  { id: 4, label: "By created" },
-  { id: 5, label: "By rating" },
-];
+import { FiltersType } from "@/src/types/FiltersType";
+import { orderTypes } from "@/src/data/orderTypes";
 
-const FilterByOrder = () => {
+interface Props {
+  setFilters: (value: FiltersType) => void;
+  filters: FiltersType;
+}
+
+const FilterByOrder: React.FC<Props> = (props) => {
+  const { setFilters, filters } = props;
   const [selectedOrder, setSelectedOrder] = useState(orderTypes[4]);
+
+  const onChangeHandler = (e: { id: number; label: string; slug: string }) => {
+    setSelectedOrder(e);
+    setFilters({ ...filters, ordering: e.slug });
+  };
 
   return (
     <Listbox
       as="div"
       className="relative flex items-start max-w-max"
       value={selectedOrder}
-      onChange={setSelectedOrder}
+      onChange={onChangeHandler}
     >
       <Listbox.Button className="relative z-[1] flex items-center px-[26px] py-[17px] rounded-[10px] bg-purple">
         <span className="text-[15px] leading-snug">{selectedOrder.label}</span>
@@ -30,7 +36,7 @@ const FilterByOrder = () => {
       </Listbox.Button>
       <Listbox.Options
         static
-        className="absolute top-full flex flex-col w-full max-w-[100%] pb-[11px] pt-3 bg-darkPurple rounded-b-[10px] overflow-hidden transition-opacity opacity-0 pointer-events-none ui-open:opacity-100 ui-open:pointer-events-auto"
+        className="absolute top-[89%] flex flex-col w-full max-w-[100%] pt-3 pb-[11px] bg-darkPurple rounded-b-[10px] overflow-hidden transition-opacity opacity-0 pointer-events-none ui-open:opacity-100 ui-open:pointer-events-auto"
       >
         {orderTypes.map((order) => (
           <Listbox.Option

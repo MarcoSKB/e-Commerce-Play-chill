@@ -1,10 +1,27 @@
 "use client";
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
+import { useDebounce } from "@/src/hooks/useDebounce";
+import { FiltersType } from "@/src/types/FiltersType";
+
 import { RangeSlider } from "@/src/components/elements";
 
-const FilterByMetacritic = () => {
+interface Props {
+  setFilters: (value: FiltersType) => void;
+  filters: FiltersType;
+}
+
+const FilterByMetacritic: React.FC<Props> = (props) => {
+  const { setFilters, filters } = props;
   const [value, setValue] = useState({ min: 0, max: 100 });
+  const debouncedValue = useDebounce(value, 1000);
+
+  useEffect(() => {
+    setFilters({
+      ...filters,
+      metacritic: `${debouncedValue.min},${debouncedValue.max}`,
+    });
+  }, [debouncedValue]);
 
   const onMinInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = +e.target.value;
@@ -21,7 +38,6 @@ const FilterByMetacritic = () => {
       setValue({ min: 0, max: value.max });
     }
   };
-
   const onMaxInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = +e.target.value;
 
@@ -61,7 +77,7 @@ const FilterByMetacritic = () => {
           onChange={(e) => onMaxInputChange(e)}
         />
       </div>
-      <div className="px-[15px] mt-[-10px]">
+      <div className="px-[32px] mt-[-10px]">
         <RangeSlider
           min={0}
           max={100}

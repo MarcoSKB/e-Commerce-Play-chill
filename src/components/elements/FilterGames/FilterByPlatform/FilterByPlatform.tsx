@@ -1,19 +1,38 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 
 import useAxios from "@/src/hooks/useAxios";
+import { useDebounce } from "@/src/hooks/useDebounce";
+
 import { rawgApiAxios } from "@/src/api/rawgApiAxios";
 import { GamePlatformsResponse } from "@/src/types/GamePlatformsResponse";
+import { FiltersType } from "@/src/types/FiltersType";
 
-const FilterByPlatforms = () => {
-  const [selectedGenre, setSelectedGenre] = useState([]);
+interface Props {
+  setFilters: (value: FiltersType) => void;
+  filters: FiltersType;
+}
+
+const FilterByPlatforms: React.FC<Props> = (props) => {
+  const { setFilters, filters } = props;
+  const [selectedPlatforms, setSelectedPlatforms] = useState<
+    GamePlatformsResponse["results"]
+  >([]);
+  const debouncedValue = useDebounce(selectedPlatforms, 1000);
+
   const [gamePlatforms, error, loading] = useAxios<GamePlatformsResponse>({
     url: "/platforms",
     method: "GET",
     axiosInstance: rawgApiAxios,
   });
+
+  useEffect(() => {
+    setFilters({
+      ...filters,
+      platforms: debouncedValue.map((value) => value.id).join(","),
+    });
+  }, [debouncedValue]);
 
   if (loading) {
     return <div>Loading</div>;
@@ -21,9 +40,9 @@ const FilterByPlatforms = () => {
 
   return (
     <Listbox
-      value={selectedGenre}
+      value={selectedPlatforms}
       disabled={loading}
-      onChange={setSelectedGenre}
+      onChange={setSelectedPlatforms}
       multiple
       as="div"
     >
@@ -47,7 +66,7 @@ const FilterByPlatforms = () => {
           {gamePlatforms?.results.map((platform) => (
             <Listbox.Option
               key={platform.id}
-              value={platform.name}
+              value={platform}
               className="flex items-center gap-4 snap-center cursor-pointer text-lg opacity-20 transition-opacity hover:opacity-80 ui-selected:opacity-100"
             >
               <div className="w-6 h-6 rounded-[6px] border-solid border-2 border-white transition-colors ui-selected:bg-green ui-selected:border-green"></div>
