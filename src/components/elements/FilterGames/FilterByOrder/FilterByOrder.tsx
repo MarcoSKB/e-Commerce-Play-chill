@@ -22,7 +22,7 @@ const FilterByOrder: React.FC<Props> = (props) => {
   return (
     <Listbox
       as="div"
-      className="relative flex items-start max-w-max"
+      className="relative flex items-start max-w-max z-40"
       value={selectedOrder}
       onChange={onChangeHandler}
     >
