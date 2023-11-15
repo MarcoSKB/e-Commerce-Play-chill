@@ -10,7 +10,7 @@ const BgImage: React.FC<Props> = ({ imgURL }) => {
     <div className="absolute top-0 left-0 w-full h-full max-h-[960px] overflow-hidden opacity-[0.31] -z-10">
       <Image
         priority
-        src={imgURL}
+        src={imgURL ? imgURL : "/images/fullsize-image-not-found.jpg"}
         className="w-full h-full object-cover"
         alt="Background image"
         width={1920}
