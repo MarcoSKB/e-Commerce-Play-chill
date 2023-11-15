@@ -20,6 +20,7 @@ import FilterByGenres from "./FilterGames/FilterByGenres/FilterByGenres";
 import FilterByMetacritic from "./FilterGames/FilterByMetacritic/FilterByMetacritic";
 import RangeSlider from "./RangeSlider/RangeSlider";
 import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
+import IconButton from "./IconButton/IconButton";
 
 export {
   Container,
@@ -44,4 +45,5 @@ export {
   FilterByMetacritic,
   FilterByPlatforms,
   RangeSlider,
+  IconButton,
 };

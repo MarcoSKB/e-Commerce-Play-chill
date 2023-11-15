@@ -41,7 +41,9 @@ const Products = () => {
           <h1 className="font-bold text-4xl">Product catalog</h1>
           <FilterByOrder setFilters={setFilters} filters={filters} />
         </div>
-        <GamesList className="flex flex-wrap gap-5" data={games?.results} />
+        {games && (
+          <GamesList className="flex flex-wrap gap-5" data={games.results} />
+        )}
       </div>
     </Container>
   );
