@@ -1,4 +1,5 @@
 import { GamesDataResponse } from "./GamesDataResponse";
+import { Store } from "./StoreType";
 
 export interface GamePreviewInfo {
   id: number;
@@ -10,6 +11,7 @@ export interface GamePreviewInfo {
   rating: number;
   rating_top: number;
   ratings: {};
+  stores: Store[];
   ratings_count: number;
   metacritic: number;
   suggestions_count: number;

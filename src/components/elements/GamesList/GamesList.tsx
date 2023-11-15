@@ -19,10 +19,12 @@ const GamesList: React.FC<GamesListProps> = (props) => {
       {data.map((game) => (
         <li key={game.id}>
           <GameCard
+            id={game.id}
             previewImageURL={game.background_image}
             title={game.name}
             price={game.id}
             href={game.slug}
+            store={game.stores}
           />
         </li>
       ))}
