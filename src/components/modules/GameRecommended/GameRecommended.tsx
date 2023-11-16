@@ -50,10 +50,12 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
         gamesFiltered.map((game) => (
           <li key={game.id}>
             <GameCard
+              id={game.id}
               href={game.slug}
               previewImageURL={game.background_image}
               price={game.id}
               title={game.name}
+              store={game.stores}
             />
           </li>
         ))}
