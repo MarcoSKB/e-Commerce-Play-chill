@@ -11,15 +11,17 @@ import { removeEmptyStringProperties } from "@/src/utils/removeEmptyStrings";
 import { GameFilters } from "@/src/components/modules";
 import { Container, FilterByOrder, GamesList } from "@/src/components/elements";
 
+const filtersRequestData = {
+  search: "",
+  metacritic: "",
+  genres: "",
+  tags: "",
+  platforms: "",
+  ordering: "",
+};
+
 const Products = () => {
-  const [filters, setFilters] = useState<FiltersType>({
-    search: "",
-    metacritic: "",
-    genres: "",
-    tags: "",
-    platforms: "",
-    ordering: "",
-  });
+  const [filters, setFilters] = useState<FiltersType>(filtersRequestData);
   const [games, error, loading] = useAxios<GamePreviewData>({
     url: "",
     method: "GET",
@@ -41,9 +43,12 @@ const Products = () => {
           <h1 className="font-bold text-4xl">Product catalog</h1>
           <FilterByOrder setFilters={setFilters} filters={filters} />
         </div>
-        {games && (
-          <GamesList className="flex flex-wrap gap-5" data={games.results} />
-        )}
+        <GamesList
+          className="flex flex-wrap gap-5"
+          games={games?.results}
+          error={error}
+          loading={loading}
+        />
       </div>
     </Container>
   );

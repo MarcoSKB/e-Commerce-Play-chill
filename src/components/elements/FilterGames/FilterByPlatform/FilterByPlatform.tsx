@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
+import Skeleton from "react-loading-skeleton";
 
 import useAxios from "@/src/hooks/useAxios";
 import { useDebounce } from "@/src/hooks/useDebounce";
@@ -35,7 +36,11 @@ const FilterByPlatforms: React.FC<Props> = (props) => {
   }, [debouncedValue]);
 
   if (loading) {
-    return <div>Loading</div>;
+    return <Skeleton height={26} count={1} />;
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
   }
 
   return (
