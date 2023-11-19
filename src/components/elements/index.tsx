@@ -21,6 +21,8 @@ import FilterByMetacritic from "./FilterGames/FilterByMetacritic/FilterByMetacri
 import RangeSlider from "./RangeSlider/RangeSlider";
 import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
 import IconButton from "./IconButton/IconButton";
+import GameCardSkeleton from "./GameCard/GameCardSkeleton";
+import ScreenshotImage from "./ScreenshotImage/ScreenshotImage";
 
 export {
   Container,
@@ -29,6 +31,7 @@ export {
   ProfileButton,
   IconLink,
   GameCard,
+  GameCardSkeleton,
   GamesList,
   Button,
   BgImage,
@@ -46,4 +49,5 @@ export {
   FilterByPlatforms,
   RangeSlider,
   IconButton,
+  ScreenshotImage,
 };

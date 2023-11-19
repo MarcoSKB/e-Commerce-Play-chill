@@ -27,45 +27,50 @@ const Page: NextPage<Props> = ({ params }) => {
     axiosInstance: getGameAxios,
   });
 
-  if (loading) {
-    return <div>Loading</div>;
-  }
-
   if (error) {
-    return <div>Something went wrong! Please try again.</div>;
+    return (
+      <div>
+        <h3>Something went wrong! Please try again.</h3>
+        <br />
+        <p className="text-rose-700">{error.message}</p>
+      </div>
+    );
   }
 
   return (
     <main className="relative py-20">
-      {game && (
+      {
         <>
-          <BgImage imgURL={game.background_image_additional} />
+          <BgImage imgURL={game?.background_image_additional} />
           <Container>
             <GameInfo
-              id={game.id}
-              productImage={game.background_image}
-              title={game.name}
-              price={game.id}
-              genre={game.genres[0]?.name}
-              platform={game.platforms[0]?.platform.name}
-              metacritic={game.metacritic}
+              id={game?.id}
+              productImage={game?.background_image}
+              title={game?.name}
+              price={game?.id}
+              genre={game?.genres[0]?.name}
+              platform={game?.platforms[0]?.platform.name}
+              metacritic={game?.metacritic}
+              loading={loading}
               className="mb-20"
             />
-            <GameScreenshots className="mb-[50px]" id={game.id} />
+            {game && <GameScreenshots className="mb-[50px]" id={game.id} />}
             <GameDetails
               className="mb-[70px]"
-              description={game.description}
-              requirements={getRequirements(game.platforms)}
+              description={game?.description}
+              requirements={getRequirements(game?.platforms)}
             />
             <Section title="You will be interested">
-              <GameRecommended
-                genresData={game.genres}
-                currentGame={params.slug}
-              />
+              {game && (
+                <GameRecommended
+                  genresData={game?.genres}
+                  currentGame={params.slug}
+                />
+              )}
             </Section>
           </Container>
         </>
-      )}
+      }
     </main>
   );
 };

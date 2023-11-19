@@ -1,7 +1,9 @@
 import { GameDataInfo } from "../types/GameDataInfo";
 
-export function getRequirements(platforms: GameDataInfo["platforms"]) {
-  const platformPC = platforms.find(({ platform }) => {
+export function getRequirements(
+  platforms: GameDataInfo["platforms"] | undefined
+) {
+  const platformPC = platforms?.find(({ platform }) => {
     return platform.id === 4;
   });
 

@@ -1,48 +1,18 @@
 "use client";
 import { Tab } from "@headlessui/react";
+import Skeleton from "react-loading-skeleton";
 import parse from "html-react-parser";
 
+import { activationData } from "@/src/data/activationData";
+
 interface Props {
-  description: string;
+  description: string | undefined;
   requirements: {
     minimum: string;
     recommended: string;
   } | null;
   className?: string;
 }
-
-const activationData = [
-  {
-    id: 0,
-    number: 1,
-    title: `Copy the key of the purchased game from the "Orders" section in your personal account.`,
-  },
-  {
-    id: 1,
-    number: 2,
-    title: `If you don't have the Steam client installed, download and install it.`,
-  },
-  {
-    id: 2,
-    number: 3,
-    title: `Log in to your Steam account or register a new one if you don't have one.`,
-  },
-  {
-    id: 3,
-    number: 4,
-    title: `Go to the "Games" section and select "Activate via Steam...".`,
-  },
-  {
-    id: 4,
-    number: 5,
-    title: `Enter the activation key.`,
-  },
-  {
-    id: 5,
-    number: 6,
-    title: `After that, the game will be in your Steam library, and you can download it.`,
-  },
-];
 
 const GameDetails: React.FC<Props> = (props) => {
   const { description, requirements, className = "" } = props;
@@ -65,7 +35,11 @@ const GameDetails: React.FC<Props> = (props) => {
           <Tab.Panel className="focus:outline-offset-8">
             <h2 className="text-2xl font-semibold mb-4">About:</h2>
             <div className="flex flex-col gap-y-2 opacity-50 leading-[1.5] text-[17px]">
-              {parse(description)}
+              {description ? (
+                parse(description)
+              ) : (
+                <Skeleton count={6} height={17} />
+              )}
             </div>
           </Tab.Panel>
           <Tab.Panel className="flex flex-col gap-y-10 focus:outline-offset-8">
@@ -74,7 +48,11 @@ const GameDetails: React.FC<Props> = (props) => {
                 Minimum system requirements:
               </h2>
               <p className="opacity-50 leading-[1.5] text-[17px]">
-                {requirements?.minimum}
+                {requirements ? (
+                  requirements.minimum
+                ) : (
+                  <Skeleton count={3} height={17} />
+                )}
               </p>
             </div>
             <div>
@@ -82,7 +60,11 @@ const GameDetails: React.FC<Props> = (props) => {
                 Recommended system requirements:
               </h2>
               <p className="opacity-50 leading-[1.5] text-[17px]">
-                {requirements?.recommended}
+                {requirements ? (
+                  requirements.recommended
+                ) : (
+                  <Skeleton count={3} height={17} />
+                )}
               </p>
             </div>
           </Tab.Panel>

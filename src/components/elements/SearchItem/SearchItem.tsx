@@ -17,8 +17,9 @@ const SearchItem: React.FC<Props> = (props) => {
       href={`/products/${slug}`}
     >
       <Image
+        quality={10}
         className="w-[114px] h-[143px] object-cover rounded-md"
-        src={imgURL}
+        src={imgURL ? imgURL : "/images/image-not-found.jpg"}
         alt="Game preview image"
         width={254}
         height={143}

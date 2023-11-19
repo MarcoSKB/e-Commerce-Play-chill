@@ -1,8 +1,6 @@
 import { AxiosError } from "axios";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
-import { GameCard } from "@/src/components/elements";
+import { GameCard, GameCardSkeleton } from "@/src/components/elements";
 import { GamePreviewInfo } from "@/src/types/GamePreviewDataInfo";
 
 interface GamesListProps {
@@ -19,14 +17,8 @@ const GamesList: React.FC<GamesListProps> = (props) => {
     return (
       <ul className={className}>
         {[...Array(12)].map((_, index) => (
-          <li key={index} className="flex flex-col gap-4 max-w-[300px] w-full">
-            <div className="rounded-[15px] overflow-hidden">
-              <Skeleton height={400} />
-            </div>
-            <div className="w-1/2">
-              <Skeleton height={20} count={1} />
-            </div>
-            <Skeleton height={20} count={2} />
+          <li key={index} className="flex w-full max-w-[300px]">
+            <GameCardSkeleton />
           </li>
         ))}
       </ul>
@@ -34,7 +26,13 @@ const GamesList: React.FC<GamesListProps> = (props) => {
   }
 
   if (error) {
-    return <div>{error.message}</div>;
+    return (
+      <div>
+        <h3>Something went wrong! Please try again.</h3>
+        <br />
+        <p className="text-rose-700">{error.message}</p>
+      </div>
+    );
   }
 
   return (

@@ -1,6 +1,9 @@
 "use client";
-
 import { useEffect, useState } from "react";
+
+import { getGameAxios } from "@/src/api/getGameAxios";
+import useAxios from "@/src/hooks/useAxios";
+import { getValuesFromObjects } from "@/src/utils/getValuesFromObjects";
 
 import { genres } from "@/src/types/GameDataInfo";
 import {
@@ -8,10 +11,7 @@ import {
   GamePreviewInfo,
 } from "@/src/types/GamePreviewDataInfo";
 
-import { getGameAxios } from "@/src/api/getGameAxios";
-import useAxios from "@/src/hooks/useAxios";
-import { getValuesFromObjects } from "@/src/utils/getValuesFromObjects";
-import { GameCard } from "@/src/components/elements";
+import { GameCard, GameCardSkeleton } from "@/src/components/elements";
 
 interface Props {
   genresData: genres[];
@@ -44,21 +44,36 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
     }
   }, [games]);
 
-  return (
-    <ul className="flex gap-[20px]">
-      {gamesFiltered &&
-        gamesFiltered.map((game) => (
-          <li key={game.id}>
-            <GameCard
-              id={game.id}
-              href={game.slug}
-              previewImageURL={game.background_image}
-              price={game.id}
-              title={game.name}
-              store={game.stores}
-            />
+  if (loading) {
+    return (
+      <ul className="flex gap-[20px]">
+        {[...Array(4)].map((_, index) => (
+          <li key={index} className="flex w-full max-w-[300px]">
+            <GameCardSkeleton />
           </li>
         ))}
+      </ul>
+    );
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+
+  return (
+    <ul className="flex gap-[20px]">
+      {gamesFiltered?.map((game) => (
+        <li key={game.id}>
+          <GameCard
+            id={game.id}
+            href={game.slug}
+            previewImageURL={game.background_image}
+            price={game.id}
+            title={game.name}
+            store={game.stores}
+          />
+        </li>
+      ))}
     </ul>
   );
 };
