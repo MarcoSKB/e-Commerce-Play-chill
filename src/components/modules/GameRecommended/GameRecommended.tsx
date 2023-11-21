@@ -57,7 +57,13 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
   }
 
   if (error) {
-    return <div>{error.message}</div>;
+    return (
+      <div>
+        <h3>Something went wrong! Please try again.</h3>
+        <br />
+        <p className="text-rose-700">{error.message}</p>
+      </div>
+    );
   }
 
   return (
