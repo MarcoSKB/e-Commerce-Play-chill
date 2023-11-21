@@ -3,6 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 
+import { Modal } from "@/src/components/elements";
+
 interface Props {
   src: string;
   width: number;
@@ -11,21 +13,26 @@ interface Props {
 
 const ScreenshotImage: React.FC<Props> = (props) => {
   const { src, width, height } = props;
-  const [loaded, setLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   return (
-    <div className="relative flex rounded-2xl overflow-hidden w-[300px] h-[169px]">
+    <button
+      type="button"
+      onClick={() => setIsFullScreen(true)}
+      className="relative flex rounded-2xl w-[300px] h-[169px] overflow-hidden"
+    >
       <Image
-        quality={10}
         src={src}
         width={width}
         height={height}
-        alt="Screenshots from the game"
+        quality={10}
         placeholder="empty"
+        alt="Screenshots from the game"
         className="absolute w-full h-full object-cover"
-        onLoad={() => setLoaded(true)}
+        onLoad={() => setIsLoading(false)}
       />
-      {!loaded && (
+      {isLoading && (
         <Skeleton
           height={height}
           width={width}
@@ -36,7 +43,18 @@ const ScreenshotImage: React.FC<Props> = (props) => {
           }}
         />
       )}
-    </div>
+      <Modal isOpen={isFullScreen} setIsOpen={setIsFullScreen}>
+        <Image
+          src={src}
+          width={width}
+          height={height}
+          quality={50}
+          alt="Full size screenshots from the game"
+          className="w-full max-h-[80vh] min-h-[300px] object-cover z-50 rounded-3xl cursor-pointer"
+          onClick={() => setIsFullScreen(false)}
+        />
+      </Modal>
+    </button>
   );
 };
 

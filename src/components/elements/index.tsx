@@ -23,6 +23,7 @@ import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
 import IconButton from "./IconButton/IconButton";
 import GameCardSkeleton from "./GameCard/GameCardSkeleton";
 import ScreenshotImage from "./ScreenshotImage/ScreenshotImage";
+import Modal from "./Modal/Modal";
 
 export {
   Container,
@@ -50,4 +51,5 @@ export {
   RangeSlider,
   IconButton,
   ScreenshotImage,
+  Modal,
 };

@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import { SkeletonTheme } from "react-loading-skeleton";
 
 import { Header, Footer } from "@/src/components/modules";
+
 import "./globals.css";
 
 const manrope = Manrope({
@@ -17,11 +18,11 @@ export const metadata: Metadata = {
     "Online digital distribution service for computer games and programs",
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface Props {
   children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <head>

@@ -16,7 +16,7 @@ const Header: React.FC = () => {
           <Navigation />
           <ProfileButton isAuth={false} />
         </div>
-        <div className="relative min-h-[64px] flex gap-8 items-center justify-between z-[500] ">
+        <div className="relative min-h-[64px] flex gap-8 items-center justify-between z-[30] ">
           <Logotype />
           <MajorSearch />
           <div className="flex gap-6 items-center min-w-[90px]">
