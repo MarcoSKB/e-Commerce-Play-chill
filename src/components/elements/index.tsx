@@ -1,29 +1,34 @@
 import Navigation from "./Navigation/Navigation";
-import Logotype from "./Logotype/Logotype";
-import ProfileButton from "./ProfileButton/ProfileButton";
-import IconLink from "./IconLink/IconLink";
-import GameCard from "./GameCard/GameCard";
-import GamesList from "./GamesList/GamesList";
-import Button from "./Button/Button";
 import Container from "./Container/Container";
-import BgImage from "./BgImage/BgImage";
-import SwiperButton from "./SwiperButton/SwiperButton";
-import AdvantageCard from "./AdvantageCard/AdvantageCard";
+import Modal from "./Modal/Modal";
 import FaqDisclosure from "./FaqDisclosure/FaqDisclosure";
-import SearchForm from "./SearchForm/SearchForm";
-import SearchResultList from "./SearchResultList/SearchResultList";
-import SearchItem from "./SearchItem/SearchItem";
+
+import Button from "./Button/Button";
+import ProfileButton from "./ProfileButton/ProfileButton";
+import SwiperButton from "./SwiperButton/SwiperButton";
+import IconButton from "./IconButton/IconButton";
+import IconLink from "./IconLink/IconLink";
+
+import GameCard from "./GameCard/GameCard";
+import GameCardSkeleton from "./GameCard/GameCardSkeleton";
+import GamesList from "./GamesList/GamesList";
+import AdvantageCard from "./AdvantageCard/AdvantageCard";
+
+import Logotype from "./Logotype/Logotype";
+import BgImage from "./BgImage/BgImage";
+import ScreenshotImage from "./ScreenshotImage/ScreenshotImage";
+
+import SearchForm from "./Search/SearchForm/SearchForm";
+import SearchItem from "./Search/SearchItem/SearchItem";
+import SearchResultList from "./Search/SearchResultList/SearchResultList";
+
 import FilterByOrder from "./FilterGames/FilterByOrder/FilterByOrder";
 import FilterByQuery from "./FilterGames/FilterByQuery/FilterByQuery";
 import FilterByTags from "./FilterGames/FilterByTags/FilterByTags";
 import FilterByGenres from "./FilterGames/FilterByGenres/FilterByGenres";
 import FilterByMetacritic from "./FilterGames/FilterByMetacritic/FilterByMetacritic";
-import RangeSlider from "./RangeSlider/RangeSlider";
 import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
-import IconButton from "./IconButton/IconButton";
-import GameCardSkeleton from "./GameCard/GameCardSkeleton";
-import ScreenshotImage from "./ScreenshotImage/ScreenshotImage";
-import Modal from "./Modal/Modal";
+import RangeSlider from "./RangeSlider/RangeSlider";
 
 export {
   Container,
