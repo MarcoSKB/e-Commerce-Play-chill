@@ -28,13 +28,13 @@ export default function RootLayout({ children }: Props) {
       <head>
         <link rel="icon" href="/logo.svg" sizes="any" />
       </head>
-      <body className={`${manrope.className} bg-black text-white`}>
+      <body
+        className={`${manrope.className} flex flex-col min-h-screen bg-black text-white`}
+      >
         <SkeletonTheme baseColor="#131118" highlightColor="#221C39">
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <div className="flex-grow">{children}</div>
-            <Footer />
-          </div>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
         </SkeletonTheme>
       </body>
     </html>

@@ -10,7 +10,6 @@ import {
   GameInfo,
   GameScreenshots,
   GameDetails,
-  Section,
   GameRecommended,
 } from "@/src/components/modules";
 import { BgImage, Container } from "@/src/components/elements";
@@ -59,14 +58,12 @@ const Page: NextPage<Props> = ({ params }) => {
           description={game?.description}
           requirements={getRequirements(game?.platforms)}
         />
-        <Section title="You will be interested">
-          {game && (
-            <GameRecommended
-              genresData={game?.genres}
-              currentGame={params.slug}
-            />
-          )}
-        </Section>
+        {game && (
+          <GameRecommended
+            genresData={game?.genres}
+            currentGame={params.slug}
+          />
+        )}
       </Container>
     </main>
   );

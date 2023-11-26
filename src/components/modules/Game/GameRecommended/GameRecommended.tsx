@@ -11,6 +11,7 @@ import {
   GamePreviewInfo,
 } from "@/src/types/GamePreviewDataInfo";
 
+import { Section } from "@/src/components/modules";
 import { GameCard, GameCardSkeleton } from "@/src/components/elements";
 
 interface Props {
@@ -46,13 +47,15 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
 
   if (loading) {
     return (
-      <ul className="flex gap-[20px]">
-        {[...Array(4)].map((_, index) => (
-          <li key={index} className="flex w-full max-w-[300px]">
-            <GameCardSkeleton />
-          </li>
-        ))}
-      </ul>
+      <Section title="You will be interested">
+        <ul className="flex gap-[20px]">
+          {[...Array(4)].map((_, index) => (
+            <li key={index} className="flex w-full max-w-[300px]">
+              <GameCardSkeleton />
+            </li>
+          ))}
+        </ul>
+      </Section>
     );
   }
 
@@ -67,20 +70,22 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
   }
 
   return (
-    <ul className="flex gap-[20px]">
-      {gamesFiltered?.map((game) => (
-        <li key={game.id}>
-          <GameCard
-            id={game.id}
-            href={game.slug}
-            previewImageURL={game.background_image}
-            price={game.id}
-            title={game.name}
-            store={game.stores}
-          />
-        </li>
-      ))}
-    </ul>
+    <Section title="You will be interested">
+      <ul className="flex gap-[20px]">
+        {gamesFiltered?.map((game) => (
+          <li key={game.id}>
+            <GameCard
+              id={game.id}
+              href={game.slug}
+              previewImageURL={game.background_image}
+              price={game.id}
+              title={game.name}
+              store={game.stores}
+            />
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 };
 
