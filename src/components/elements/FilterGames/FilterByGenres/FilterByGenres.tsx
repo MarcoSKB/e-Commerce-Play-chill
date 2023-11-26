@@ -22,7 +22,9 @@ const FilterByGenres: React.FC<Props> = (props) => {
     GameGenresResponse["results"]
   >([]);
 
-  const debouncedValue = useDebounce(selectedGenres, 1000);
+  const debouncedResultValue = useDebounce(selectedGenres, 1000)
+    .map((value) => value.slug)
+    .join(",");
   const [gameGenres, error, loading] = useAxios<GameGenresResponse>({
     url: "/genres",
     method: "GET",
@@ -32,9 +34,10 @@ const FilterByGenres: React.FC<Props> = (props) => {
   useEffect(() => {
     setFilters({
       ...filters,
-      genres: debouncedValue.map((value) => value.slug).join(","),
+      genres: debouncedResultValue,
+      page: 1,
     });
-  }, [debouncedValue]);
+  }, [debouncedResultValue]);
 
   if (loading) {
     return <Skeleton height={26} count={1} />;

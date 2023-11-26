@@ -26,7 +26,13 @@ export function useAxios<T = unknown>(config: IConfig): useAxiosResult<T> {
   const [error, setError] = useState<AxiosError | null>(null);
   const [loading, setLoading] = useState<AxiosLoading>(true);
 
+  const resetStates = () => {
+    setResponse(null);
+    setError(null);
+  };
+
   useEffect(() => {
+    resetStates();
     const controller = new AbortController();
     setLoading(true);
 

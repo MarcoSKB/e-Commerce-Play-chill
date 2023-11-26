@@ -9,7 +9,12 @@ import { FiltersType } from "@/src/types/FiltersType";
 import { removeEmptyStringProperties } from "@/src/utils/removeEmptyStrings";
 
 import { GameFilters } from "@/src/components/modules";
-import { Container, FilterByOrder, GamesList } from "@/src/components/elements";
+import {
+  Container,
+  FilterByOrder,
+  GamesList,
+  Pagination,
+} from "@/src/components/elements";
 
 const filtersRequestData = {
   search: "",
@@ -18,6 +23,7 @@ const filtersRequestData = {
   tags: "",
   platforms: "",
   ordering: "",
+  page: 1,
 };
 
 const Products = () => {
@@ -35,6 +41,10 @@ const Products = () => {
     },
   });
 
+  {
+    games && console.log(games.count, Math.ceil(games.count / 12));
+  }
+
   return (
     <Container className="flex gap-5 pt-[80px]">
       <GameFilters setFilters={setFilters} filters={filters} />
@@ -47,6 +57,14 @@ const Products = () => {
           className="flex flex-wrap gap-5"
           games={games?.results}
           error={error}
+          loading={loading}
+        />
+        <Pagination
+          totalCount={games ? games.count : 60}
+          currentPage={filters.page}
+          perPageCount={12}
+          filters={filters}
+          setFilters={setFilters}
           loading={loading}
         />
       </div>

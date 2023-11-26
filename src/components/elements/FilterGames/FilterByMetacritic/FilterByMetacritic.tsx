@@ -20,6 +20,7 @@ const FilterByMetacritic: React.FC<Props> = (props) => {
     setFilters({
       ...filters,
       metacritic: `${debouncedValue.min},${debouncedValue.max}`,
+      page: 1,
     });
   }, [debouncedValue]);
 

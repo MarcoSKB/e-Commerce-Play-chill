@@ -22,7 +22,9 @@ const FilterByTags: React.FC<Props> = (props) => {
     []
   );
 
-  const debouncedValue = useDebounce(selectedTags, 1000);
+  const debouncedResultValue = useDebounce(selectedTags, 1000)
+    .map((value) => value.slug)
+    .join(",");
   const [gameTags, error, loading] = useAxios<GameTagsResponse>({
     url: "/tags",
     method: "GET",
@@ -32,9 +34,10 @@ const FilterByTags: React.FC<Props> = (props) => {
   useEffect(() => {
     setFilters({
       ...filters,
-      tags: debouncedValue.map((value) => value.slug).join(","),
+      tags: debouncedResultValue,
+      page: 1,
     });
-  }, [debouncedValue]);
+  }, [debouncedResultValue]);
 
   if (loading) {
     return <Skeleton height={26} />;

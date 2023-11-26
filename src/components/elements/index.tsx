@@ -1,5 +1,6 @@
 import Navigation from "./Navigation/Navigation";
 import Container from "./Container/Container";
+import Pagination from "./Pagination/Pagination";
 import Modal from "./Modal/Modal";
 import FaqDisclosure from "./FaqDisclosure/FaqDisclosure";
 
@@ -57,4 +58,5 @@ export {
   IconButton,
   ScreenshotImage,
   Modal,
+  Pagination,
 };

@@ -37,18 +37,22 @@ const GamesList: React.FC<GamesListProps> = (props) => {
 
   return (
     <ul className={className}>
-      {games?.map((game) => (
-        <li key={game.id}>
-          <GameCard
-            id={game.id}
-            previewImageURL={game.background_image}
-            title={game.name}
-            price={game.id}
-            href={game.slug}
-            store={game.stores}
-          />
-        </li>
-      ))}
+      {games?.length !== 0 ? (
+        games?.map((game) => (
+          <li key={game.id}>
+            <GameCard
+              id={game.id}
+              previewImageURL={game.background_image}
+              title={game.name}
+              price={game.id}
+              href={game.slug}
+              store={game.stores}
+            />
+          </li>
+        ))
+      ) : (
+        <div className="text-2xl">Games not found</div>
+      )}
     </ul>
   );
 };

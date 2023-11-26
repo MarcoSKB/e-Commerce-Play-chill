@@ -22,7 +22,9 @@ const FilterByPlatforms: React.FC<Props> = (props) => {
     GamePlatformsResponse["results"]
   >([]);
 
-  const debouncedValue = useDebounce(selectedPlatforms, 1000);
+  const debouncedResultValue = useDebounce(selectedPlatforms, 1000)
+    .map((value) => value.id)
+    .join(",");
   const [gamePlatforms, error, loading] = useAxios<GamePlatformsResponse>({
     url: "/platforms",
     method: "GET",
@@ -32,9 +34,10 @@ const FilterByPlatforms: React.FC<Props> = (props) => {
   useEffect(() => {
     setFilters({
       ...filters,
-      platforms: debouncedValue.map((value) => value.id).join(","),
+      platforms: debouncedResultValue,
+      page: 1,
     });
-  }, [debouncedValue]);
+  }, [debouncedResultValue]);
 
   if (loading) {
     return <Skeleton height={26} count={1} />;

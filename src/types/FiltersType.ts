@@ -5,4 +5,5 @@ export interface FiltersType {
   tags: string;
   platforms: string;
   ordering: string;
+  page: number;
 }

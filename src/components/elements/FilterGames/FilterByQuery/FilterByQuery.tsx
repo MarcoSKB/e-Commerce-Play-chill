@@ -16,7 +16,7 @@ const FilterByQuery: React.FC<Props> = (props) => {
   const debouncedValue = useDebounce(queryValue, 1000);
 
   useEffect(() => {
-    setFilters({ ...filters, search: debouncedValue });
+    setFilters({ ...filters, search: debouncedValue, page: 1 });
   }, [debouncedValue]);
 
   return (
