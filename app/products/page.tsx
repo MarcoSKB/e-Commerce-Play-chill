@@ -41,10 +41,6 @@ const Products = () => {
     },
   });
 
-  {
-    games && console.log(games.count, Math.ceil(games.count / 12));
-  }
-
   return (
     <Container className="flex gap-5 pt-[80px]">
       <GameFilters setFilters={setFilters} filters={filters} />
