@@ -50,7 +50,7 @@ const GameScreenshots: React.FC<Props> = ({ id, className }) => {
   }
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className} z-10`}>
       <Swiper spaceBetween={50} slidesPerView={3.4}>
         <SwiperButton
           toSide="Prev"
