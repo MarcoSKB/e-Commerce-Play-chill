@@ -1,9 +1,26 @@
+import {
+  AdsBanner,
+  Announcement,
+  GameDiscounts,
+  LatestBlogs,
+  MainCarousel,
+  TabsGameList,
+  TopGames,
+} from "@/src/components/modules";
 import { Container } from "@/src/components/elements";
 
 export default function Home() {
   return (
-    <Container>
-      <h1 className="text-center text-2xl">Main page</h1>
-    </Container>
+    <>
+      <MainCarousel />
+      <Container className="flex flex-col gap-y-[80px] mb-20">
+        <TopGames />
+        <Announcement />
+        <TabsGameList />
+        <GameDiscounts />
+        <AdsBanner />
+        <LatestBlogs />
+      </Container>
+    </>
   );
 }
