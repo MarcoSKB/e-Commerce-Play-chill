@@ -20,6 +20,15 @@ const config: Config = {
         purple: "#252036",
         darkPurple: "#13101B",
       },
+      animation: {
+        "fill-progress": "fillWidth 4.5s ease-out",
+      },
+      keyframes: {
+        fillWidth: {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
+        },
+      },
     },
   },
   plugins: [require("@headlessui/tailwindcss")],

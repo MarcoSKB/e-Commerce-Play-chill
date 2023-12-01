@@ -19,6 +19,7 @@ import GameDiscounts from "./GameDiscounts/GameDiscounts";
 import AdsBanner from "./AdsBanner/AdsBanner";
 import LatestBlogs from "./LatestBlogs/LatestBlogs";
 import MainPoster from "./MainPoster/MainPoster";
+import MainPosterProgressBar from "./MainPosterProgressBar/MainPosterProgressBar";
 
 export {
   Header,
@@ -39,4 +40,5 @@ export {
   AdsBanner,
   LatestBlogs,
   MainPoster,
+  MainPosterProgressBar,
 };

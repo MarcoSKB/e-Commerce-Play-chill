@@ -1,6 +1,8 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { Transition } from "@headlessui/react";
+import Skeleton from "react-loading-skeleton";
 
 import { MainPosterType } from "@/src/types/MainPosterType";
 import { Button } from "@/src/components/elements";
@@ -12,6 +14,8 @@ interface Props {
 
 const MainPoster: React.FC<Props> = (props) => {
   const { isActive, data } = props;
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div
       className={`relative max-w-[1260px] w-full min-h-[700px] rounded-[20px] overflow-hidden transition-transform ${
@@ -55,10 +59,24 @@ const MainPoster: React.FC<Props> = (props) => {
         quality={50}
         width={1260}
         height={700}
+        placeholder="empty"
         className="absolute w-full h-full object-cover"
         src={data.bgImageUrl}
         alt="Poster image"
+        onLoad={() => setIsLoading(false)}
       />
+      {isLoading && (
+        <Skeleton
+          height={700}
+          width={1260}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 1,
+          }}
+        />
+      )}
     </div>
   );
 };
