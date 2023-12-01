@@ -1,5 +1,6 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y } from "swiper/modules";
 import Skeleton from "react-loading-skeleton";
 
 import useAxios from "@/src/hooks/useAxios";
@@ -8,7 +9,13 @@ import { GameScreenshotData } from "@/src/types/GameScreenshotData";
 
 import { ScreenshotImage, SwiperButton } from "@/src/components/elements";
 
-import "swiper/css";
+const a11yConfig = {
+  enabled: true,
+  prevSlideMessage: "Previous game screenshot",
+  nextSlideMessage: "Next game screenshot",
+  firstSlideMessage: "First game screenshot",
+  lastSlideMessage: "Last game screenshot",
+};
 
 interface Props {
   id: number;
@@ -51,7 +58,12 @@ const GameScreenshots: React.FC<Props> = ({ id, className }) => {
 
   return (
     <div className={`relative ${className} z-10`}>
-      <Swiper spaceBetween={50} slidesPerView={3.4}>
+      <Swiper
+        a11y={a11yConfig}
+        spaceBetween={50}
+        slidesPerView={3.4}
+        modules={[A11y]}
+      >
         <SwiperButton
           toSide="Prev"
           className="flex items-center justify-center w-[40px] h-[40px] rounded-full overflow-hidden bg-white absolute left-[20px] top-[41%] z-[9999] opacity-50 transition-opacity hover:opacity-100 disabled:opacity-50"
