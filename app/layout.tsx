@@ -5,6 +5,9 @@ import { SkeletonTheme } from "react-loading-skeleton";
 import { Header, Footer } from "@/src/components/modules";
 
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/a11y";
 
 const manrope = Manrope({
   weight: ["200", "400", "500", "600", "700", "800"],
