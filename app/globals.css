@@ -117,4 +117,18 @@
     background-color: #1e1c27;
     border-radius: 100px;
   }
+
+  /* Text gradient color */
+  .text-gradient {
+    background: linear-gradient(
+      97deg,
+      #c2c8ff 12.11%,
+      #fd98ff 42.82%,
+      #ff8efa 60.28%,
+      #98b4ff 85.86%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
