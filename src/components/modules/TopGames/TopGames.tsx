@@ -5,7 +5,7 @@ import { useAxios } from "@/src/hooks/useAxios";
 
 import { GamePreviewData } from "@/src/types/GamePreviewDataInfo";
 
-import { GameCard } from "@/src/components/elements";
+import { GameCard, GameCardSkeleton } from "@/src/components/elements";
 import { Section } from "@/src/components/modules";
 
 const TopGames = () => {
@@ -20,6 +20,37 @@ const TopGames = () => {
       },
     },
   });
+
+  if (loading) {
+    return (
+      <Section
+        title={
+          <div className="flex items-center gap-[8px] mb-5">
+            <span className="text-gradient">Top </span>
+            <img src="/icons/thunder.svg" alt="Thunder icon" />
+          </div>
+        }
+      >
+        <ul className="flex gap-5">
+          {[...Array(4)].map((_, index) => (
+            <li key={index} className="flex w-full max-w-[300px]">
+              <GameCardSkeleton />
+            </li>
+          ))}
+        </ul>
+      </Section>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <h3>Something went wrong! Please try again.</h3>
+        <br />
+        <p className="text-rose-700">{error.message}</p>
+      </div>
+    );
+  }
 
   return (
     <Section
