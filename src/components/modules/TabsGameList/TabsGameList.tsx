@@ -8,34 +8,8 @@ import { GamePreviewData } from "@/src/types/GamePreviewDataInfo";
 
 import { useAxios } from "@/src/hooks/useAxios";
 import { GameCard, GameCardSkeleton } from "@/src/components/elements";
-
-const tabGameGenres = [
-  {
-    id: 0,
-    slug: "indie",
-    name: "Indie",
-  },
-  {
-    id: 1,
-    slug: "adventure",
-    name: "Adventure",
-  },
-  {
-    id: 2,
-    slug: "rpg",
-    name: "RPG",
-  },
-  {
-    id: 3,
-    slug: "strategy",
-    name: "Strategy",
-  },
-  {
-    id: 4,
-    slug: "racing",
-    name: "Racing",
-  },
-];
+import { tabGameGenres } from "./tabGameGenresData";
+import TabsGame from "./TabsGame";
 
 const TabsGameList = () => {
   const [selectedGenre, setSelectedGenre] = useState(tabGameGenres[0]);
@@ -61,16 +35,7 @@ const TabsGameList = () => {
           setSelectedGenre(tabGameGenres[idx]);
         }}
       >
-        <Tab.List className="text-xl font-medium mb-10" defaultValue={1}>
-          {tabGameGenres.map((genre) => (
-            <Tab
-              key={genre.id}
-              className="px-4 py-5 ui-selected:border-solid ui-selected:border-b-[2px] ui-selected:border-white"
-            >
-              {genre.name}
-            </Tab>
-          ))}
-        </Tab.List>
+        <TabsGame tabGameGenres={tabGameGenres} />
         <ul className="flex flex-wrap gap-[20px] gap-y-[60px] mb-10">
           {[...Array(12)].map((_, index) => (
             <li key={index} className="flex w-full max-w-[300px]">
@@ -96,16 +61,7 @@ const TabsGameList = () => {
           setSelectedGenre(tabGameGenres[idx]);
         }}
       >
-        <Tab.List className="text-xl font-medium mb-10" defaultValue={1}>
-          {tabGameGenres.map((genre) => (
-            <Tab
-              key={genre.id}
-              className="px-4 py-5 ui-selected:border-solid ui-selected:border-b-[2px] ui-selected:border-white"
-            >
-              {genre.name}
-            </Tab>
-          ))}
-        </Tab.List>
+        <TabsGame tabGameGenres={tabGameGenres} />
         <div className="mb-10">
           <h3>Something went wrong! Please try again.</h3>
           <br />
@@ -128,16 +84,7 @@ const TabsGameList = () => {
         setSelectedGenre(tabGameGenres[idx]);
       }}
     >
-      <Tab.List className="text-xl font-medium mb-10" defaultValue={1}>
-        {tabGameGenres.map((genre) => (
-          <Tab
-            key={genre.id}
-            className="px-4 py-5 ui-selected:border-solid ui-selected:border-b-[2px] ui-selected:border-white"
-          >
-            {genre.name}
-          </Tab>
-        ))}
-      </Tab.List>
+      <TabsGame tabGameGenres={tabGameGenres} />
       <ul className="flex flex-wrap gap-x-[20px] gap-y-[60px] max-w-full mb-10">
         {games?.results.map((game) => (
           <li key={game.id} className="max-w-[300px] w-full">
