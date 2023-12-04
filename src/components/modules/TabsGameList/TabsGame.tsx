@@ -10,7 +10,7 @@ const TabsGame: React.FC<Props> = ({ tabGameGenres }) => {
       {tabGameGenres.map((genre) => (
         <Tab
           key={genre.id}
-          className="px-4 py-5 ui-selected:border-solid ui-selected:border-b-[2px] ui-selected:border-white"
+          className="px-4 py-5 transition-opacity outline-none ui-selected:border-solid ui-selected:border-b-[2px] ui-selected:border-white ui-not-selected:opacity-40 hover:ui-not-selected:opacity-100"
         >
           {genre.name}
         </Tab>
