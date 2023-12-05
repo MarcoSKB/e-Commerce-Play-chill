@@ -1,7 +1,12 @@
-import React from "react";
+import { StoreReviewBanner } from "@/src/components/modules";
+import { Container } from "@/src/components/elements";
 
 const page = () => {
-  return <main>Reviews</main>;
+  return (
+    <Container className="pt-12">
+      <StoreReviewBanner />
+    </Container>
+  );
 };
 
 export default page;

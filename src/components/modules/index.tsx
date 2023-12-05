@@ -20,6 +20,7 @@ import AdsBanner from "./AdsBanner/AdsBanner";
 import LatestBlogs from "./LatestBlogs/LatestBlogs";
 import MainPoster from "./MainPoster/MainPoster";
 import MainPosterProgressBar from "./MainPosterProgressBar/MainPosterProgressBar";
+import StoreReviewBanner from "./StoreReviewBanner/StoreReviewBanner";
 
 export {
   Header,
@@ -41,4 +42,5 @@ export {
   LatestBlogs,
   MainPoster,
   MainPosterProgressBar,
+  StoreReviewBanner,
 };
