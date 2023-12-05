@@ -49,24 +49,3 @@ const GameCardStore: React.FC<Props> = ({ store }) => {
 };
 
 export default GameCardStore;
-
-{
-  /* {hasStorePlatform(store, "steam") && (
-            <div className="flex items-center gap-2 text-[#747474] text-sm font-medium">
-              <div className="w-[14px] h-[14px] rounded-full bg-[#3D394A]" />
-              Steam
-            </div>
-          )}
-          {hasStorePlatform(store, "gog") && (
-            <div className="flex items-center gap-2 text-[#747474] text-sm font-medium">
-              <div className="w-[14px] h-[14px] rounded-full bg-[#3D394A]" />
-              GOG
-            </div>
-          )}
-          {hasStorePlatform(store, "epic-games") && (
-            <div className="flex items-center gap-2 text-[#747474] text-sm font-medium">
-              <div className="w-[14px] h-[14px] rounded-full bg-[#3D394A]" />
-              Epic Games
-            </div>
-          )} */
-}
