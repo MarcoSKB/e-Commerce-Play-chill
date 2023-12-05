@@ -1,18 +1,20 @@
-import { SearchItem } from "@/src/components/elements";
+import { AxiosError } from "axios";
+
 import { GamePreviewInfo } from "@/src/types/GamePreviewDataInfo";
-import Link from "next/link";
+import SearchResultButton from "./SearchResultButton";
+import SearchItemList from "./SearchItemList";
 
 interface Props {
-  gamesData: GamePreviewInfo[];
-  gamesCount: number;
+  data: GamePreviewInfo[] | undefined;
+  gamesCount: number | undefined;
   isActive: boolean;
   setIsActive: (value: boolean) => void;
+  loading: boolean;
+  error: AxiosError | null;
 }
 
 const SearchResultList: React.FC<Props> = (props) => {
-  const { isActive, setIsActive, gamesData, gamesCount } = props;
-
-  const isMoreGames = !!(gamesCount - 3);
+  const { isActive, setIsActive, data, gamesCount, loading, error } = props;
 
   return (
     <ul
@@ -22,28 +24,17 @@ const SearchResultList: React.FC<Props> = (props) => {
           : "opacity-0 pointer-events-none invisible rounded-[20px] max-h-0"
       }`}
     >
-      {gamesData.map((game) => (
-        <li key={game.id} onClick={() => setIsActive(false)}>
-          <SearchItem
-            id={game.id}
-            slug={game.slug}
-            title={game.name}
-            price={game.id}
-            imgURL={game.background_image}
-          />
-        </li>
-      ))}
-      <li onClick={() => setIsActive(false)} className="text-center py-3">
-        <Link
-          href="/products"
-          className="font-bold text-xl opacity-80 hover:opacity-100 transition-opacity"
-        >
-          <span className="text-blue">View all</span>
-          {isMoreGames && (
-            <span className="text-gray-500 font-bold ml-2">+{gamesCount}</span>
-          )}
-        </Link>
-      </li>
+      <SearchItemList
+        gamesData={data}
+        setIsActive={setIsActive}
+        loading={loading}
+        error={error}
+      />
+      <SearchResultButton
+        gamesCount={gamesCount}
+        setIsActive={setIsActive}
+        loading={loading}
+      />
     </ul>
   );
 };

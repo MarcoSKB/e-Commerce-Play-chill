@@ -42,14 +42,14 @@ const MajorSearch = () => {
         setInputValue={setInputValue}
         isActive={isActive}
       />
-      {games && (
-        <SearchResultList
-          isActive={isActive}
-          setIsActive={setIsActive}
-          gamesData={games.results}
-          gamesCount={games.count}
-        />
-      )}
+      <SearchResultList
+        isActive={isActive}
+        setIsActive={setIsActive}
+        data={games?.results}
+        gamesCount={games?.count}
+        loading={loading}
+        error={error}
+      />
     </div>
   );
 };
