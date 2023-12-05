@@ -1,11 +1,11 @@
 "use client";
-import { MouseEvent, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Store } from "@/src/types/StoreType";
-import GameCardStore from "./GameCardStore";
+
 import GameCardAction from "./GameCardAction";
+import GameCardInfo from "./GameCardInfo";
 
 interface Props {
   id: number;
@@ -15,10 +15,11 @@ interface Props {
   title: string;
   store: Store[];
   label?: React.ReactNode;
+  sale?: number;
 }
 
 const GameCard: React.FC<Props> = (props) => {
-  const { href, previewImageURL, price, title, store, label } = props;
+  const { href, previewImageURL, price, title, store, label, sale } = props;
 
   return (
     <Link href={`/products/${href}`} className="flex flex-col gap-5">
@@ -35,11 +36,7 @@ const GameCard: React.FC<Props> = (props) => {
           alt="Game preview image"
         />
       </div>
-      <div className="flex flex-col gap-3 px-5">
-        <div className="text-2xl">{price} $</div>
-        <div className="text-base">{title}</div>
-        <GameCardStore store={store} />
-      </div>
+      <GameCardInfo price={price} title={title} store={store} sale={sale} />
     </Link>
   );
 };
