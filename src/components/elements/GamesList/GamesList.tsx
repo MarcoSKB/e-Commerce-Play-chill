@@ -8,16 +8,18 @@ interface GamesListProps {
   error: AxiosError | null;
   loading: boolean;
   className?: string;
+  skeletonCount?: number;
+  sale?: number;
 }
 
 const GamesList: React.FC<GamesListProps> = (props) => {
-  const { games, error, loading, className } = props;
+  const { games, error, loading, className, skeletonCount = 12, sale } = props;
 
   if (loading) {
     return (
       <ul className={className}>
-        {[...Array(12)].map((_, index) => (
-          <li key={index} className="flex w-full max-w-[300px]">
+        {[...Array(skeletonCount)].map((_, index) => (
+          <li key={index} className="flex w-full max-w-[100%]">
             <GameCardSkeleton />
           </li>
         ))}
@@ -47,6 +49,7 @@ const GamesList: React.FC<GamesListProps> = (props) => {
               price={game.id}
               href={game.slug}
               store={game.stores}
+              sale={sale}
             />
           </li>
         ))
