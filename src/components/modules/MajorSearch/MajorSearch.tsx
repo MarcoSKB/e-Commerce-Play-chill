@@ -31,7 +31,7 @@ const MajorSearch = () => {
     <div
       onFocus={() => setIsActive(true)}
       onBlur={() => setIsActive(false)}
-      className={`h-16 input-transition ${
+      className={`h-16 input-transition z-20 ${
         isActive
           ? "absolute w-[100%] translate-x-[-50%] left-[50%]"
           : "relative w-[648px]"

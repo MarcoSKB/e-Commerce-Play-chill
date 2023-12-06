@@ -13,7 +13,7 @@ const IconLink: React.FC<Props> = (props) => {
   return (
     <Link
       href={href}
-      className={`relative hover:opacity-70 transition-opacity w-[25px] h-[25px]`}
+      className={`relative hover:opacity-70 transition-opacity w-[25px] h-[25px] z-[1]`}
     >
       <Image className="absolute w-full h-full" src={iconURL} fill alt="Icon" />
     </Link>
