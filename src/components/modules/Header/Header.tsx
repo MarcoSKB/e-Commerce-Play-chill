@@ -20,18 +20,8 @@ const Header: React.FC = () => {
           <Logotype />
           <MajorSearch />
           <div className="flex gap-6 items-center min-w-[90px]">
-            <IconLink
-              href="favorite"
-              iconURL="/icons/heart-white.svg"
-              width={25}
-              height={25}
-            />
-            <IconLink
-              href="cart"
-              iconURL="/icons/cart-green.svg"
-              width={25}
-              height={25}
-            />
+            <IconLink href="favorite" iconURL="/icons/heart-white.svg" />
+            <IconLink href="cart" iconURL="/icons/cart-green.svg" />
           </div>
         </div>
       </Container>

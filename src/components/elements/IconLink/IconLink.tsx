@@ -4,17 +4,18 @@ import Link from "next/link";
 interface Props {
   iconURL: string;
   // onClick
-  width: number;
-  height: number;
   href: string;
 }
 
 const IconLink: React.FC<Props> = (props) => {
-  const { iconURL, width, height, href } = props;
+  const { iconURL, href } = props;
 
   return (
-    <Link href={href} className="hover:opacity-70 transition-opacity">
-      <Image src={iconURL} width={width} height={height} alt="Icon" />
+    <Link
+      href={href}
+      className={`relative hover:opacity-70 transition-opacity w-[25px] h-[25px]`}
+    >
+      <Image className="absolute w-full h-full" src={iconURL} fill alt="Icon" />
     </Link>
   );
 };
