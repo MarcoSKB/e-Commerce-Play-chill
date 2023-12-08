@@ -11,9 +11,7 @@ interface IConfig {
 }
 type AxiosLoading = boolean;
 
-type useAxiosResult<T> = [T | null, AxiosError | null, AxiosLoading];
-
-export function useAxios<T = unknown>(config: IConfig): useAxiosResult<T> {
+export function useAxios<T = unknown>(config: IConfig) {
   const {
     url = "",
     method,
@@ -56,7 +54,7 @@ export function useAxios<T = unknown>(config: IConfig): useAxiosResult<T> {
     return () => controller.abort();
   }, [...dependency]);
 
-  return [response, error, loading];
+  return [response, error, loading] as const;
 }
 
 export default useAxios;
