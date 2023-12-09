@@ -5,7 +5,7 @@ import Modal from "./Modal/Modal";
 import FaqDisclosure from "./FaqDisclosure/FaqDisclosure";
 
 import Button from "./Button/Button";
-import ProfileButton from "./ProfileButton/ProfileButton";
+import Profile from "./Profile/Profile";
 import SwiperButton from "./SwiperButton/SwiperButton";
 import IconButton from "./IconButton/IconButton";
 import IconLink from "./IconLink/IconLink";
@@ -30,12 +30,14 @@ import FilterByGenres from "./FilterGames/FilterByGenres/FilterByGenres";
 import FilterByMetacritic from "./FilterGames/FilterByMetacritic/FilterByMetacritic";
 import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
 import RangeSlider from "./RangeSlider/RangeSlider";
+import Input from "./Input/Input";
+import LoadingSpin from "./LoadingSpin/LoadingSpin";
 
 export {
   Container,
   Navigation,
   Logotype,
-  ProfileButton,
+  Profile,
   IconLink,
   GameCard,
   GameCardSkeleton,
@@ -59,4 +61,6 @@ export {
   ScreenshotImage,
   Modal,
   Pagination,
+  Input,
+  LoadingSpin,
 };

@@ -21,6 +21,8 @@ import LatestBlogs from "./LatestBlogs/LatestBlogs";
 import MainPoster from "./MainPoster/MainPoster";
 import MainPosterProgressBar from "./MainPosterProgressBar/MainPosterProgressBar";
 import StoreReviewBanner from "./StoreReviewBanner/StoreReviewBanner";
+import UserAuthForm from "./UserAuthForm/UserAuthForm";
+import FastAuth from "./FastAuth/FastAuth";
 
 export {
   Header,
@@ -43,4 +45,6 @@ export {
   MainPoster,
   MainPosterProgressBar,
   StoreReviewBanner,
+  UserAuthForm,
+  FastAuth,
 };
