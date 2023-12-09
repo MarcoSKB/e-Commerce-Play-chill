@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { Toaster } from "sonner";
 
 import { Header, Footer } from "@/src/components/modules";
 
@@ -14,6 +15,20 @@ const manrope = Manrope({
   style: "normal",
   subsets: ["latin", "cyrillic"],
 });
+
+const toastOptions = {
+  unstyled: true,
+  classNames: {
+    error:
+      "flex gap-[8px] py-[18px] px-[24px] text-[#ff5252] text-[14px] rounded-[16px] bg-darkGray",
+    success:
+      "flex gap-[8px] py-[18px] px-[24px] text-green text-[14px] rounded-[16px] bg-darkGray",
+    warning:
+      "flex gap-[8px] py-[18px] px-[24px] text-[#FCD789] text-[14px] rounded-[16px] bg-darkGray",
+    info: "flex gap-[8px] py-[18px] px-[24px] text-white text-[14px] rounded-[16px] bg-darkGray",
+    title: "mt-[-4px]",
+  },
+};
 
 export const metadata: Metadata = {
   title: "Playnchill",
@@ -39,6 +54,7 @@ export default function RootLayout({ children }: Props) {
           <main className="flex-grow">{children}</main>
           <Footer />
         </SkeletonTheme>
+        <Toaster toastOptions={toastOptions} />
       </body>
     </html>
   );
