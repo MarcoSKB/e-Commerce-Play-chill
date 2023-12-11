@@ -27,13 +27,13 @@ const GameCard: React.FC<Props> = (props) => {
         <GameCardAction label={label} />
         <Image
           priority
-          className="object-cover object-center"
           src={
             previewImageURL ? previewImageURL : "/images/image-not-found.jpg"
           }
-          height={1000}
-          width={800}
+          className="object-cover object-center"
           alt="Game preview image"
+          sizes="w-full h-[400px]"
+          fill
         />
       </div>
       <GameCardInfo price={price} title={title} store={store} sale={sale} />
