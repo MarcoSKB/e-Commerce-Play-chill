@@ -27,12 +27,13 @@ const SearchForm: React.FC<Props> = (props) => {
       />
       <button
         type="submit"
-        className={`absolute z-20 opacity-20 hover:opacity-50 transition-opacity ${
+        className={`absolute z-20 opacity-20 hover:opacity-50 transition-opacity focus:outline-none rounded-md focus-visible:outline-blue focus-visible:outline-offset-8 ${
           isActive
             ? "bg-darkBlue p-2 rounded-lg w-8 h-8 right-5 top-[17px]"
             : "w-6 h-6 right-6 top-5"
         }`}
       >
+        <div className="sr-only">Search button</div>
         <img
           src="/icons/union.svg"
           alt="Input icon"
