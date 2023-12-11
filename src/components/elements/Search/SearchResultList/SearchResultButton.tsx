@@ -17,7 +17,7 @@ const SearchResultButton: React.FC<Props> = (props) => {
     >
       <Link
         href="/products"
-        className="font-bold text-xl opacity-80 hover:opacity-100 transition-opacity"
+        className="font-bold text-xl opacity-80 hover:opacity-100 transition-opacity focus:outline-none rounded-md focus-visible:outline-blue focus-visible:outline-offset-8"
       >
         <span className={`${loading ? "text-gray-700" : "text-blue"}`}>
           View all
