@@ -32,6 +32,7 @@ import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
 import RangeSlider from "./RangeSlider/RangeSlider";
 import Input from "./Input/Input";
 import LoadingSpin from "./LoadingSpin/LoadingSpin";
+import BottomBar from "./FooterBottomBar/FooterBottomBar";
 
 export {
   Container,
@@ -63,4 +64,5 @@ export {
   Pagination,
   Input,
   LoadingSpin,
+  BottomBar,
 };

@@ -23,6 +23,7 @@ import MainPosterProgressBar from "./MainPosterProgressBar/MainPosterProgressBar
 import StoreReviewBanner from "./StoreReviewBanner/StoreReviewBanner";
 import UserAuthForm from "./UserAuthForm/UserAuthForm";
 import FastAuth from "./FastAuth/FastAuth";
+import BrandBar from "./BrandBar/BrandBar";
 
 export {
   Header,
@@ -47,4 +48,5 @@ export {
   StoreReviewBanner,
   UserAuthForm,
   FastAuth,
+  BrandBar,
 };
