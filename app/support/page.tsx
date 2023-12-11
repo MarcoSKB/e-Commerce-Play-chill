@@ -4,7 +4,7 @@ import { FaqSection } from "@/src/components/modules";
 
 const page = () => {
   return (
-    <main className="relative py-20">
+    <div className="relative py-20">
       <div className="absolute top-0 left-0 w-full h-full max-h-[670px] mix-blend-color-dodge overflow-hidden opacity-[0.95] -z-10">
         <Image
           priority
@@ -16,13 +16,11 @@ const page = () => {
         />
         <div className="absolute bottom-0 left-0 w-full h-[278px] advantages-gradient"></div>
       </div>
-      <Container>
-        <div className="flex justify-between mb-[-67px]">
-          <h1 className="text-[64px] font-extrabold mt-[132px]">
-            Contacts and support
-          </h1>
+      <Container className="pt-[176px]">
+        <div className="relative flex justify-between mb-[188px]">
+          <h1 className="text-[64px] font-extrabold">Contacts and support</h1>
           <Image
-            className="mr-[-198px]"
+            className="absolute top-[-235px] right-[-198px] -z-10"
             src="/images/support-img.png"
             alt="Advantage image"
             width={706}
@@ -73,7 +71,7 @@ const page = () => {
         </div>
         <FaqSection />
       </Container>
-    </main>
+    </div>
   );
 };
 
