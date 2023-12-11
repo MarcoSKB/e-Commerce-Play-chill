@@ -50,7 +50,7 @@ const Products = () => {
           <FilterByOrder setFilters={setFilters} filters={filters} />
         </div>
         <GamesList
-          className="flex flex-wrap gap-5"
+          className="grid grid-cols-3 gap-x-5 gap-y-[60px]"
           games={games?.results}
           error={error}
           loading={loading}
