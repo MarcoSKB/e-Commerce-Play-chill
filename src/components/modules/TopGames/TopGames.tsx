@@ -61,7 +61,7 @@ const TopGames = () => {
         </div>
       }
     >
-      <ul className="flex gap-5">
+      <ul className="grid grid-cols-4 gap-5">
         {games &&
           games.results.map((game, idx) => (
             <li key={game.id}>
