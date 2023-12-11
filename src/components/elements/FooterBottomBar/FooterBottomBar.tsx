@@ -11,7 +11,7 @@ const BottomBar = () => {
         RAWG API service
       </Link>
       <span className="text-lg text-[#63686D]">
-        Online game store "Playnchill" © 2024
+        {`Online game store "Playnchill" © 2024`}
       </span>
       <div className="max-w-[144px] w-full" />
     </div>
