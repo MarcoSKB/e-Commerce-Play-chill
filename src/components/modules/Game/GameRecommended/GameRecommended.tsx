@@ -71,7 +71,7 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
 
   return (
     <Section title="You will be interested">
-      <ul className="flex gap-[20px]">
+      <ul className="grid grid-cols-4 gap-[20px]">
         {gamesFiltered?.map((game) => (
           <li key={game.id}>
             <GameCard
