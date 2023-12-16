@@ -20,9 +20,11 @@
     "prisma": "^5.7.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.49.1",
     "react-loading-skeleton": "^3.3.1",
     "sonner": "^1.2.4",
-    "swiper": "^10.3.1"
+    "swiper": "^10.3.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@headlessui/tailwindcss": "^0.2.0",
