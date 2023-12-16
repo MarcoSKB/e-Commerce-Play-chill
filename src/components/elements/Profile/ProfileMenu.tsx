@@ -38,7 +38,11 @@ const ProfileMenu: React.FC<Props> = (props) => {
         <div className="rounded-full w-[34px] h-[34px]">
           <Image
             className="w-full h-full outline outline-2 outline-green rounded-full"
-            src="/images/template-profile.png"
+            src={
+              session.user.image
+                ? session.user.image
+                : "/images/template-profile.png"
+            }
             width={34}
             height={34}
             alt="Profile avatar image"
