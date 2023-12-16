@@ -10,6 +10,7 @@ const nextConfig = {
       "steamuserimages-a.akamaihd.net",
       "media.rockstargames.com",
       "i.pinimg.com",
+      "lh3.googleusercontent.com",
     ],
   },
   env: {
