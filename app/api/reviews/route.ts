@@ -25,7 +25,7 @@ export const POST = async (req: NextRequest) => {
     });
 
     if (reviewsExists) {
-      return new Response("Review already exists", { status: 409 });
+      return Response.json({ error: "Review already exists" }, { status: 409 });
     }
 
     await db.comment.create({
@@ -37,9 +37,12 @@ export const POST = async (req: NextRequest) => {
       },
     });
 
-    return Response.json("OK", {
-      status: 200,
-    });
+    return Response.json(
+      { data: "OK" },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, {
