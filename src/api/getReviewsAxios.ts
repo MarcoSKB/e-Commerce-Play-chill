@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getReviewsAxios = axios.create({
+export const reviewsAxios = axios.create({
   baseURL: "/api/reviews",
   headers: {
     "Content-Type": "application/json",
