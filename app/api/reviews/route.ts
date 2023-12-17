@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth/next";
 import { z } from "zod";
 
 import { authOptions } from "@/src/libs/auth";
-import { reviewValidator } from "@/src/libs/review";
+import { reviewValidator } from "@/src/libs/reviewValidator";
 import { db } from "@/src/libs/db";
 
 export const POST = async (req: NextRequest) => {
@@ -37,17 +37,10 @@ export const POST = async (req: NextRequest) => {
       },
     });
 
-    return Response.json(
-      { data: "OK" },
-      {
-        status: 200,
-      }
-    );
+    return Response.json({ data: "OK" }, { status: 200 });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return new Response(error.message, {
-        status: 422,
-      });
+      return Response.json({ error: error.message }, { status: 422 });
     }
     return Response.json({ error: "Could not create review" }, { status: 500 });
   }
