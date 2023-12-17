@@ -11,6 +11,7 @@ import {
   GameScreenshots,
   GameDetails,
   GameRecommended,
+  Reviews,
 } from "@/src/components/modules";
 import { BgImage, Container } from "@/src/components/elements";
 
@@ -64,6 +65,7 @@ const Page: NextPage<Props> = ({ params }) => {
             currentGame={params.slug}
           />
         )}
+        <Reviews gameId={game?.id} />
       </Container>
     </main>
   );
