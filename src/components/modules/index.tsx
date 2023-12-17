@@ -24,6 +24,9 @@ import StoreReviewBanner from "./StoreReviewBanner/StoreReviewBanner";
 import UserAuthForm from "./UserAuthForm/UserAuthForm";
 import FastAuth from "./FastAuth/FastAuth";
 import BrandBar from "./BrandBar/BrandBar";
+import Reviews from "./Reviews/Reviews";
+import UsersReviewList from "./UsersReviewList/UsersReviewList";
+import UsersReviewItem from "./UserReviewItem/UserReviewItem";
 
 export {
   Header,
@@ -49,4 +52,7 @@ export {
   UserAuthForm,
   FastAuth,
   BrandBar,
+  Reviews,
+  UsersReviewList,
+  UsersReviewItem,
 };
