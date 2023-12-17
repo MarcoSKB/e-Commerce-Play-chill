@@ -7,10 +7,9 @@ import useAxios from "@/src/hooks/useAxios";
 
 interface Props {
   className?: string;
-  width: number;
 }
 
-const UserImage: React.FC<Props> = ({ className = "", width }) => {
+const UserImage: React.FC<Props> = ({ className = "" }) => {
   const [session] = useAxios<Session>({
     url: "/session",
     method: "GET",
@@ -19,7 +18,7 @@ const UserImage: React.FC<Props> = ({ className = "", width }) => {
 
   return (
     <div
-      className={`relative w-full rounded-full aspect-square outline outline-2 outline-green max-w-[${width}px] overflow-hidden ${className}`}
+      className={`relative w-full rounded-full aspect-square outline outline-2 outline-green overflow-hidden ${className}`}
     >
       <Image
         quality={80}
