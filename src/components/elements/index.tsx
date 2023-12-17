@@ -33,6 +33,7 @@ import RangeSlider from "./RangeSlider/RangeSlider";
 import Input from "./Input/Input";
 import LoadingSpin from "./LoadingSpin/LoadingSpin";
 import BottomBar from "./FooterBottomBar/FooterBottomBar";
+import UserImage from "./UserImage/UserImage";
 
 export {
   Container,
@@ -65,4 +66,5 @@ export {
   Input,
   LoadingSpin,
   BottomBar,
+  UserImage,
 };
