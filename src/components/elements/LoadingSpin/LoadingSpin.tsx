@@ -21,9 +21,9 @@ const LoadingSpin: React.FC<Props> = (props) => {
         cy="50"
         fill="none"
         stroke="#366edc"
-        stroke-width="12"
+        strokeWidth="12"
         r="35"
-        stroke-dasharray="164.93361431346415 56.97787143782138"
+        strokeDasharray="164.93361431346415 56.97787143782138"
       />
     </svg>
   );
