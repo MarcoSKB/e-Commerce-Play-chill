@@ -1,7 +1,8 @@
 export type UserType = {
   id: string;
-  email: string;
-  name: string;
+  email?: string | null;
+  name?: string | null;
+  username?: string | null;
   user: string;
-  image?: string;
+  image?: string | null;
 };
