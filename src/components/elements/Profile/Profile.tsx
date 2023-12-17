@@ -8,7 +8,14 @@ const Profile = async () => {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    return <Link href="/sign-in">Sing in</Link>;
+    return (
+      <Link
+        href="/sign-in"
+        className="py-[8px] font-semibold transition-colors hover:text-blue"
+      >
+        Sign in
+      </Link>
+    );
   }
 
   return <ProfileMenu session={session} />;

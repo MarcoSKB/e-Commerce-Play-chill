@@ -20,7 +20,7 @@ const subMenuItems = [
   {
     id: 2,
     label: "Log out",
-    href: "/log-out",
+    href: "/api/auth/signout",
   },
 ];
 
