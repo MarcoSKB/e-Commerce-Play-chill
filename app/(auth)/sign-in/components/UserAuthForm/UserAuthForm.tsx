@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import { Input } from "@/src/components/elements";
+import { Input } from "@/src/components/ui";
 
 const UserAuthForm = () => {
   const [emailValue, setEmailValue] = useState("");

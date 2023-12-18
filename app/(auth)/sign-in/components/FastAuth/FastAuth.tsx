@@ -3,7 +3,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 
-import { LoadingSpin } from "@/src/components/elements";
+import { LoadingSpin } from "@/src/components/ui";
 
 const FastAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
