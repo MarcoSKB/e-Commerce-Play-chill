@@ -1,6 +1,7 @@
 import { BrandBar } from "@/src/components/modules";
-import { BottomBar, Container } from "@/src/components/elements";
+import { Container } from "@/src/components/elements";
 import FooterNav from "./FooterNav";
+import BottomBar from "./FooterBottomBar";
 
 const Footer = () => {
   return (

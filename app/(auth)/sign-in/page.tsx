@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { FastAuth, UserAuthForm } from "@/src/components/modules";
 import { Container } from "@/src/components/elements";
+import { UserAuthForm, FastAuth } from "./components";
 
 const page = () => {
   return (

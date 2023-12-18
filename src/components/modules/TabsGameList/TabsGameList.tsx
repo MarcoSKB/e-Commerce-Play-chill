@@ -7,7 +7,7 @@ import { getGameAxios } from "@/src/api/getGameAxios";
 import { GamePreviewData } from "@/src/types/GamePreviewDataInfo";
 
 import { useAxios } from "@/src/hooks/useAxios";
-import { GameCard, GameCardSkeleton } from "@/src/components/elements";
+import { GameCard, GameCardSkeleton } from "@/src/components/ui";
 import { tabGameGenres } from "./tabGameGenresData";
 import TabsGame from "./TabsGame";
 

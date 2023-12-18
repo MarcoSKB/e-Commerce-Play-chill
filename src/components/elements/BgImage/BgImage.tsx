@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 interface Props {
   imgURL: string | undefined;
@@ -20,7 +19,7 @@ const BgImage: React.FC<Props> = ({ imgURL }) => {
         fill
         sizes="w-[1920px] h-[1080px]"
       />
-      <div className="absolute top-0 left-0 w-full h-full background-gradient"></div>
+      <div className="absolute top-0 left-0 w-full h-full background-gradient" />
     </div>
   );
 };

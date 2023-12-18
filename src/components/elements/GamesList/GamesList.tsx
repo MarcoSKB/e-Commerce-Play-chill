@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 
-import { GameCard, GameCardSkeleton } from "@/src/components/elements";
+import { GameCard, GameCardSkeleton } from "@/src/components/ui";
 import { GamePreviewInfo } from "@/src/types/GamePreviewDataInfo";
 
 interface GamesListProps {

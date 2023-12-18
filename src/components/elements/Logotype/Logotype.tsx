@@ -6,7 +6,7 @@ const Logotype = () => {
   return (
     <Link
       href="/"
-      className="flex gap-3 items-center font-extrabold text-[32px]"
+      className="flex gap-3 items-center font-extrabold text-[32px] focus:outline-none focus:outline-blue"
     >
       <Image src="/logo.svg" height={32} width={32} alt="Logotype icon" />
       Playnchill

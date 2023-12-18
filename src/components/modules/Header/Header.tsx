@@ -3,9 +3,9 @@ import {
   Logotype,
   Navigation,
   Profile,
-  IconLink,
   Container,
 } from "@/src/components/elements";
+import { IconLink } from "@/src/components/ui";
 
 const Header = () => {
   return (

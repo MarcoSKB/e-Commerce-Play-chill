@@ -9,7 +9,7 @@ const Navigation = () => {
           <li key={item.href} className="flex">
             <Link
               href={`/${item.href}`}
-              className="hover:text-blue transition-colors py-[6px]"
+              className="hover:text-blue transition-colors py-[6px] focus:outline-none focus:outline-blue"
             >
               {item.title}
             </Link>

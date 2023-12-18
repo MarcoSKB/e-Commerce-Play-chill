@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 
-import { Modal } from "@/src/components/elements";
+import { Modal } from "@/src/components/ui";
 
 interface Props {
   src: string;
