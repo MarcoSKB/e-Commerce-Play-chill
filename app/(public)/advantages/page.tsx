@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { AdvantageCard, Container } from "@/src/components/elements";
+import { Container } from "@/src/components/elements";
 import { advantagesData } from "@/src/data/advantagesData";
+import { AdvantageCard } from "./components";
 
 const page = () => {
   return (
