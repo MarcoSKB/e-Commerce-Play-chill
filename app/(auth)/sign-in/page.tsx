@@ -19,7 +19,7 @@ const page = () => {
         <FastAuth />
         <Link
           className="text-blue hover:text-white transition-colors self-center focus:outline-none focus:outline-blue focus:outline-offset-8 rounded-sm focus:text-white"
-          href="/"
+          href="/sign-up"
         >
           Dont have an account? Register
         </Link>
