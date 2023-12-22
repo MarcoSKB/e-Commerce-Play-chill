@@ -1,13 +1,13 @@
 import { ChangeEvent } from "react";
 import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
-import { IFormInputs } from "./CreateReview";
+import { IReviewFormInputs } from "./CreateReview";
 
 interface Props {
-  setValue: UseFormSetValue<IFormInputs>;
+  setValue: UseFormSetValue<IReviewFormInputs>;
   setRating: (value: string) => void;
   rating: string;
-  register: UseFormRegister<IFormInputs>;
-  errors: FieldErrors<IFormInputs>;
+  register: UseFormRegister<IReviewFormInputs>;
+  errors: FieldErrors<IReviewFormInputs>;
 }
 
 const RatingRadioInput: React.FC<Props> = (props) => {

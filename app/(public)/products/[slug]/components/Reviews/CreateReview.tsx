@@ -7,7 +7,7 @@ import axios from "axios";
 import { UserImage } from "@/src/components/ui";
 import RatingRadioInput from "./RatingRadioInput";
 
-export interface IFormInputs {
+export interface IReviewFormInputs {
   comment: string;
   rating: string;
 }
@@ -24,8 +24,8 @@ const CreateReview: React.FC<Props> = ({ gameId, setUpdateReviewList }) => {
     register,
     setValue,
     handleSubmit,
-    formState: { errors, isLoading },
-  } = useForm<IFormInputs>({
+    formState: { errors, isSubmitting },
+  } = useForm<IReviewFormInputs>({
     defaultValues: {
       rating: "0",
     },
@@ -33,7 +33,7 @@ const CreateReview: React.FC<Props> = ({ gameId, setUpdateReviewList }) => {
 
   const handlerRadioInput = (value: string) => setRating(value);
 
-  const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
+  const onSubmit: SubmitHandler<IReviewFormInputs> = async (data) => {
     try {
       reset();
       handlerRadioInput("0");
@@ -95,7 +95,7 @@ const CreateReview: React.FC<Props> = ({ gameId, setUpdateReviewList }) => {
         <input
           type="submit"
           value="Submit comment"
-          disabled={gameId === undefined || isLoading}
+          disabled={gameId === undefined || isSubmitting}
           className="py-3 px-8 bg-green rounded-xl w-fit text-lg font-bold transition-transform hover:scale-95 visited:scale-90 focus:outline-none focus:outline-blue disabled:bg-gray-600 disabled:hover:scale-100"
         />
       </form>
