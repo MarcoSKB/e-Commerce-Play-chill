@@ -5,9 +5,6 @@ import Link from "next/link";
 import { Input } from "@/src/components/ui";
 
 const UserAuthForm = () => {
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -24,19 +21,12 @@ const UserAuthForm = () => {
           </span>
           <Input
             type="text"
-            inputValue={emailValue}
-            setInputValue={setEmailValue}
             placeholder="Please enter your email or username..."
           />
         </label>
         <label className="flex flex-col gap-3">
           <span className="text-lg font-medium opacity-40">Password</span>
-          <Input
-            type="password"
-            inputValue={passwordValue}
-            setInputValue={setPasswordValue}
-            placeholder="Please enter your password..."
-          />
+          <Input type="password" placeholder="Please enter your password..." />
         </label>
       </div>
       <Link
