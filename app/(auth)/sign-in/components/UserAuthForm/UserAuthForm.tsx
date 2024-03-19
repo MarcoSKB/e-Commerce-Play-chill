@@ -1,8 +1,13 @@
 "use client";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { toast } from "sonner";
 import Link from "next/link";
+import axios from "axios";
+import type { Session } from "next-auth";
 
-import { Input, LoadingSpin } from "@/src/components/ui";
+import { LoadingSpin } from "@/src/components/ui";
 import { PasswordInput, UsernameInput } from "..";
 
 export interface ILoginFormInputs {
@@ -10,7 +15,12 @@ export interface ILoginFormInputs {
   password: string;
 }
 
-const UserAuthForm = () => {
+interface Props {
+  session: Session | null;
+}
+
+const UserAuthForm: React.FC<Props> = ({ session }) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -18,10 +28,44 @@ const UserAuthForm = () => {
   } = useForm<ILoginFormInputs>();
 
   const onSubmit: SubmitHandler<ILoginFormInputs> = async (data) => {
-    //TODO: Fetch api
-    // Reset after success submitting
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
+    try {
+      if (session) {
+        return toast.error("There was a problem", {
+          description: "You are already logged in",
+        });
+      }
+
+      const res = await signIn("default", {
+        redirect: false,
+        username: data.username,
+        password: data.password,
+      });
+
+      if (res && res.error) {
+        throw new Error(res.error);
+      }
+
+      toast.success("Succesfully log-in");
+      router.replace("/");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return toast.error("There was a problem", {
+          description: error.response?.data.error,
+        });
+      }
+
+      if (error instanceof Error) {
+        console.error(error);
+
+        return toast.error("There was a problem", {
+          description: error?.message,
+        });
+      }
+
+      return toast.error("There was a problem", {
+        description: "Please try later",
+      });
+    }
   };
 
   return (

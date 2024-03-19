@@ -1,17 +1,26 @@
-import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { Session } from "next-auth";
 
-import { authOptions } from "@/src/libs/auth";
+import { authAxios } from "@/src/api/authAxios";
+import useAxios from "@/src/hooks/useAxios";
 import ProfileMenu from "./ProfileMenu";
 
-const Profile = async () => {
-  const session = await getServerSession(authOptions);
+const Profile = () => {
+  const [session, error, loading] = useAxios<Session>({
+    url: "/session",
+    method: "GET",
+    axiosInstance: authAxios,
+  });
 
-  if (!session) {
+  if (loading) {
+    return <span>Loading</span>;
+  }
+
+  if (session === null || session?.user === undefined) {
     return (
       <Link
         href="/sign-in"
-        className="py-[8px] font-semibold transition-colors hover:text-blue"
+        className="py-[8px] self-end text-xl font-semibold transition-colors hover:text-blue md:text-base"
       >
         Sign in
       </Link>

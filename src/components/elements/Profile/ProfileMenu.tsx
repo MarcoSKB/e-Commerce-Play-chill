@@ -30,19 +30,18 @@ interface Props {
 
 const ProfileMenu: React.FC<Props> = (props) => {
   const { session } = props;
+  const user = session.user;
 
   return (
     <Menu as="div" className="relative z-[31]">
       <Menu.Button className="flex items-center gap-6 hover:text-blue transition-colors focus:outline-none rounded-md ui-focus-visible:outline-blue ui-focus-visible:outline-offset-8">
-        <span className="font-semibold">{session.user.name}</span>
+        <span className="font-semibold">
+          {user.username ? user.username : user.name}
+        </span>
         <div className="rounded-full w-[34px] h-[34px]">
           <Image
             className="w-full h-full outline outline-2 outline-green rounded-full"
-            src={
-              session.user.image
-                ? session.user.image
-                : "/images/template-profile.png"
-            }
+            src={user.image ? user.image : "/images/template-profile.png"}
             width={34}
             height={34}
             alt="Profile avatar image"

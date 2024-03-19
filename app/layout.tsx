@@ -52,7 +52,7 @@ export default function RootLayout({ children }: Props) {
         <SkeletonTheme baseColor="#131118" highlightColor="#221C39">
           <Header />
           <main className="flex-grow">{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </SkeletonTheme>
         <Toaster toastOptions={toastOptions} />
       </body>

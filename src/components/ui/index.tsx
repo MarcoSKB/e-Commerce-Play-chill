@@ -9,6 +9,8 @@ import GameCardSkeleton from "./GameCard/GameCardSkeleton";
 import LoadingSpin from "./LoadingSpin/LoadingSpin";
 import Pagination from "./Pagination/Pagination";
 import UserImage from "./UserImage/UserImage";
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
+import SvgComponent from "./SvgComponent/SvgComponent";
 
 export {
   Button,
@@ -22,4 +24,6 @@ export {
   LoadingSpin,
   Pagination,
   UserImage,
+  BurgerMenu,
+  SvgComponent,
 };

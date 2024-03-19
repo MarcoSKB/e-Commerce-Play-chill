@@ -1,8 +1,11 @@
 export type UserType = {
   id: string;
-  email: string | null | undefined;
+  email: string;
+  emailVerified: boolean;
+  email_verified: boolean;
   name?: string | null;
   username?: string | null;
-  user: string;
+  hashedPassword: string;
   image?: string | null;
+  user: string;
 };

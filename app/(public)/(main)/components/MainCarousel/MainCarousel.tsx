@@ -24,9 +24,6 @@ const MainCarousel = () => {
         delay: 4000,
         disableOnInteraction: false,
       }}
-      // onAutoplayTimeLeft={(swiper, timeLeft, percentage) =>
-      //   console.log(Math.floor(percentage * 100))
-      // }
       modules={[Autoplay, A11y]}
     >
       <div className="flex justify-between max-w-[1310px] w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-[9999]">

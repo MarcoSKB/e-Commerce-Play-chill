@@ -7,32 +7,30 @@ import SearchItemList from "./SearchItemList";
 interface Props {
   data: GamePreviewInfo[] | undefined;
   gamesCount: number | undefined;
-  isActive: boolean;
-  setIsActive: (value: boolean) => void;
+  isOpen: boolean;
+  toggleSearch: () => void;
   loading: boolean;
   error: AxiosError | null;
 }
 
 const SearchResultList: React.FC<Props> = (props) => {
-  const { isActive, setIsActive, data, gamesCount, loading, error } = props;
+  const { isOpen, toggleSearch, data, gamesCount, loading, error } = props;
 
   return (
     <ul
-      className={`absolute top-full p-5 transition-all duration-300 w-[100%] bg-white overflow-hidden ${
-        isActive
-          ? "visible opacity-100 rounded-b-[20px] max-h-[900px]"
+      className={`absolute top-full md:p-2 xl:p-5 w-[100%] bg-white overflow-hidden ${
+        isOpen
+          ? "visible opacity-100 md:rounded-b-[20px] transition-all duration-300 max-h-[900px]"
           : "opacity-0 pointer-events-none invisible rounded-[20px] max-h-0"
       }`}
+      onClick={() => {
+        toggleSearch();
+      }}
     >
-      <SearchItemList
-        gamesData={data}
-        setIsActive={setIsActive}
-        loading={loading}
-        error={error}
-      />
+      <SearchItemList gamesData={data} loading={loading} error={error} />
       <SearchResultButton
         gamesCount={gamesCount}
-        setIsActive={setIsActive}
+        toggleSearch={toggleSearch}
         loading={loading}
       />
     </ul>

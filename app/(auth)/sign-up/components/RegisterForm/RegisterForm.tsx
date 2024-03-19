@@ -1,6 +1,9 @@
 "use client";
+import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Input, LoadingSpin } from "@/src/components/ui";
+import { toast } from "sonner";
+
+import { LoadingSpin } from "@/src/components/ui";
 import { EmailInput, PasswordInput, UsernameInput } from "..";
 
 export interface IRegisterFormInputs {
@@ -19,10 +22,27 @@ const RegisterForm = () => {
   } = useForm<IRegisterFormInputs>();
 
   const onSubmit: SubmitHandler<IRegisterFormInputs> = async (data) => {
-    //TODO: Fetch api
-    // Reset after success submitting
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
+    try {
+      await axios.post("/api/auth/sign-up", {
+        username: data.username,
+        email: data.email,
+        password: data.pass,
+      });
+
+      return toast.success("Succesfully registered", {
+        description: "Please verify your email",
+      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return toast.error("There was a problem", {
+          description: error.response?.data.error,
+        });
+      }
+
+      return toast.error("There was a problem", {
+        description: "Please try later",
+      });
+    }
   };
 
   return (

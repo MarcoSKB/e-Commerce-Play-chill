@@ -6,13 +6,12 @@ import SearchItemSkeleton from "../SearchItem/SearchItemSkeleton";
 
 interface Props {
   gamesData: GamePreviewInfo[] | undefined;
-  setIsActive: (value: boolean) => void;
   loading: boolean;
   error: AxiosError | null;
 }
 
 const SearchItemList: React.FC<Props> = (props) => {
-  const { gamesData, setIsActive, loading, error } = props;
+  const { gamesData, loading, error } = props;
 
   if (loading) {
     return (
@@ -39,7 +38,7 @@ const SearchItemList: React.FC<Props> = (props) => {
   return (
     <>
       {gamesData?.map((game) => (
-        <li key={game.id} onClick={() => setIsActive(false)}>
+        <li key={game.id}>
           <SearchItem
             id={game.id}
             slug={game.slug}

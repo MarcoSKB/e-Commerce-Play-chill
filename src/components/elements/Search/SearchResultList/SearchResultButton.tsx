@@ -2,17 +2,17 @@ import Link from "next/link";
 
 interface Props {
   gamesCount: number | undefined;
-  setIsActive: (value: boolean) => void;
+  toggleSearch: () => void;
   loading: boolean;
 }
 
 const SearchResultButton: React.FC<Props> = (props) => {
-  const { gamesCount = 0, setIsActive, loading } = props;
+  const { gamesCount = 0, toggleSearch, loading } = props;
   const isMoreGames = !!(gamesCount - 3);
 
   return (
     <li
-      onClick={() => setIsActive(false)}
+      onClick={() => toggleSearch()}
       className={`text-center py-3 ${loading ? "pointer-events-none" : ""}`}
     >
       <Link

@@ -1,9 +1,15 @@
 import { NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import { GoogleProfile } from "next-auth/providers/google";
+
 import { nanoid } from "nanoid";
+import bcrypt from "bcryptjs";
 
 import { db } from "@/src/libs/db";
+import { UserType } from "@/src/types/UserType";
+import { authValidator } from "./authValidator";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -15,32 +21,104 @@ export const authOptions: NextAuthOptions = {
     signOut: "/sign-out",
   },
   providers: [
+    CredentialsProvider({
+      id: "default",
+      name: "Default",
+      type: "credentials",
+      credentials: {
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        const { username, password } = authValidator.parse(credentials);
+
+        const user = (await db.user.findFirst({
+          where: { username },
+        })) as UserType | null;
+        if (!user) {
+          return Promise.reject(
+            new Error(
+              JSON.stringify({
+                message: "Wrong username or password",
+                status: 401,
+              })
+            )
+          );
+        }
+
+        const passMatch = bcrypt.compareSync(password, user.hashedPassword);
+        if (!passMatch) {
+          return Promise.reject(
+            new Error(
+              JSON.stringify({
+                message: "Wrong username or password",
+                status: 401,
+              })
+            )
+          );
+        }
+
+        return Promise.resolve(user);
+      },
+    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      async profile(profile: GoogleProfile) {
+        return {
+          id: profile.sub,
+          name: profile.given_name,
+          username: profile.name,
+          email: profile.email,
+          emailVerified: profile.email_verified,
+          image: profile.picture,
+        } as UserType;
+      },
     }),
   ],
   callbacks: {
-    async session({ token, session }) {
-      if (token) {
-        session.user.id = token.id;
-        session.user.name = token.name;
-        session.user.email = token.email;
-        session.user.image = token.picture;
-        session.user.username = token.username;
+    async signIn({ user }) {
+      if (!user.email_verified) {
+        return Promise.reject(
+          new Error(
+            JSON.stringify({
+              message: "Email not verified",
+              status: 403,
+            })
+          )
+        );
       }
+
+      return true;
+    },
+    async session({ token, session, user }) {
+      const account = {
+        ...token,
+        ...user,
+      };
+
+      session.user.id = account.id;
+      session.user.name = account.name;
+      session.user.email = account.email;
+      session.user.email_verified =
+        !!account.emailVerified || account.email_verified;
+      session.user.image = account.image;
+      session.user.username = account.username;
 
       return session;
     },
     async jwt({ token, user }) {
-      const dbUser = await db.user.findFirst({
+      const dbUser = (await db.user.findFirst({
         where: {
           email: token.email!,
         },
-      });
+      })) as UserType | null;
+
+      console.log(token);
 
       if (!dbUser) {
         token.id = user!.id;
+        token.email_verified = user.email_verified;
         return token;
       }
 
@@ -54,17 +132,38 @@ export const authOptions: NextAuthOptions = {
           },
         });
       }
+      console.log(dbUser, user);
 
       return {
         id: dbUser.id,
         name: dbUser.name,
         email: dbUser.email,
+        email_verified: dbUser.email_verified,
         picture: dbUser.image,
         username: dbUser.username,
       };
     },
-    redirect() {
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      else if (new URL(url).origin === baseUrl) return url;
       return "/";
     },
   },
 };
+
+// if (token) {
+//   session.user.id = token.id;
+//   session.user.name = token.name;
+//   session.user.email = token.email!;
+//   session.user.emailVerified = token.emailVerified;
+//   session.user.image = token.picture;
+//   session.user.username = token.username;
+// }
+// if (user) {
+//   session.user.id = user.id;
+//   session.user.name = user.name;
+//   session.user.email = user.email;
+//   session.user.emailVerified = user.emailVerified ? true : false;
+//   session.user.image = user.image;
+//   session.user.username = user.username;
+// }
