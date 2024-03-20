@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const BottomBar = () => {
   return (
-    <div className="flex justify-between py-6">
+    <div className="flex flex-col justify-between py-6 gap-3">
       <Link
         target="_blank"
         href="https://rawg.io/"
@@ -10,10 +10,10 @@ const BottomBar = () => {
       >
         RAWG API service
       </Link>
-      <span className="text-lg text-[#63686D]">
+      <span className="text-sm md:text-lg text-[#63686D]">
         {`Online game store "Playnchill" © 2024`}
       </span>
-      <div className="max-w-[144px] w-full" />
+      <div className="max-w-[144px] w-full hidden md:block" />
     </div>
   );
 };

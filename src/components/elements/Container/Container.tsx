@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Container: React.FC<Props> = ({ children, className }) => {
+const Container: React.FC<Props> = ({ children, className = "" }) => {
   return (
     <div className={`max-w-[1292px] w-full px-4 mx-auto ${className}`}>
       {children}
