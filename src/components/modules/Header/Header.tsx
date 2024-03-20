@@ -52,15 +52,13 @@ const Header = () => {
         </motion.nav>
       </Container>
       <Container className="relative bg-black min-h-[75px] flex gap-5 md:mt-0 md:gap-8 items-center md:justify-between z-[30]">
-        <AnimatePresence
-          children={
-            <BurgerMenu
-              openMenu={openMenu}
-              isOpen={isOpen}
-              menuControl={menuControl}
-            />
-          }
-        />
+        <AnimatePresence>
+          <BurgerMenu
+            openMenu={openMenu}
+            isOpen={isOpen}
+            menuControl={menuControl}
+          />
+        </AnimatePresence>
         <motion.div layout className="mr-[auto] md:mr-[0px]">
           <Logotype isOpen={isOpen} closeMenu={closeMenu} />
         </motion.div>
