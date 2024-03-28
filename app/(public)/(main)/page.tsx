@@ -10,8 +10,8 @@ import {
 export default function Home() {
   return (
     <>
-      {/* <MainCarousel />
-      <Container className="flex flex-col gap-y-[80px] pt-[80px] mb-20">
+      <MainCarousel />
+      {/* <Container className="flex flex-col gap-y-[80px] pt-[80px] mb-20">
         <TopGames />
         <Announcement />
         <TabsGameList />

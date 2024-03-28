@@ -16,7 +16,7 @@ const MainCarousel = () => {
   return (
     <Swiper
       a11y={a11yConfig}
-      className="relative mt-10 z-20"
+      className="relative md:mt-10 z-20"
       slidesPerView={"auto"}
       centeredSlides={true}
       loop={true}
@@ -26,7 +26,7 @@ const MainCarousel = () => {
       }}
       modules={[Autoplay, A11y]}
     >
-      <div className="flex justify-between max-w-[1310px] w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-[9999]">
+      <div className="hidden md:flex justify-between max-w-[1310px] w-full absolute top-1/2 left-1/2 px-5 xl:px-0 -translate-y-1/2 -translate-x-1/2 z-[9999]">
         <SwiperButton
           toSide="Prev"
           className="flex items-center justify-center w-[50px] h-[50px] text-2xl text-white font-semibold rounded-full overflow-hidden backdrop-blur-md bg-white bg-opacity-10 transition-transform hover:scale-90"
