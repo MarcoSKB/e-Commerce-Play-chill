@@ -11,14 +11,14 @@ export default function Home() {
   return (
     <>
       <MainCarousel />
-      {/* <Container className="flex flex-col gap-y-[80px] pt-[80px] mb-20">
+      <Container className="flex flex-col gap-y-[80px] pt-3 md:pt-[80px] mb-20 overflow-hidden">
         <TopGames />
-        <Announcement />
+        {/* <Announcement />
         <TabsGameList />
         <GameDiscounts />
         <AdsBanner />
-        <LatestBlogs />
-      </Container> */}
+        <LatestBlogs /> */}
+      </Container>
     </>
   );
 }

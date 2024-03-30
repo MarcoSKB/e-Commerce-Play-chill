@@ -30,9 +30,9 @@ const TopGames = () => {
           </div>
         }
       >
-        <ul className="flex gap-5">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md: gap-11 md:gap-5">
           {[...Array(4)].map((_, index) => (
-            <li key={index} className="flex w-full max-w-[300px]">
+            <li key={index} className="flex w-full max-w-[100%]">
               <GameCardSkeleton />
             </li>
           ))}
@@ -60,7 +60,7 @@ const TopGames = () => {
         </div>
       }
     >
-      <ul className="grid grid-cols-4 gap-5">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md: gap-11 md:gap-5">
         {games &&
           games.results.map((game, idx) => (
             <li key={game.id}>
@@ -72,7 +72,7 @@ const TopGames = () => {
                 title={game.name}
                 store={game.stores}
                 label={
-                  <div className="px-3 py-[10px] bg-black rounded-lg">
+                  <div className="px-2 md:px-3 py-1 md:py-[10px] bg-black rounded-lg">
                     <div className="flex gap-[4px] text-gradient font-extrabold text-base">
                       Top
                       <img src="/icons/thunder.svg" alt="Thunder icon" />
