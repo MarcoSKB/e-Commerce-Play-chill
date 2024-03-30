@@ -3,14 +3,16 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const GameCardSkeleton = () => {
   return (
-    <div className="flex flex-col gap-4 w-full max-w-[300px]">
-      <div className="rounded-[15px] overflow-hidden">
-        <Skeleton height={400} />
+    <div className="flex md:flex-col gap-[10px] sm:gap-4 w-full max-w-[100%]">
+      <div className="rounded-[15px] w-[120px] md:w-[300px] overflow-hidden">
+        <Skeleton className="h-[150px] md:h-[400px]" />
       </div>
-      <div className="w-1/2">
-        <Skeleton height={20} count={1} />
+      <div className="flex flex-col gap-3 w-full">
+        <div className="w-1/2">
+          <Skeleton className="h-[20px]" count={1} />
+        </div>
+        <Skeleton className="h-[20px] max-w-[60%]" count={2} />
       </div>
-      <Skeleton height={20} count={2} />
     </div>
   );
 };

@@ -31,13 +31,13 @@ const GameCardStore: React.FC<Props> = ({ store }) => {
   };
 
   return (
-    <div className="flex gap-5 flex-wrap">
+    <div className="absolute md:static flex w-full gap-3 md:gap-5 md:flex-wrap overflow-x-scroll md:overflow-x-auto z-10">
       {hasStoreData.map(
         (hasStore) =>
           hasStorePlatform(store, hasStore.storeSlug) && (
             <div
               key={hasStore.id}
-              className="flex items-center gap-2 text-[#747474] text-sm font-medium"
+              className="flex items-center gap-2 text-[#747474] text-sm font-medium whitespace-nowrap"
             >
               <div className="w-[14px] h-[14px] rounded-full bg-[#3D394A]" />
               {hasStore.name}
