@@ -31,7 +31,7 @@ const GameCardStore: React.FC<Props> = ({ store }) => {
   };
 
   return (
-    <div className="absolute md:static flex w-full gap-3 md:gap-5 md:flex-wrap overflow-x-scroll md:overflow-x-auto z-10">
+    <div className="absolute md:static flex w-full gap-3 md:gap-5 flex-nowrap overflow-x-scroll md:overflow-x-auto z-10">
       {hasStoreData.map(
         (hasStore) =>
           hasStorePlatform(store, hasStore.storeSlug) && (

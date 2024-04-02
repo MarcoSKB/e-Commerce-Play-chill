@@ -26,7 +26,7 @@ const GameCard: React.FC<Props> = (props) => {
       href={`/products/${href}`}
       className="flex md:flex-col gap-[10px] sm:gap-5"
     >
-      <div className="relative w-full max-w-[100px] sm:max-w-[200px] md:max-w-[300px] min-h-[150px] md:min-h-[400px] flex md:rounded-xl md:overflow-hidden">
+      <div className="relative w-[45%] md:w-full min-h-[150px] md:min-h-[400px] flex md:rounded-xl md:overflow-hidden">
         <GameCardAction label={label} />
         <Image
           priority
