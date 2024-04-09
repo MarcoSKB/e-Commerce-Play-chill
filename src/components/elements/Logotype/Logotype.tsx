@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import useMediaQuery from "@/src/hooks/useMediaQuery";
 
 interface Props {
   isOpen?: boolean;
@@ -9,10 +10,7 @@ interface Props {
 }
 
 const Logotype: React.FC<Props> = ({ isOpen = false, closeMenu }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    setIsMobile(window.matchMedia("(max-width: 600px)").matches);
-  }, []);
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   return (
     <Link
