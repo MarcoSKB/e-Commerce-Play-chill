@@ -7,7 +7,6 @@ import FaqSection from "./FaqSection/FaqSection";
 
 import TabsGameList from "./TabsGameList/TabsGameList";
 import AdsBanner from "./AdsBanner/AdsBanner";
-import LatestBlogs from "./LatestBlogs/LatestBlogs";
 import StoreReviewBanner from "./StoreReviewBanner/StoreReviewBanner";
 import BrandBar from "./BrandBar/BrandBar";
 
@@ -19,7 +18,6 @@ export {
   MajorSearch,
   TabsGameList,
   AdsBanner,
-  LatestBlogs,
   StoreReviewBanner,
   BrandBar,
 };

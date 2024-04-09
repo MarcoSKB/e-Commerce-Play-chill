@@ -1,4 +1,4 @@
-import { AdsBanner, LatestBlogs, TabsGameList } from "@/src/components/modules";
+import { AdsBanner, TabsGameList } from "@/src/components/modules";
 import { Container } from "@/src/components/elements";
 import {
   MainCarousel,
@@ -16,8 +16,7 @@ export default function Home() {
         <Announcement />
         <TabsGameList />
         <GameDiscounts />
-        {/* <AdsBanner />
-        <LatestBlogs /> */}
+        {/* <AdsBanner />*/}
       </Container>
     </>
   );
