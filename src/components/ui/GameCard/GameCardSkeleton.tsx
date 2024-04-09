@@ -4,7 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 const GameCardSkeleton = () => {
   return (
     <div className="flex md:flex-col gap-[10px] sm:gap-4 w-full max-w-[100%]">
-      <div className="rounded-[15px] w-[120px] md:w-[300px] overflow-hidden">
+      <div className="rounded-[15px] overflow-hidden">
         <Skeleton className="h-[150px] md:h-[400px]" />
       </div>
       <div className="flex flex-col gap-3 w-full">

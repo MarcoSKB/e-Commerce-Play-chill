@@ -8,26 +8,36 @@ interface Props {
   title: string;
   store: Store[];
 }
+type GamePriceProps = Pick<Props, "price" | "sale">;
+
+const GamePrice: React.FC<GamePriceProps> = (props) => {
+  const { price, sale } = props;
+  if (sale) {
+    return (
+      <div className="flex items-center gap-[10px] md:gap-5 font-extrabold md:font-normal text-2xl">
+        {price} $
+        <span className="md:bg-green text-lg text-green md:text-white  font-semibold md:px-[10px] md:py-2 rounded-lg">
+          -{sale}%
+        </span>
+        <span className="hidden md:inline-block text-lg opacity-20">
+          {Math.ceil(price + price * (sale / 100))} $
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="text-lg sm:text-2xl font-extrabold md:font-normal">
+      {price} $
+    </div>
+  );
+};
 
 const GameCardInfo: React.FC<Props> = (props) => {
   const { price, sale, title, store } = props;
   return (
-    <div className="relative w-full md:max-w-[300px] flex flex-col gap-[10px] md:gap-3 mr-[-24px] md:mr-[0px] md:px-5 z-0">
-      {sale ? (
-        <div className="flex items-center gap-5 font-extrabold md:font-normal text-2xl">
-          {price} $
-          <span className="bg-green text-lg font-semibold px-[10px] py-2 rounded-lg">
-            -{sale}%
-          </span>
-          <span className="text-lg opacity-20">
-            {Math.ceil(price + price * (sale / 100))} $
-          </span>
-        </div>
-      ) : (
-        <div className="text-lg sm:text-2xl font-extrabold md:font-normal">
-          {price} $
-        </div>
-      )}
+    <div className="relative w-full flex flex-col gap-[10px] md:gap-3 mr-[-24px] md:mr-[0px] md:px-5 z-0">
+      <GamePrice price={price} sale={sale} />
       <div className="text-sm sm:text-base">{truncText(title, 24)}</div>
       <div className="relative w-full z-0">
         <GameCardStore store={store} />
