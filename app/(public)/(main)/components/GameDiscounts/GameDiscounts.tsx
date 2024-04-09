@@ -6,6 +6,14 @@ import useAxios from "@/src/hooks/useAxios";
 import { Section } from "@/src/components/modules";
 import { GamesList } from "@/src/components/elements";
 
+const DiscountsTitle = () => {
+  return (
+    <>
+      Discounts <span className="text-green">%</span>
+    </>
+  );
+};
+
 const GameDiscounts = () => {
   const [games, error, loading] = useAxios<GamePreviewData>({
     url: "",
@@ -21,15 +29,9 @@ const GameDiscounts = () => {
   });
 
   return (
-    <Section
-      title={
-        <>
-          Discounts <span className="text-green">%</span>
-        </>
-      }
-    >
+    <Section title={<DiscountsTitle />}>
       <GamesList
-        className="grid grid-cols-2 gap-x-5 gap-y-16"
+        className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-11 md:gap-y-16"
         games={games?.results}
         error={error}
         loading={loading}
