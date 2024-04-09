@@ -6,11 +6,14 @@ interface Props {
 
 const TabsGame: React.FC<Props> = ({ tabGameGenres }) => {
   return (
-    <Tab.List className="text-xl font-medium mb-10" defaultValue={1}>
+    <Tab.List
+      className="text-base md:text-xl font-medium mb-5 md:mb-10"
+      defaultValue={1}
+    >
       {tabGameGenres.map((genre) => (
         <Tab
           key={genre.id}
-          className="px-4 py-5 transition-opacity outline-none ui-selected:border-solid ui-selected:border-b-[2px] ui-selected:border-white ui-not-selected:opacity-40 hover:ui-not-selected:opacity-100"
+          className="px-2 md:px-4 py-3 md:py-5 transition-opacity outline-none ui-selected:border-solid ui-selected:border-b-[2px] ui-selected:border-white ui-not-selected:opacity-40 hover:ui-not-selected:opacity-100"
         >
           {genre.name}
         </Tab>

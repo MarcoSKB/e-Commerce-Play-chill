@@ -14,8 +14,8 @@ export default function Home() {
       <Container className="flex flex-col gap-y-[35px] md:gap-y-[80px] pt-3 md:pt-[80px] mb-20">
         <TopGames />
         <Announcement />
-        {/* <TabsGameList />
-        <GameDiscounts />
+        <TabsGameList />
+        {/* <GameDiscounts />
         <AdsBanner />
         <LatestBlogs /> */}
       </Container>

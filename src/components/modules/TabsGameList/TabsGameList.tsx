@@ -7,12 +7,14 @@ import { getGameAxios } from "@/src/api/getGameAxios";
 import { GamePreviewData } from "@/src/types/GamePreviewDataInfo";
 
 import { useAxios } from "@/src/hooks/useAxios";
+import useMediaQuery from "@/src/hooks/useMediaQuery";
 import { GameCard, GameCardSkeleton } from "@/src/components/ui";
 import { tabGameGenres } from "./tabGameGenresData";
 import TabsGame from "./TabsGame";
 
 const TabsGameList = () => {
   const [selectedGenre, setSelectedGenre] = useState(tabGameGenres[0]);
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const [games, error, loading] = useAxios<GamePreviewData>({
     url: "",
     method: "GET",
@@ -20,7 +22,7 @@ const TabsGameList = () => {
     dependency: [selectedGenre],
     requestConfig: {
       params: {
-        page_size: "12",
+        page_size: isMobile ? "6" : "12",
         stores: "2",
         genres: selectedGenre.slug,
       },
@@ -36,7 +38,7 @@ const TabsGameList = () => {
         }}
       >
         <TabsGame tabGameGenres={tabGameGenres} />
-        <ul className="flex flex-wrap gap-[20px] gap-y-[60px] mb-10">
+        <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-[20px] gap-y-[42px] md:gap-y-[60px] mb-10">
           {[...Array(12)].map((_, index) => (
             <li key={index} className="flex w-full max-w-[300px]">
               <GameCardSkeleton />
@@ -85,9 +87,9 @@ const TabsGameList = () => {
       }}
     >
       <TabsGame tabGameGenres={tabGameGenres} />
-      <ul className="flex flex-wrap gap-x-[20px] gap-y-[60px] max-w-full mb-10">
+      <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-[20px] gap-y-[42px] md:gap-y-[60px] max-w-full mb-10">
         {games?.results.map((game) => (
-          <li key={game.id} className="max-w-[300px] w-full">
+          <li key={game.id}>
             <GameCard
               id={game.id}
               href={game.slug}
