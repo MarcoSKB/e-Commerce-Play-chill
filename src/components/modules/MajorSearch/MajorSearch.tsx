@@ -4,6 +4,7 @@ import { AnimationProps, motion, useAnimationControls } from "framer-motion";
 
 import useAxios from "@/src/hooks/useAxios";
 import { useDebounce } from "@/src/hooks/useDebounce";
+import useMediaQuery from "@/src/hooks/useMediaQuery";
 
 import { getGameAxios } from "@/src/api/getGameAxios";
 import { GamePreviewData } from "@/src/types/GamePreviewDataInfo";
@@ -55,7 +56,7 @@ const transition = {
 const MajorSearch = () => {
   const [inputValue, setInputValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const matches = useMediaQuery("(max-width: 600px)");
   const searchRef = useRef<HTMLDivElement>(null);
 
   const searchControl = useAnimationControls();
@@ -89,7 +90,6 @@ const MajorSearch = () => {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("touchstart", handleClickOutside);
     }
-    setIsMobile(window.matchMedia("(max-width: 600px)").matches);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -97,7 +97,7 @@ const MajorSearch = () => {
     };
   }, [isOpen]);
 
-  const variants = isMobile ? mobileStyles : desktopStyles;
+  const variants = matches ? mobileStyles : desktopStyles;
 
   const openSearch = () => {
     if (isOpen) {
