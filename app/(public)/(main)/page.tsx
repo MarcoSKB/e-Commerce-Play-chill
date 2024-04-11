@@ -16,7 +16,7 @@ export default function Home() {
         <Announcement />
         <TabsGameList />
         <GameDiscounts />
-        {/* <AdsBanner />*/}
+        <AdsBanner />
       </Container>
     </>
   );
