@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 
+import { lockScrollScreen } from "@/src/utils/lockScrollScreen";
 import { MajorSearch } from "@/src/components/modules";
 import {
   Logotype,
@@ -17,19 +18,23 @@ const Header = () => {
   const menuControl = useAnimationControls();
 
   const openMenu = () => {
+    lockScrollScreen(true);
     menuControl.start("open");
     setIsOpen(true);
   };
   const closeMenu = () => {
+    lockScrollScreen(false);
     menuControl.start("close");
     setIsOpen(false);
   };
+
+  // TODO: Make scrollable menu when open
 
   return (
     <header className="flex flex-col min-h-[75px] bg-black border-darkPurple border-b border-solid md:py-2 xl:py-6 xl:gap-4">
       <Container>
         <motion.nav
-          className="absolute top-0 left-0 max-w-[100vw] max-h-[100vh] min-h-[400px] h-full w-full px-[30px] pt-[86px] py-6 flex justify-end flex-col-reverse gap-7 bg-darkBlue overflow-y-scroll z-10 md:max-h-full md:h-auto md:min-h-0 md:pt-0 md:py-0 md:px-0 md:static md:flex-row md:gap-0 md:items-center md:justify-between md:bg-transparent md:overflow-y-auto"
+          className="absolute top-0 left-0 max-w-[100vw] max-h-[100vh] h-full w-full px-[30px] pt-[86px] py-6 md:px-0 md:pt-0 md:py-0 flex flex-col bg-darkBlue md:max-h-full md:h-auto md:min-h-0 md:static md:flex-row md:bg-transparent z-10"
           transition={{
             duration: 1,
             ease: "circOut",
@@ -37,18 +42,18 @@ const Header = () => {
           variants={{
             close: {
               left: "-150%",
-              overflowY: "auto",
             },
             open: {
               left: "0",
-              overflowY: "scroll",
             },
           }}
           initial="close"
           animate={menuControl}
         >
-          <Navigation closeMenu={closeMenu} />
-          <Profile />
+          <div className="flex justify-between w-full md:items-center md:justify-between gap-7 md:gap-0 overflow-scroll md:overflow-auto">
+            <Navigation closeMenu={closeMenu} />
+            <Profile />
+          </div>
         </motion.nav>
       </Container>
       <Container className="relative bg-black min-h-[75px] flex gap-5 md:mt-0 md:gap-8 items-center md:justify-between z-[30]">

@@ -7,24 +7,22 @@ interface Props {
 
 const Navigation: React.FC<Props> = ({ closeMenu }) => {
   return (
-    <nav>
-      <ul className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
-        {navigationLinks.map((item) => (
-          <li
-            key={item.href}
-            className="flex text-2xl font-semibold md:text-base"
+    <ul className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
+      {navigationLinks.map((item) => (
+        <li
+          key={item.href}
+          className="flex text-2xl font-semibold md:text-base"
+        >
+          <Link
+            href={`/${item.href}`}
+            className="hover:text-blue transition-colors py-[6px] focus:outline-none focus:outline-blue"
+            onClick={closeMenu}
           >
-            <Link
-              href={`/${item.href}`}
-              className="hover:text-blue transition-colors py-[6px] focus:outline-none focus:outline-blue"
-              onClick={closeMenu}
-            >
-              {item.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+            {item.title}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

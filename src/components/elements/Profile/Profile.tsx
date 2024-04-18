@@ -20,7 +20,7 @@ const Profile = () => {
     return (
       <Link
         href="/sign-in"
-        className="py-[8px] self-end text-xl font-semibold transition-colors hover:text-blue md:text-base"
+        className="py-[8px] md:self-end text-xl font-semibold transition-colors hover:text-blue md:text-base"
       >
         Sign in
       </Link>
