@@ -36,7 +36,7 @@ const GamePrice: React.FC<GamePriceProps> = (props) => {
 const GameCardInfo: React.FC<Props> = (props) => {
   const { price, sale, title, store } = props;
   return (
-    <div className="relative w-full flex flex-col gap-[10px] md:gap-3 mr-[-24px] md:mr-[0px] md:px-5 z-0">
+    <div className="relative w-full flex flex-col gap-[10px] md:gap-3 md:px-5 z-0">
       <GamePrice price={price} sale={sale} />
       <div className="text-sm sm:text-base">{truncText(title, 24)}</div>
       <div className="relative w-full z-0">

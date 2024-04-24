@@ -28,8 +28,6 @@ const Header = () => {
     setIsOpen(false);
   };
 
-  // TODO: Make scrollable menu when open
-
   return (
     <header className="flex flex-col min-h-[75px] bg-black border-darkPurple border-b border-solid md:py-2 xl:py-6 xl:gap-4">
       <Container>

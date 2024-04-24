@@ -16,7 +16,7 @@ const PaginationButton: React.FC<Props> = ({
       type="button"
       disabled={value === "..." || value === currentValue}
       onClick={() => onClickHandler(value)}
-      className={`flex items-center justify-center min-w-[32px] min-h-[25px] px-2 text-xl rounded-md transition-all ${
+      className={`flex items-center justify-center min-w-[24px] md:min-w-[32px] min-h-[25px] px-2 text-base md:text-xl rounded-md transition-all ${
         value !== "..."
           ? "border-2 border-solid border-opacity-70 hover:text-green hover:border-green hover:scale-90"
           : "px-2"
