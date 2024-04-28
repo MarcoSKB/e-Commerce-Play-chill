@@ -20,7 +20,7 @@ const ScreenshotImage: React.FC<Props> = (props) => {
     <button
       type="button"
       onClick={() => setIsFullScreen(true)}
-      className="relative flex rounded-2xl w-[300px] h-[169px] overflow-hidden"
+      className="relative flex rounded-2xl w-full max-w-[280px] h-[97px] md:h-[169px] overflow-hidden"
     >
       <Image
         src={src}

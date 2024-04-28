@@ -39,7 +39,7 @@ const Page: NextPage<Props> = ({ params }) => {
   }
 
   return (
-    <main className="relative py-20">
+    <main className="relative py-8 md:py-20">
       <BgImage imgURL={game?.background_image_additional} />
       <Container>
         <GameInfo
@@ -51,9 +51,10 @@ const Page: NextPage<Props> = ({ params }) => {
           platform={game?.platforms[0]?.platform.name}
           metacritic={game?.metacritic}
           loading={loading}
-          className="mb-20"
         />
-        {game && <GameScreenshots className="mb-[50px]" id={game.id} />}
+        {game && (
+          <GameScreenshots className="mb-[30px] md:mb-[50px]" id={game.id} />
+        )}
         <GameDetails
           className="mb-[70px]"
           description={game?.description}

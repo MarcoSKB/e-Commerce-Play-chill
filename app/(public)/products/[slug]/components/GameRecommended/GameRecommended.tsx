@@ -48,7 +48,7 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
   if (loading) {
     return (
       <Section title="You will be interested">
-        <ul className="flex gap-[20px]">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px]">
           {[...Array(4)].map((_, index) => (
             <li key={index} className="flex w-full max-w-[300px]">
               <GameCardSkeleton />
@@ -71,7 +71,7 @@ const GameRecommended: React.FC<Props> = ({ genresData, currentGame }) => {
 
   return (
     <Section title="You will be interested">
-      <ul className="grid grid-cols-4 gap-[20px]">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[20px]">
         {gamesFiltered?.map((game) => (
           <li key={game.id}>
             <GameCard

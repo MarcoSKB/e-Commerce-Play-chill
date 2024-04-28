@@ -20,21 +20,21 @@ const GameDetails: React.FC<Props> = (props) => {
   return (
     <div className={className}>
       <Tab.Group>
-        <Tab.List className="flex gap-x-[10px] text-[22px] mb-10 border-solid border-white border-b-[1px] border-opacity-10">
-          <Tab className="opacity-50 py-5 px-[10px] focus:outline-offset-[-10px] ui-selected:opacity-100 ui-selected:border-b-[1px] ui-selected:border-b-white ui-selected:mb-[-1px] transition-opacity">
+        <Tab.List className="flex gap-x-[10px] text-base md:text-[22px] mb-10 border-solid border-white border-b-[1px] border-opacity-10 max-w-full overflow-x-scroll overflow-y-hidden md:overflow-x-auto">
+          <Tab className="opacity-50 py-5 px-[10px] min-w-fit focus:outline-offset-[-10px] ui-selected:opacity-100 ui-selected:border-b-[1px] ui-selected:border-b-white ui-selected:mb-[-1px] transition-opacity">
             Description of the game
           </Tab>
-          <Tab className="opacity-50 py-5 px-[10px] focus:outline-offset-[-10px] ui-selected:opacity-100 ui-selected:border-b-[1px] ui-selected:border-b-white ui-selected:mb-[-1px] transition-opacity">
+          <Tab className="opacity-50 py-5 px-[10px] min-w-fit focus:outline-offset-[-10px] ui-selected:opacity-100 ui-selected:border-b-[1px] ui-selected:border-b-white ui-selected:mb-[-1px] transition-opacity">
             System requirements
           </Tab>
-          <Tab className="opacity-50 py-5 px-[10px] focus:outline-offset-[-10px] ui-selected:opacity-100 ui-selected:border-b-[1px] ui-selected:border-b-white ui-selected:mb-[-1px] transition-opacity">
+          <Tab className="opacity-50 py-5 px-[10px] min-w-fit focus:outline-offset-[-10px] ui-selected:opacity-100 ui-selected:border-b-[1px] ui-selected:border-b-white ui-selected:mb-[-1px] transition-opacity">
             Activation
           </Tab>
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel className="focus:outline-offset-8">
-            <h2 className="text-2xl font-semibold mb-4">About:</h2>
-            <div className="flex flex-col gap-y-2 opacity-50 leading-[1.5] text-[17px]">
+            <h2 className="text-xl md:text-2xl font-semibold mb-4">About:</h2>
+            <div className="flex flex-col gap-y-2 opacity-50 leading-[1.5] text-sm md:text-[17px]">
               {description ? (
                 parse(description)
               ) : (
@@ -44,10 +44,10 @@ const GameDetails: React.FC<Props> = (props) => {
           </Tab.Panel>
           <Tab.Panel className="flex flex-col gap-y-10 focus:outline-offset-8">
             <div>
-              <h2 className="text-2xl font-semibold mb-10">
+              <h2 className="text-xl md:text-2xl font-semibold mb-10">
                 Minimum system requirements:
               </h2>
-              <p className="opacity-50 leading-[1.5] text-[17px]">
+              <p className="opacity-50 leading-[1.5] text-sm md:text-[17px]">
                 {requirements ? (
                   requirements.minimum
                 ) : (
@@ -56,10 +56,10 @@ const GameDetails: React.FC<Props> = (props) => {
               </p>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold mb-10">
+              <h2 className="text-xl md:text-2xl font-semibold mb-10">
                 Recommended system requirements:
               </h2>
-              <p className="opacity-50 leading-[1.5] text-[17px]">
+              <p className="opacity-50 leading-[1.5] text-sm md:text-[17px]">
                 {requirements ? (
                   requirements.recommended
                 ) : (

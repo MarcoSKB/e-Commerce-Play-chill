@@ -61,19 +61,31 @@ const GameScreenshots: React.FC<Props> = ({ id, className }) => {
     <div className={`relative ${className} z-10`}>
       <Swiper
         a11y={a11yConfig}
-        spaceBetween={50}
-        slidesPerView={3.4}
+        breakpoints={{
+          320: {
+            spaceBetween: 10,
+            slidesPerView: 2.2,
+          },
+          425: {
+            spaceBetween: 30,
+            slidesPerView: 3,
+          },
+          1024: {
+            spaceBetween: 50,
+            slidesPerView: 3.4,
+          },
+        }}
         modules={[A11y]}
       >
         <SwiperButton
           toSide="Prev"
-          className="flex items-center justify-center w-[40px] h-[40px] rounded-full overflow-hidden bg-white absolute left-[20px] top-[41%] z-[9999] opacity-50 transition-opacity hover:opacity-100 disabled:opacity-50"
+          className="flex items-center justify-center w-[40px] h-[40px] rounded-full overflow-hidden bg-white absolute left-[5px] md:left-[20px] top-[30%] md:top-[41%] z-[9999] opacity-50 transition-opacity hover:opacity-100 disabled:opacity-50"
         >
           <img src="/icons/arrow.svg" alt="Arrow button to slide left" />
         </SwiperButton>
         <SwiperButton
           toSide="Next"
-          className="flex items-center justify-center w-[40px] h-[40px] rounded-full overflow-hidden bg-white absolute right-[20px] top-[41%] z-[9999] opacity-50 transition-opacity hover:opacity-100 disabled:opacity-50"
+          className="flex items-center justify-center w-[40px] h-[40px] rounded-full overflow-hidden bg-white absolute right-[5px] md:right-[20px] top-[30%] md:top-[41%] z-[9999] opacity-50 transition-opacity hover:opacity-100 disabled:opacity-50"
         >
           <img
             className="rotate-180"

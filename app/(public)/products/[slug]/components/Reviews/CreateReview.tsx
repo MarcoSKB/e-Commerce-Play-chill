@@ -60,10 +60,10 @@ const CreateReview: React.FC<Props> = ({ gameId, setUpdateReviewList }) => {
   };
 
   return (
-    <div className="flex items-start mb-12">
-      <UserImage className="mx-8 max-w-[48px]" />
+    <div className="flex flex-col md:flex-row gap-4 items-start mb-12">
+      <UserImage className="md:mx-4 lg:mx-8 max-w-[48px]" />
       <form
-        className="grid grid-cols-2 gap-8 w-full"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 w-full"
         onSubmit={handleSubmit(onSubmit)}
       >
         <label className="flex flex-col gap-4">
