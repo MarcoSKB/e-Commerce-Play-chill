@@ -39,7 +39,7 @@ const TabsGameList = () => {
       >
         <TabsGame tabGameGenres={tabGameGenres} />
         <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-[20px] gap-y-[42px] md:gap-y-[60px] mb-10">
-          {[...Array(12)].map((_, index) => (
+          {[...Array(isMobile ? 6 : 12)].map((_, index) => (
             <li key={index} className="flex w-full max-w-[300px]">
               <GameCardSkeleton />
             </li>

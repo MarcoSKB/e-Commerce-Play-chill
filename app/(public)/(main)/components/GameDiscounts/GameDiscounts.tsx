@@ -35,6 +35,7 @@ const GameDiscounts = () => {
         games={games?.results}
         error={error}
         loading={loading}
+        skeletonCount={4}
         sale={15}
       />
     </Section>
