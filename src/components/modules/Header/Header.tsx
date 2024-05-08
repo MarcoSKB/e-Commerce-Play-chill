@@ -48,7 +48,7 @@ const Header = () => {
           initial="close"
           animate={menuControl}
         >
-          <div className="flex justify-between w-full md:items-center md:justify-between flex-wrap gap-6 md:gap-0 overflow-scroll md:overflow-auto">
+          <div className="flex justify-between w-full md:items-center md:justify-between flex-wrap gap-6 md:gap-0 overflow-scroll md:overflow-visible">
             <Navigation closeMenu={closeMenu} />
             <Profile />
           </div>
