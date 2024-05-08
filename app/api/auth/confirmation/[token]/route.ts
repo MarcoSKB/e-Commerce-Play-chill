@@ -42,7 +42,7 @@ export const POST = async (
           id: userToken.id,
         },
         data: {
-          emailVerified: true,
+          email_verified: true,
         },
       });
     }

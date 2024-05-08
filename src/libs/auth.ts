@@ -36,26 +36,12 @@ export const authOptions: NextAuthOptions = {
           where: { username },
         })) as UserType | null;
         if (!user) {
-          return Promise.reject(
-            new Error(
-              JSON.stringify({
-                message: "Wrong username or password",
-                status: 401,
-              })
-            )
-          );
+          return Promise.reject(new Error("Wrong username or password"));
         }
 
         const passMatch = bcrypt.compareSync(password, user.hashedPassword);
         if (!passMatch) {
-          return Promise.reject(
-            new Error(
-              JSON.stringify({
-                message: "Wrong username or password",
-                status: 401,
-              })
-            )
-          );
+          return Promise.reject(new Error("Wrong username or password"));
         }
 
         return Promise.resolve(user);
@@ -70,7 +56,7 @@ export const authOptions: NextAuthOptions = {
           name: profile.given_name,
           username: profile.name,
           email: profile.email,
-          emailVerified: profile.email_verified,
+          email_verified: true,
           image: profile.picture,
         } as UserType;
       },
@@ -79,31 +65,28 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user }) {
       if (!user.email_verified) {
-        return Promise.reject(
-          new Error(
-            JSON.stringify({
-              message: "Email not verified",
-              status: 403,
-            })
-          )
-        );
+        return Promise.reject(new Error("Email not verified"));
       }
 
       return true;
     },
     async session({ token, session, user }) {
-      const account = {
-        ...token,
-        ...user,
-      };
-
-      session.user.id = account.id;
-      session.user.name = account.name;
-      session.user.email = account.email;
-      session.user.email_verified =
-        !!account.emailVerified || account.email_verified;
-      session.user.image = account.image;
-      session.user.username = account.username;
+      if (token) {
+        session.user.id = token.id;
+        session.user.name = token.name;
+        session.user.email = token.email;
+        session.user.email_verified = token.email_verified;
+        session.user.image = token.picture;
+        session.user.username = token.username;
+      }
+      if (user) {
+        session.user.id = user.id;
+        session.user.name = user.name;
+        session.user.email = user.email;
+        session.user.email_verified = user.email_verified;
+        session.user.image = user.image;
+        session.user.username = user.username;
+      }
 
       return session;
     },
@@ -113,8 +96,6 @@ export const authOptions: NextAuthOptions = {
           email: token.email!,
         },
       })) as UserType | null;
-
-      console.log(token);
 
       if (!dbUser) {
         token.id = user!.id;
@@ -132,7 +113,6 @@ export const authOptions: NextAuthOptions = {
           },
         });
       }
-      console.log(dbUser, user);
 
       return {
         id: dbUser.id,
@@ -150,20 +130,3 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
-
-// if (token) {
-//   session.user.id = token.id;
-//   session.user.name = token.name;
-//   session.user.email = token.email!;
-//   session.user.emailVerified = token.emailVerified;
-//   session.user.image = token.picture;
-//   session.user.username = token.username;
-// }
-// if (user) {
-//   session.user.id = user.id;
-//   session.user.name = user.name;
-//   session.user.email = user.email;
-//   session.user.emailVerified = user.emailVerified ? true : false;
-//   session.user.image = user.image;
-//   session.user.username = user.username;
-// }

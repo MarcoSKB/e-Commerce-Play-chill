@@ -17,7 +17,7 @@ declare module "next-auth" {
   interface AdapterUser extends UserType {}
 
   interface Session {
-    user: User & UserType;
+    user: User | UserType;
   }
 
   interface Profile {

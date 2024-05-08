@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
+  directUrl    = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -41,7 +42,8 @@ model User {
   email          String    @unique
   hashedPassword String    @default(cuid())
   image          String?
-  emailVerified  Boolean   @default(false) @map("email_verified")
+  email_verified Boolean   @default(false)
+  emailVerified  Boolean?
   accounts       Account[]
   sessions       Session[]
   comments       Comment[]

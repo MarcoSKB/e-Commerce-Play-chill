@@ -49,8 +49,10 @@ const UserAuthForm: React.FC<Props> = ({ session }) => {
       router.replace("/");
     } catch (error) {
       if (axios.isAxiosError(error)) {
+        console.error(error);
+
         return toast.error("There was a problem", {
-          description: error.response?.data.error,
+          description: error.response?.data.error.message,
         });
       }
 
@@ -58,7 +60,7 @@ const UserAuthForm: React.FC<Props> = ({ session }) => {
         console.error(error);
 
         return toast.error("There was a problem", {
-          description: error?.message,
+          description: error.message,
         });
       }
 
