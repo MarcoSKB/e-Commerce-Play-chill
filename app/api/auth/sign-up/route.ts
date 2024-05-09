@@ -5,6 +5,10 @@ import { z } from "zod";
 
 import { registerValidator } from "@/src/libs/authValidator";
 import { db } from "@/src/libs/db";
+import axios from "axios";
+
+const AUTH_SECRET = process.env.NEXTAUTH_SECRET;
+const BASE_URL = process.env.NEXTAUTH_URL;
 
 export const POST = async (req: NextRequest) => {
   try {
@@ -39,14 +43,18 @@ export const POST = async (req: NextRequest) => {
       },
     });
 
-    const AUTH_SECRET = process.env.NEXTAUTH_SECRET;
     if (AUTH_SECRET && userId) {
-      jwt.sign(userId, AUTH_SECRET, { expiresIn: "1h" }, (_, token) => {
-        // FIXME: SEND email
-        console.log(
-          "verification: ",
-          `${process.env.NEXTAUTH_URL}/confirmation/${token}`
-        );
+      jwt.sign(userId, AUTH_SECRET, { expiresIn: "1h" }, async (_, token) => {
+        console.log(token);
+        await axios.post(`${BASE_URL}/api/email`, {
+          email,
+          subject: "Verification email",
+          html: `<a href="${BASE_URL}/confirmation/${token}">Click to verify</a>`,
+        });
+        // fetch(`${BASE_URL}/email`, {
+        //   method: "POST",
+        //   body: JSON.stringify(),
+        // });
       });
     }
 
