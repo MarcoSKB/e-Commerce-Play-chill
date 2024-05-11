@@ -10,9 +10,16 @@ export const POST = async (req: NextRequest) => {
     const body = await req.json();
     const { email, subject, html } = emailValidator.parse(body);
 
+    const mailOptions = {
+      from: "Marco <Marco.skb@mail.ru>",
+      to: email,
+      subject: subject,
+      html: html,
+    };
+
     const transporter = nodemailer.createTransport({
       host: "smtp.mail.ru",
-      port: 465,
+      port: 25,
       secure: true,
       auth: {
         user: EMAIL_USER,
@@ -22,13 +29,6 @@ export const POST = async (req: NextRequest) => {
         rejectUnauthorized: false,
       },
     });
-
-    const mailOptions = {
-      from: "Marco <Marco.skb@mail.ru>",
-      to: email,
-      subject: subject,
-      html: html,
-    };
 
     await new Promise((resolve, reject) => {
       transporter.verify(function (error, success) {
