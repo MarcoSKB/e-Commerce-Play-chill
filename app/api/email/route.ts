@@ -10,7 +10,7 @@ export const POST = async (req: NextRequest) => {
     const body = await req.json();
     const { email, subject, html } = emailValidator.parse(body);
 
-    const transpoter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: "smtp.mail.ru",
       port: 465,
       secure: true,
@@ -31,7 +31,18 @@ export const POST = async (req: NextRequest) => {
     };
 
     await new Promise((resolve, reject) => {
-      transpoter.sendMail(mailOptions, (err, info) => {
+      transporter.verify(function (error, success) {
+        if (error) {
+          console.log(error);
+          reject(error);
+        } else {
+          resolve(success);
+        }
+      });
+    });
+
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
           console.error(err);
           reject(err);
