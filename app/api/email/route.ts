@@ -30,8 +30,16 @@ export const POST = async (req: NextRequest) => {
       html: html,
     };
 
-    transpoter.sendMail(mailOptions, (err, info) => {
-      console.log(err, info);
+    await new Promise((resolve, reject) => {
+      transpoter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+        } else {
+          console.log(info);
+          resolve(info);
+        }
+      });
     });
 
     return Response.json(
