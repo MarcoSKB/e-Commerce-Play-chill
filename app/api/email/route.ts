@@ -31,17 +31,6 @@ export const POST = async (req: NextRequest) => {
     });
 
     await new Promise((resolve, reject) => {
-      transporter.verify(function (error, success) {
-        if (error) {
-          console.log(error);
-          reject(error);
-        } else {
-          resolve(success);
-        }
-      });
-    });
-
-    await new Promise((resolve, reject) => {
       transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
           console.error(err);
