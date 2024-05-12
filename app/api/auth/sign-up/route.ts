@@ -44,8 +44,8 @@ export const POST = async (req: NextRequest) => {
     });
 
     if (AUTH_SECRET && userId) {
-      jwt.sign(userId, AUTH_SECRET, { expiresIn: "1h" }, async (_, token) => {
-        await axios.post(`${BASE_URL}/api/email`, {
+      jwt.sign(userId, AUTH_SECRET, { expiresIn: "1h" }, (_, token) => {
+        axios.post(`${BASE_URL}/api/email`, {
           email,
           subject: "Verification email",
           html: `<a href="${BASE_URL}/confirmation/${token}">Click to verify</a>`,
