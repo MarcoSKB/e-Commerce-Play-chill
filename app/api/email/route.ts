@@ -1,5 +1,4 @@
 import { NextRequest } from "next/server";
-import { Resend } from "resend";
 import { emailValidator } from "@/src/libs/emailValidator";
 import sgMail from "@sendgrid/mail";
 
