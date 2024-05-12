@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { emailValidator } from "@/src/libs/emailValidator";
 import sgMail from "@sendgrid/mail";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+sgMail.setApiKey("SG." + process.env.SENDGRID_API_KEY!);
 
 export const POST = async (req: NextRequest) => {
   try {
