@@ -21,10 +21,7 @@ const Head = () => {
         property="og:description"
         content="Project for portfolio, fake commercial game store site"
       />
-      <meta
-        property="og:image"
-        content="https://metatags.io/images/meta-tags.png"
-      />
+      <meta property="og:image" content="/preview-image.png" />
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta
@@ -36,10 +33,7 @@ const Head = () => {
         property="twitter:description"
         content="Project for portfolio, fake commercial game store site"
       />
-      <meta
-        property="twitter:image"
-        content="https://metatags.io/images/meta-tags.png"
-      />
+      <meta property="twitter:image" content="/preview-image.png" />
 
       <meta name="robots" content="index, nofollow" />
       <meta http-equiv="content-language" content="en" />
