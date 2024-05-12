@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import { SkeletonTheme } from "react-loading-skeleton";
 import { Toaster } from "sonner";
 
 import { Header, Footer } from "@/src/components/modules";
+import { Head, Providers } from "./components";
 
 import "./globals.css";
 import "swiper/css";
@@ -43,18 +43,16 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/logo.svg" sizes="any" />
-      </head>
+      <Head />
       <body
         className={`${manrope.className} flex flex-col min-h-screen bg-black text-white`}
       >
-        <SkeletonTheme baseColor="#131118" highlightColor="#221C39">
+        <Providers>
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
-        </SkeletonTheme>
-        <Toaster toastOptions={toastOptions} />
+          <Toaster toastOptions={toastOptions} />
+        </Providers>
       </body>
     </html>
   );
