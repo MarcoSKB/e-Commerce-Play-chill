@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 
-import { registerValidator } from "@/src/libs/authValidator";
+import { registerValidator } from "@/src/libs/validators/authValidator";
 import { db } from "@/src/libs/db";
 import axios from "axios";
 

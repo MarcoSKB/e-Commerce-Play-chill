@@ -9,7 +9,7 @@ import bcrypt from "bcryptjs";
 
 import { db } from "@/src/libs/db";
 import { UserType } from "@/src/types/UserType";
-import { authValidator } from "./authValidator";
+import { authValidator } from "./validators/authValidator";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),

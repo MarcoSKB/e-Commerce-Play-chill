@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth/next";
 import { z } from "zod";
 
 import { authOptions } from "@/src/libs/auth";
-import { reviewValidator } from "@/src/libs/reviewValidator";
+import { reviewValidator } from "@/src/libs/validators/reviewValidator";
 import { db } from "@/src/libs/db";
 
 export const POST = async (req: NextRequest) => {

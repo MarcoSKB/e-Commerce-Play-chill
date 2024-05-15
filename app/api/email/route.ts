@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
-import { emailValidator } from "@/src/libs/emailValidator";
+import { emailValidator } from "@/src/libs/validators/emailValidator";
 
 const APIkey = process.env.SENDGRID_API_KEY;
 

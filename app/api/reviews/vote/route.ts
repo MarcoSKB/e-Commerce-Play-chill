@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { z } from "zod";
 
-import { commentVoteValidator } from "@/src/libs/voteValidator";
+import { commentVoteValidator } from "@/src/libs/validators/voteValidator";
 import { authOptions } from "@/src/libs/auth";
 import { db } from "@/src/libs/db";
 
