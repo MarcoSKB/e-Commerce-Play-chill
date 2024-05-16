@@ -21,8 +21,10 @@ import FilterByGenres from "./FilterGames/FilterByGenres/FilterByGenres";
 import FilterByMetacritic from "./FilterGames/FilterByMetacritic/FilterByMetacritic";
 import FilterByPlatforms from "./FilterGames/FilterByPlatform/FilterByPlatform";
 import RangeSlider from "./RangeSlider/RangeSlider";
+import CartLinkButton from "./CartLinkButton/CartLinkButton";
 
 export {
+  CartLinkButton,
   Container,
   Navigation,
   Logotype,

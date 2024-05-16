@@ -9,9 +9,24 @@ import {
   Navigation,
   Profile,
   Container,
+  CartLinkButton,
 } from "@/src/components/elements";
 import { IconLink, BurgerMenu } from "@/src/components/ui";
 import CloseButton from "./CloseButton";
+
+const navTransition = {
+  duration: 1,
+  ease: "circOut",
+};
+
+const navVariants = {
+  close: {
+    left: "-150%",
+  },
+  open: {
+    left: "0",
+  },
+};
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,18 +48,8 @@ const Header = () => {
       <Container>
         <motion.nav
           className="absolute top-0 left-0 max-w-[100vw] max-h-[100vh] h-full w-full px-[30px] pt-[86px] py-6 md:px-0 md:pt-0 md:py-0 flex flex-col bg-darkBlue md:max-h-full md:h-auto md:min-h-0 md:static md:flex-row md:bg-transparent z-10"
-          transition={{
-            duration: 1,
-            ease: "circOut",
-          }}
-          variants={{
-            close: {
-              left: "-150%",
-            },
-            open: {
-              left: "0",
-            },
-          }}
+          transition={navTransition}
+          variants={navVariants}
           initial="close"
           animate={menuControl}
         >
@@ -66,17 +71,20 @@ const Header = () => {
           <Logotype isOpen={isOpen} closeMenu={closeMenu} />
         </motion.div>
         <MajorSearch />
-        <motion.div
-          key="icon"
-          className="flex gap-6 items-center md:min-w-[90px]"
-        >
+        <div className="flex gap-6 items-center md:min-w-[90px]">
           <IconLink
             className="hidden md:flex"
             href="favorite"
             iconURL="/icons/heart-white.svg"
           />
-          <CloseButton closeMenu={closeMenu} isOpen={isOpen} />
-        </motion.div>
+          <AnimatePresence key="Close button" mode="wait" initial={false}>
+            {isOpen ? (
+              <CloseButton closeMenu={closeMenu} isOpen={isOpen} />
+            ) : (
+              <CartLinkButton />
+            )}
+          </AnimatePresence>
+        </div>
       </Container>
     </header>
   );
