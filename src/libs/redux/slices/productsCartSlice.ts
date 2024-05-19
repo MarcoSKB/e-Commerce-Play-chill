@@ -13,27 +13,32 @@ const productsCartSlice = createSlice({
   name: "favoriteProducts",
   initialState,
   reducers: {
-    addProductToCart(state, action: PayloadAction<GameProductType>) {
-      state.push(action.payload);
+    addProductToCart(
+      state,
+      action: PayloadAction<Omit<GameProductType, "qtty">>
+    ) {
+      if (!state.find((product) => product.id == action.payload.id)) {
+        const productPayload = {
+          ...action.payload,
+          qtty: 1,
+        };
+        state.push(productPayload);
+      }
     },
     removeProductFromCart(state, action: PayloadAction<number>) {
-      state.filter((product) => product.id !== action.payload);
+      return state.filter((product) => product.id !== action.payload);
     },
     increaseQttyProduct(state, action: PayloadAction<number>) {
-      state = state.map((product) => {
-        if (product.id === action.payload) {
-          product.qtty++;
-        }
-        return product;
-      });
+      const item = state.find((product) => product.id === action.payload);
+      if (item) {
+        item.qtty++;
+      }
     },
     decreaseQttyProduct(state, action: PayloadAction<number>) {
-      state = state.map((product) => {
-        if (product.id === action.payload && product.qtty >= 0) {
-          product.qtty--;
-        }
-        return product;
-      });
+      const item = state.find((product) => product.id === action.payload);
+      if (item && item.qtty > 1) {
+        item.qtty--;
+      }
     },
   },
 });

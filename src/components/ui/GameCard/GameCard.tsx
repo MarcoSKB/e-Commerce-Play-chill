@@ -19,7 +19,7 @@ interface Props {
 }
 
 const GameCard: React.FC<Props> = (props) => {
-  const { href, previewImageURL, price, title, store, label, sale } = props;
+  const { id, href, previewImageURL, price, title, store, label, sale } = props;
 
   return (
     <Link
@@ -27,7 +27,14 @@ const GameCard: React.FC<Props> = (props) => {
       className="flex md:flex-col gap-[10px] sm:gap-5"
     >
       <div className="relative w-[45%] md:w-full min-h-[150px] md:min-h-[400px] flex md:rounded-xl md:overflow-hidden z-0">
-        <GameCardAction label={label} />
+        <GameCardAction
+          label={label}
+          id={id}
+          slug={href}
+          name={title}
+          previewImageURL={previewImageURL}
+          stores={store}
+        />
         <Image
           priority
           src={

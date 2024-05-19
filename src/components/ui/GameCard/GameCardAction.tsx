@@ -1,15 +1,30 @@
 "use client";
 import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/src/hooks/reduxHooks";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "@/src/libs/redux/slices/productsCartSlice";
+import { Store } from "@/src/types/StoreType";
+
 import { IconButton } from "../";
 
 interface Props {
+  id: number;
+  slug: string;
+  name: string;
+  previewImageURL: string;
+  stores: Store[];
   label: React.ReactNode;
 }
 
 const GameCardAction: React.FC<Props> = (props) => {
-  const { label } = props;
+  const { id, slug, name, previewImageURL, stores, label } = props;
   const [isLike, setIsLike] = useState(false);
-  const [inCart, setInCart] = useState(false);
+  const dispatch = useAppDispatch();
+  const isProductInCart = useAppSelector((state) =>
+    state.productsCart.find((product) => product.id === id)
+  );
 
   const onClickLikeHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -18,8 +33,19 @@ const GameCardAction: React.FC<Props> = (props) => {
 
   const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setInCart(!inCart);
-    console.log("Clicked on cart");
+    if (isProductInCart) {
+      dispatch(removeProductFromCart(id));
+    } else {
+      const payload = {
+        id,
+        slug,
+        name,
+        stores,
+        background_image: previewImageURL,
+      };
+
+      dispatch(addProductToCart(payload));
+    }
   };
 
   return (
@@ -31,16 +57,17 @@ const GameCardAction: React.FC<Props> = (props) => {
       )}
       <div className="absolute top-full md:top-1/2 left-[calc(100%+11px)] sm:left-[calc(100%+20px)] md:left-0 w-full md:h-[calc(100%+300px)] flex md:flex-col md:justify-between items-end gap-4 md:gap-0 md:p-5 transition-all duration-300 -translate-y-full md:-translate-y-1/2 hover:h-full z-20">
         <IconButton
-          className={isLike ? "bg-green" : "bg-white"}
-          iconURL={isLike ? "/icons/heart-white.svg" : "/icons/heart-red.svg"}
+          onClick={(e) => onClickLikeHandler(e)}
           iconAlt="Heart icon"
-          onClick={onClickLikeHandler}
+          iconURL={isLike ? "/icons/heart-white.svg" : "/icons/heart-red.svg"}
+          className={isLike ? "bg-green" : "bg-white"}
         />
         <button
-          className="flex items-center justify-center w-10 md:w-full h-10 md:h-auto px-2 md:px-3 py-2 md:py-5 bg-green rounded-lg md:rounded-xl transition-all md:hover:scale-95 md:active:scale-90 disabled:active:scale-100 disabled:hover:scale-100 disabled:bg-gray-700"
-          disabled={inCart}
           type="button"
-          onClick={onClickCartHandler}
+          onClick={(e) => onClickCartHandler(e)}
+          className={`flex items-center justify-center w-10 md:w-full h-10 md:h-auto px-2 md:px-3 py-2 md:py-5 rounded-lg md:rounded-xl transition-all md:hover:scale-95 md:scale-90 ${
+            isProductInCart ? "bg-gray-700" : "bg-green"
+          }`}
         >
           <span className="hidden md:inline">To cart</span>
           <span className="sr-only md:hidden">Cart button</span>
