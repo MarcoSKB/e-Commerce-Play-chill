@@ -26,7 +26,7 @@ const CartLinkButton = () => {
   return (
     <Link
       href="/cart"
-      className="relative hover:opacity-70 transition-opacity w-[25px] h-[25px] focus:outline-none focus:outline-blue z-[1]"
+      className="relative hover:opacity-70 transition-opacity w-[25px] h-[25px] focus-visible:outline-none focus-visible:outline-blue z-[1]"
     >
       <SvgComponent keyProp="second" paths={svgPaths} viewBox="0 0 24 25" />
       <motion.div

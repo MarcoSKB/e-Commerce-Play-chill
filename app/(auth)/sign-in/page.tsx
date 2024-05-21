@@ -22,7 +22,7 @@ const page = async () => {
         <UserAuthForm session={session} />
         <FastAuth />
         <Link
-          className="text-blue hover:text-white transition-colors self-center focus:outline-none focus:outline-blue focus:outline-offset-8 rounded-sm focus:text-white"
+          className="text-blue hover:text-white transition-colors self-center focus-visible:outline-none focus-visible:outline-blue focus-visible:outline-offset-8 rounded-sm focus-visible:text-white"
           href="/sign-up"
         >
           Dont have an account? Register

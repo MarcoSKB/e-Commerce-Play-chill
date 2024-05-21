@@ -15,7 +15,7 @@ const Logotype: React.FC<Props> = ({ isOpen = false, closeMenu }) => {
   return (
     <Link
       href="/"
-      className="text-[20px] xl:text-[32px] flex gap-2 xl:gap-3 items-center font-extrabold focus:outline-none focus:outline-blue"
+      className="text-[20px] xl:text-[32px] flex gap-2 xl:gap-3 items-center font-extrabold focus-visible:outline-none focus-visible:outline-blue"
       onClick={closeMenu}
     >
       <motion.img

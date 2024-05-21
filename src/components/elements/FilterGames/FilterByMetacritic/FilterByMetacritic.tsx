@@ -64,14 +64,14 @@ const FilterByMetacritic: React.FC<Props> = (props) => {
       </div>
       <div className="flex rounded-[10px] border-solid border-2 border-white border-opacity-10">
         <input
-          className="w-1/2 px-5 py-4 text-lg bg-transparent border-r-2 border-white border-opacity-10 remove-arrow-number-input focus:outline-offset-[-1px]"
+          className="w-1/2 px-5 py-4 text-lg bg-transparent border-r-2 border-white border-opacity-10 remove-arrow-number-input focus-visible:outline-offset-[-1px]"
           type="number"
           max={100}
           value={value.min}
           onChange={(e) => onMinInputChange(e)}
         />
         <input
-          className="w-1/2 px-5 py-4 text-lg bg-transparent remove-arrow-number-input focus:outline-offset-[-1px]"
+          className="w-1/2 px-5 py-4 text-lg bg-transparent remove-arrow-number-input focus-visible:outline-offset-[-1px]"
           type="number"
           value={value.max}
           max={100}

@@ -96,7 +96,7 @@ const CreateReview: React.FC<Props> = ({ gameId, setUpdateReviewList }) => {
           type="submit"
           value="Submit comment"
           disabled={gameId === undefined || isSubmitting}
-          className="py-3 px-8 bg-green rounded-xl w-fit text-lg font-bold transition-transform hover:scale-95 visited:scale-90 focus:outline-none focus:outline-blue disabled:bg-gray-600 disabled:hover:scale-100"
+          className="py-3 px-8 bg-green rounded-xl w-fit text-lg font-bold transition-transform hover:scale-95 visited:scale-90 focus-visible:outline-none focus-visible:outline-blue disabled:bg-gray-600 disabled:hover:scale-100"
         />
       </form>
     </div>

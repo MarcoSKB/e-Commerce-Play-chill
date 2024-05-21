@@ -14,7 +14,7 @@ const SearchItem: React.FC<Props> = (props) => {
 
   return (
     <Link
-      className="relative flex gap-5 px-4 py-2 md:p-4 rounded-2xl hover:bg-blue hover:bg-opacity-10 transition-colors focus:outline-none focus-visible:outline-blue focus-visible:outline-offset-8"
+      className="relative flex gap-5 px-4 py-2 md:p-4 rounded-2xl hover:bg-blue hover:bg-opacity-10 transition-colors focus-visible:outline-none focus-visible:outline-blue focus-visible:outline-offset-8"
       href={`/products/${slug}`}
     >
       <div className="relative max-w-[90px] md:max-w-[114px] w-full min-h-[120px] md:min-h-[143px] rounded-md overflow-hidden">
@@ -37,14 +37,14 @@ const SearchItem: React.FC<Props> = (props) => {
         </span>
       </div>
       <div className="absolute right-[30px] z-20 top-[50%] translate-y-[-50%] flex flex-col gap-2">
-        <button className="p-3 rounded-full border-solid border-2 border-[#E6E6E7] hover:scale-90 transition-transform focus:outline-none focus-visible:outline-blue focus-visible:outline-offset-1">
+        <button className="p-3 rounded-full border-solid border-2 border-[#E6E6E7] hover:scale-90 transition-transform focus-visible:outline-none focus-visible:outline-blue focus-visible:outline-offset-1">
           <img
             className="opacity-20"
             src="/icons/cart-black.svg"
             alt="Cart icon"
           />
         </button>
-        <button className="p-3 rounded-full border-solid border-2 border-[#E6E6E7] hover:scale-90 transition-transform focus:outline-none focus-visible:outline-blue focus-visible:outline-offset-1">
+        <button className="p-3 rounded-full border-solid border-2 border-[#E6E6E7] hover:scale-90 transition-transform focus-visible:outline-none focus-visible:outline-blue focus-visible:outline-offset-1">
           <img
             className="opacity-20"
             src="/icons/heart-black.svg"

@@ -56,7 +56,7 @@ const RegisterForm = () => {
       <button
         disabled={isSubmitting}
         type="submit"
-        className="flex justify-center w-full py-3 px-4 text-blue text-base font-semibold border-solid border-[2px] border-white border-opacity-10 rounded-2xl transition-colors hover:text-white focus:outline-none focus:outline-blue focus:text-white disabled:focus:text-gray-700 disabled:hover:text-gray-700 disabled:text-gray-700"
+        className="flex justify-center w-full py-3 px-4 text-blue text-base font-semibold border-solid border-[2px] border-white border-opacity-10 rounded-2xl transition-colors hover:text-white focus-visible:outline-none focus-visible:outline-blue focus-visible:text-white disabled:focus-visible:text-gray-700 disabled:hover:text-gray-700 disabled:text-gray-700"
       >
         {isSubmitting && <LoadingSpin width={24} height={24} />}
         Sign Up

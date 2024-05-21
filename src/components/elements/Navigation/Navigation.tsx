@@ -15,7 +15,7 @@ const Navigation: React.FC<Props> = ({ closeMenu }) => {
         >
           <Link
             href={`/${item.href}`}
-            className="hover:text-blue transition-colors py-[6px] focus:outline-none focus:outline-blue"
+            className="hover:text-blue transition-colors py-[6px] focus-visible:outline-none focus-visible:outline-blue"
             onClick={closeMenu}
           >
             {item.title}

@@ -15,7 +15,7 @@ const Input = <T extends string>(props: Props<T>) => {
       {...inputAtttibutes}
       type={type}
       placeholder={placeholder}
-      className="px-6 py-4 w-full text-base font-normal bg-darkGray rounded-2xl focus:outline-none focus:outline-blue placeholder:opacity-20 placeholder:font-normal"
+      className="px-6 py-4 w-full text-base font-normal bg-darkGray rounded-2xl focus-visible:outline-none focus-visible:outline-blue placeholder:opacity-20 placeholder:font-normal"
     />
   );
 };

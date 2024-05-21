@@ -80,7 +80,7 @@ const UserReviewActions: React.FC<Props> = (props) => {
       <button
         type="button"
         onClick={() => onVoteHandler("UP")}
-        className={`flex gap-3 p-3 rounded-[14px] transition-transform hover:scale-95 visited:scale-90 focus:outline-none focus-visible:outline-blue ${
+        className={`flex gap-3 p-3 rounded-[14px] transition-transform hover:scale-95 visited:scale-90 focus-visible:outline-none focus-visible:outline-blue ${
           currentVote?.type === "UP" && isPendingState === "LOADED"
             ? "bg-green"
             : "bg-darkGray"
@@ -96,7 +96,7 @@ const UserReviewActions: React.FC<Props> = (props) => {
       <button
         type="button"
         onClick={() => onVoteHandler("DOWN")}
-        className={`flex gap-3 p-3 rounded-[14px] transition-transform hover:scale-95 visited:scale-90 focus:outline-none focus-visible:outline-blue ${
+        className={`flex gap-3 p-3 rounded-[14px] transition-transform hover:scale-95 visited:scale-90 focus-visible:outline-none focus-visible:outline-blue ${
           currentVote?.type === "DOWN" && isPendingState === "LOADED"
             ? "bg-rose-500"
             : "bg-darkGray"

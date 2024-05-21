@@ -17,7 +17,7 @@ const page = () => {
         </div>
         <RegisterForm />
         <Link
-          className="text-blue hover:text-white transition-colors self-center focus:outline-none focus:outline-blue focus:outline-offset-8 rounded-sm focus:text-white"
+          className="text-blue hover:text-white transition-colors self-center focus-visible:outline-none focus-visible:outline-blue focus-visible:outline-offset-8 rounded-sm focus-visible:text-white"
           href="/sign-in"
         >
           Do you have an account? Sign-in

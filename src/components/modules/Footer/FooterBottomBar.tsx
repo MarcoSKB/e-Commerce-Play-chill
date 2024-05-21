@@ -6,7 +6,7 @@ const BottomBar = () => {
       <Link
         target="_blank"
         href="https://rawg.io/"
-        className="text-lg text-blue transition-colors hover:text-white focus:outline-none focus:outline-offset-8 focus:outline-white focus:text-white"
+        className="text-lg text-blue transition-colors hover:text-white focus-visible:outline-none focus-visible:outline-offset-8 focus-visible:outline-white focus-visible:text-white"
       >
         RAWG API service
       </Link>

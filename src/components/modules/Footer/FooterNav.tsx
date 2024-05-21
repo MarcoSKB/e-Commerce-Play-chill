@@ -56,7 +56,7 @@ const FooterNav = () => {
             <li key={idx}>
               <Link
                 href={link.href}
-                className="text-sm md:text-lg text-[#CDCDCF] transition-colors hover:text-blue focus:outline-none focus:outline-offset-8 focus:outline-blue focus:text-blue"
+                className="text-sm md:text-lg text-[#CDCDCF] transition-colors hover:text-blue focus-visible:outline-none focus-visible:outline-offset-8 focus-visible:outline-blue focus-visible:text-blue"
               >
                 {link.title}
               </Link>

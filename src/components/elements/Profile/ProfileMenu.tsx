@@ -34,7 +34,7 @@ const ProfileMenu: React.FC<Props> = (props) => {
 
   return (
     <Menu as="div" className="relative z-[31]">
-      <Menu.Button className="flex items-center gap-6 hover:text-blue transition-colors focus:outline-none rounded-md ui-focus-visible:outline-blue ui-focus-visible:outline-offset-8">
+      <Menu.Button className="flex items-center gap-6 hover:text-blue transition-colors focus-visible:outline-none rounded-md ui-focus-visible:outline-blue ui-focus-visible:outline-offset-8">
         <span className="font-semibold">
           {user.username ? user.username : user.name}
         </span>
@@ -59,7 +59,7 @@ const ProfileMenu: React.FC<Props> = (props) => {
       >
         <Menu.Items
           as="ul"
-          className="absolute top-[calc(100%+16px)] left-[-24px] flex flex-col px-6 py-[12px] w-[calc(100%+48px)] rounded-xl bg-darkPurple z-10 focus:outline-none ui-focus-visible:outline-blue"
+          className="absolute top-[calc(100%+16px)] left-[-24px] flex flex-col px-6 py-[12px] w-[calc(100%+48px)] rounded-xl bg-darkPurple z-10 focus-visible:outline-none ui-focus-visible:outline-blue"
         >
           {subMenuItems.map((subMenu) => (
             <Menu.Item key={subMenu.id} as="li" className="flex w-full">
