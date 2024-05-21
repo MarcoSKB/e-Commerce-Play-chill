@@ -26,7 +26,7 @@ const GameCard: React.FC<Props> = (props) => {
       href={`/products/${href}`}
       className="flex md:flex-col gap-[10px] sm:gap-5"
     >
-      <div className="relative w-[45%] md:w-full min-h-[150px] md:min-h-[400px] flex md:rounded-xl md:overflow-hidden z-0">
+      <div className="relative w-[45%] md:w-full min-h-[150px] md:min-h-[400px] flex md:rounded-xl md:overflow-hidden z-10">
         <GameCardAction
           label={label}
           id={id}
