@@ -1,5 +1,6 @@
 "use client";
 import { useAppDispatch } from "@/src/hooks/reduxHooks";
+import useMediaQuery from "@/src/hooks/useMediaQuery";
 import {
   decreaseQttyProduct,
   increaseQttyProduct,
@@ -13,22 +14,23 @@ interface Props {
 
 const CartActions: React.FC<Props> = ({ id, qtty }) => {
   const dispatch = useAppDispatch();
-
+  const isMobile = useMediaQuery("(max-width: 600px)");
+  // TODO: Add favorite function
   return (
-    <div className="flex flex-col items-end min-h-full">
+    <div className="flex flex-row md:flex-col px-4 md:px-0 items-center md:items-end min-h-full">
       <button
         type="button"
         onClick={() => dispatch(removeProductFromCart(id))}
-        className="relative w-[16px] h-[16px] mb-9 opacity-30 hover:opacity-100 transition-opacity object-cover"
+        className="relative order-2 md:order-none w-[25px] h-[25px] md:w-[16px] md:h-[16px] mr-auto md:mr-0 md:mb-9 opacity-30 hover:opacity-100 transition-opacity object-cover"
       >
         <span className="sr-only">Delete product from cart</span>
         <img
-          className="absolute w-full h-full"
-          src="/icons/cross.svg"
+          className="absolute top-0 left-0 w-full h-full"
+          src={isMobile ? "/icons/trash.svg" : "/icons/cross.svg"}
           alt="Cross icon"
         />
       </button>
-      <div className="flex items-center gap-4 mb-auto">
+      <div className="flex order-3 md:order-none items-center gap-4 mb-auto">
         <button
           type="button"
           onClick={() => dispatch(decreaseQttyProduct(id))}
@@ -51,11 +53,11 @@ const CartActions: React.FC<Props> = ({ id, qtty }) => {
       <button
         type="button"
         onClick={() => {}}
-        className="relative w-[26px] h-[21px] mb-9 transition-opacity"
+        className="relative order-1 md:order-none w-[31px] h-[24px] md:w-[26px] md:h-[21px] mr-8 md:mr-0 md:mb-9 transition-opacity"
       >
         <span className="sr-only">Add product to favorite</span>
         <img
-          className={`absolute w-full h-full object-cover ${
+          className={`absolute top-0 left-0 w-full h-full object-cover ${
             false ? "opacity-100" : "opacity-30"
           }`}
           src={false ? "/icons/heart-red.svg" : "/icons/heart-white.svg"}
