@@ -10,13 +10,11 @@ interface Props {
 
 const Providers: React.FC<Props> = ({ children }) => {
   return (
-    <>
-      <Provider store={store}>
-        <SkeletonTheme baseColor="#131118" highlightColor="#221C39">
-          {children}
-        </SkeletonTheme>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <SkeletonTheme baseColor="#131118" highlightColor="#221C39">
+        {children}
+      </SkeletonTheme>
+    </Provider>
   );
 };
 

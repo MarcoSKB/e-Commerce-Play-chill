@@ -36,7 +36,7 @@ const Head = () => {
       <meta property="twitter:image" content="/preview-image.png" />
 
       <meta name="robots" content="index, nofollow" />
-      <meta http-equiv="content-language" content="en" />
+      <meta httpEquiv="content-language" content="en" />
     </head>
   );
 };
