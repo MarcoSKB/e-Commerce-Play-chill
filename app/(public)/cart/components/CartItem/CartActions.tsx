@@ -10,12 +10,15 @@ import {
 interface Props {
   id: number;
   qtty: number;
+  onClickFavoriteHandler: () => void;
+  isProductFavorite: boolean;
 }
 
-const CartActions: React.FC<Props> = ({ id, qtty }) => {
+const CartActions: React.FC<Props> = (props) => {
+  const { id, qtty, onClickFavoriteHandler, isProductFavorite } = props;
   const dispatch = useAppDispatch();
   const isMobile = useMediaQuery("(max-width: 600px)");
-  // TODO: Add favorite function
+
   return (
     <div className="flex flex-row md:flex-col px-4 md:px-0 items-center md:items-end min-h-full">
       <button
@@ -52,15 +55,19 @@ const CartActions: React.FC<Props> = ({ id, qtty }) => {
       </div>
       <button
         type="button"
-        onClick={() => {}}
-        className="relative order-1 md:order-none w-[31px] h-[24px] md:w-[26px] md:h-[21px] mr-8 md:mr-0 md:mb-9 transition-opacity"
+        onClick={() => onClickFavoriteHandler()}
+        className="relative order-1 md:order-none w-[31px] h-[24px] md:w-[26px] md:h-[21px] mr-8 md:mr-0 md:mb-9 hover:scale-90 active:scale-75 transition-all"
       >
         <span className="sr-only">Add product to favorite</span>
         <img
           className={`absolute top-0 left-0 w-full h-full object-cover ${
-            false ? "opacity-100" : "opacity-30"
+            isProductFavorite ? "opacity-100" : "opacity-30"
           }`}
-          src={false ? "/icons/heart-red.svg" : "/icons/heart-white.svg"}
+          src={
+            isProductFavorite
+              ? "/icons/heart-red.svg"
+              : "/icons/heart-white.svg"
+          }
           alt="Heart icon"
         />
       </button>
