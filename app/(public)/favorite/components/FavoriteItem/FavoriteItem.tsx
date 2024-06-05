@@ -1,7 +1,10 @@
 "use client";
 import { Store } from "@/src/types/StoreType";
-import { useAppDispatch } from "@/src/hooks/reduxHooks";
-import { addProductToCart } from "@/src/libs/redux/slices/productsCartSlice";
+import { useAppDispatch, useAppSelector } from "@/src/hooks/reduxHooks";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "@/src/libs/redux/slices/productsCartSlice";
 import { removeProductFromFavorite } from "@/src/libs/redux/slices/productsFavoriteSlice";
 
 import FavoriteItemInfo from "./FavoriteItemInfo";
@@ -19,20 +22,27 @@ interface Props {
 
 const FavoriteItem: React.FC<Props> = (props) => {
   const { id, slug, title, price, backgroundImage, stores, addedAt } = props;
+  const isProductInCart = useAppSelector((state) =>
+    state.productsCart.find((product) => product.id === id)
+  );
   const dispatch = useAppDispatch();
 
-  const addToCart = () => {
-    const productData = {
-      id,
-      slug,
-      name: title,
-      background_image: backgroundImage,
-      stores,
-    };
-    dispatch(addProductToCart(productData));
+  const onClickCartHandler = (): void => {
+    if (!!isProductInCart) {
+      dispatch(removeProductFromCart(id));
+    } else {
+      const productData = {
+        id,
+        slug,
+        name: title,
+        background_image: backgroundImage,
+        stores,
+      };
+      dispatch(addProductToCart(productData));
+    }
   };
 
-  const removeProductFromCart = () => {
+  const removeProductHandler = () => {
     dispatch(removeProductFromFavorite(id));
   };
 
@@ -52,8 +62,8 @@ const FavoriteItem: React.FC<Props> = (props) => {
           <span className="text-3xl font-bold">{price} $</span>
           <FavoriteItemAction
             id={id}
-            addToCart={addToCart}
-            removeProductFromCart={removeProductFromCart}
+            onClickCartHandler={onClickCartHandler}
+            removeProductHandler={removeProductHandler}
           />
         </div>
       </div>
