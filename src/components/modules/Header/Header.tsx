@@ -74,7 +74,7 @@ const Header = () => {
         <div className="flex gap-6 items-center md:min-w-[90px]">
           <IconLink
             className="hidden md:flex"
-            href="favorite"
+            href="/favorite"
             iconURL="/icons/heart-white.svg"
           />
           <AnimatePresence key="Close button" mode="wait" initial={false}>
