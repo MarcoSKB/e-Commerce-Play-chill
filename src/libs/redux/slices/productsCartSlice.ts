@@ -1,16 +1,16 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { GamePreviewInfo } from "@/src/types/GamePreviewDataInfo";
 
-type quantityProduct = {
+type requireProperties = "id" | "slug" | "name" | "background_image" | "stores";
+
+interface GameProductType extends Pick<GamePreviewInfo, requireProperties> {
   qtty: number;
-};
-type GameProductType = quantityProduct &
-  Pick<GamePreviewInfo, "id" | "slug" | "name" | "background_image" | "stores">;
+}
 
 const initialState: GameProductType[] = [];
 
 const productsCartSlice = createSlice({
-  name: "favoriteProducts",
+  name: "cartProducts",
   initialState,
   reducers: {
     addProductToCart(
