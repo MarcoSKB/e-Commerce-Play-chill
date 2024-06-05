@@ -1,10 +1,14 @@
 "use client";
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/src/hooks/reduxHooks";
+import getDateNow from "@/src/utils/getDateNow";
 import {
   addProductToCart,
   removeProductFromCart,
 } from "@/src/libs/redux/slices/productsCartSlice";
+import {
+  addProductToFavorite,
+  removeProductFromFavorite,
+} from "@/src/libs/redux/slices/productsFavoriteSlice";
 import { Store } from "@/src/types/StoreType";
 
 import { IconButton } from "../";
@@ -20,15 +24,30 @@ interface Props {
 
 const GameCardAction: React.FC<Props> = (props) => {
   const { id, slug, name, previewImageURL, stores, label } = props;
-  const [isLike, setIsLike] = useState(false);
   const dispatch = useAppDispatch();
   const isProductInCart = useAppSelector((state) =>
     state.productsCart.find((product) => product.id === id)
   );
+  const isProductFavorite = useAppSelector((state) =>
+    state.productsFavorite.find((product) => product.id === id)
+  );
 
   const onClickLikeHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsLike(!isLike);
+    if (isProductFavorite) {
+      dispatch(removeProductFromFavorite(id));
+    } else {
+      const payload = {
+        id,
+        slug,
+        name,
+        stores,
+        background_image: previewImageURL,
+        addedAt: getDateNow(),
+      };
+
+      dispatch(addProductToFavorite(payload));
+    }
   };
 
   const onClickCartHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -59,8 +78,12 @@ const GameCardAction: React.FC<Props> = (props) => {
         <IconButton
           onClick={(e) => onClickLikeHandler(e)}
           iconAlt="Heart icon"
-          iconURL={isLike ? "/icons/heart-white.svg" : "/icons/heart-red.svg"}
-          className={isLike ? "bg-green" : "bg-white"}
+          iconURL={
+            isProductFavorite
+              ? "/icons/heart-white.svg"
+              : "/icons/heart-red.svg"
+          }
+          className={isProductFavorite ? "bg-green" : "bg-white"}
         />
         <button
           type="button"
