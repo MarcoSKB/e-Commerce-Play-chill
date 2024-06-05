@@ -1,7 +1,14 @@
+"use client";
 import React from "react";
+import { Container } from "@/src/components/elements";
+import { FavoriteList } from "./components";
 
 const Favorite = () => {
-  return <main>Favorite</main>;
+  return (
+    <Container>
+      <FavoriteList />
+    </Container>
+  );
 };
 
 export default Favorite;
