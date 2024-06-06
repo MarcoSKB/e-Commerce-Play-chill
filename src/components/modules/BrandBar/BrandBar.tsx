@@ -8,6 +8,7 @@ const BrandBar = () => {
           className="object-contain"
           src="/images/brands/paypal-logo.png"
           alt="Paypal brand logo"
+          sizes="100%"
           fill
         />
       </div>
@@ -16,6 +17,7 @@ const BrandBar = () => {
           className="object-contain"
           src="/images/brands/mastercard-logo.png"
           alt="Mastercard brand logo"
+          sizes="100%"
           fill
         />
       </div>
@@ -24,6 +26,7 @@ const BrandBar = () => {
           className="object-contain"
           src="/images/brands/visa-logo.png"
           alt="Visa brand logo"
+          sizes="100%"
           fill
         />
       </div>
@@ -32,6 +35,7 @@ const BrandBar = () => {
           className="object-contain"
           src="/images/brands/webmoney-logo.png"
           alt="Webmoney brand logo"
+          sizes="100%"
           fill
         />
       </div>
