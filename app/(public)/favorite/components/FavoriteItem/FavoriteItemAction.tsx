@@ -17,7 +17,7 @@ const FavoriteItemAction: React.FC<Props> = (props) => {
     <>
       <button
         type="button"
-        className={`flex justify-center py-6 w-full max-w-[240px] rounded-2xl text-lg bg-opacity-10 transition-all active:scale-90 hover:scale-95 ${
+        className={`flex justify-center order-1 md:order-none py-5 md:py-6 w-full max-w-[160px] sm:max-w-[200px] md:max-w-[240px] rounded-2xl text-lg bg-opacity-10 transition-all active:scale-90 hover:scale-95 ${
           isProductInCart
             ? "text-white text-opacity-50 bg-gray-700"
             : "text-green bg-green hover:bg-opacity-30"
