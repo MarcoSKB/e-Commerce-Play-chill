@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { truncText } from "@/src/utils/truncText";
 import { Store } from "@/src/types/StoreType";
 
 interface Props {
@@ -17,7 +19,7 @@ const CartInfo: React.FC<Props> = (props) => {
         href={slug}
         className="text-lg sm:text-[22px] md:text-[28px] font-medium hover:text-blue transition-colors"
       >
-        <h3>{title}</h3>
+        <h3>{truncText(title, 36)}</h3>
       </Link>
       <div className="flex justify-between mb-4 md:mb-10">
         <span className="text-lg md:text-3xl font-bold">{price + " $"}</span>
