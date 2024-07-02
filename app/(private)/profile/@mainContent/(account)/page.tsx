@@ -1,15 +1,14 @@
-"use client";
-import useAuthSession from "@/src/hooks/useAuthSession";
+// import useAuthSession from "@/src/hooks/useAuthSession";
 
 export default function page() {
-  const [session, loading] = useAuthSession();
+  // const [session, loading] = useAuthSession();
 
-  if (loading) {
-    return <>Loading</>;
-  }
+  // if (loading) {
+  //   return <>Loading</>;
+  // }
 
-  if (session == null) {
-    return <>null</>;
-  }
+  // if (session == null) {
+  //   return <>null</>;
+  // }
   return <div>Account page</div>;
 }

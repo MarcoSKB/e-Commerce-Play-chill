@@ -1,3 +1,7 @@
+"use client";
+import { redirect } from "next/navigation";
+
+import useAuthSession from "@/src/hooks/useAuthSession";
 import { Container } from "@/src/components/elements";
 
 interface Props {
@@ -5,8 +9,17 @@ interface Props {
   sidebar: React.ReactNode;
   mainContent: React.ReactNode;
 }
-
 export default function Layout({ sidebar, mainContent }: Props) {
+  const [session, loading] = useAuthSession();
+
+  if (loading == false && session?.user === undefined) {
+    redirect("/");
+  }
+
+  if (loading) {
+    return <div>loading</div>;
+  }
+
   return (
     <Container className="flex flex-col gap-6 py-8">
       <h1 className="text-5xl font-bold">Profile</h1>
