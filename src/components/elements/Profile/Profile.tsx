@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { Session } from "next-auth";
 
-import { authAxios } from "@/src/api/authAxios";
-import useAxios from "@/src/hooks/useAxios";
+import useAuthSession from "@/src/hooks/useAuthSession";
 import ProfileMenu from "./ProfileMenu";
 
 const Profile = () => {
-  const [session, error, loading] = useAxios<Session>({
-    url: "/session",
-    method: "GET",
-    axiosInstance: authAxios,
-  });
+  const [session, loading] = useAuthSession();
+
+  // TODO: Make loading component better
 
   if (loading) {
     return <span>Loading</span>;

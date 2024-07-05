@@ -12,7 +12,9 @@ const FastAuth = () => {
     setIsLoading(true);
 
     try {
-      await signIn("google");
+      await signIn("google", {
+        callbackUrl: "/",
+      });
     } catch (err) {
       toast.error("There was a problem", {
         description: "There was an error logging in with google",

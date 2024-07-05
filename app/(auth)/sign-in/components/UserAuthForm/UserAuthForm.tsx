@@ -39,6 +39,7 @@ const UserAuthForm: React.FC<Props> = ({ session }) => {
         redirect: false,
         username: data.username,
         password: data.password,
+        callbackUrl: "/",
       });
 
       if (res && res.error) {
