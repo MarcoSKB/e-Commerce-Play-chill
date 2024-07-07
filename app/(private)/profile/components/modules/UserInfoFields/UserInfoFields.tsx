@@ -1,5 +1,5 @@
-import { InputField } from "@/app/(private)/profile/components";
 import React from "react";
+import { InputField } from "../../elements";
 
 export default function UserInfoFields() {
   return (

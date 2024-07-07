@@ -1,5 +1,5 @@
 import { ProfileLinkData } from "@/src/types/profileLinkData";
-import { ProfileLink } from "../../../components";
+import { ProfileLink } from "../../../components/elements";
 
 const profileLinksData: ProfileLinkData[] = [
   {

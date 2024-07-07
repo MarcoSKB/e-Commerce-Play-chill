@@ -1,5 +1,5 @@
 "use client";
-import { ProfileButton } from "../../../components";
+import { ProfileButton } from "../../../components/elements";
 
 export default function LogOutButton() {
   return (
