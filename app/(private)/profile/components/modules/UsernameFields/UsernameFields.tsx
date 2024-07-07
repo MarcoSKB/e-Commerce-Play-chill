@@ -1,5 +1,10 @@
-import React from "react";
+import { InputField } from "../../elements";
 
 export default function UsernameFields() {
-  return <div>UsernameFields</div>;
+  return (
+    <div className="flex flex-col gap-4">
+      <InputField />
+      <InputField />
+    </div>
+  );
 }

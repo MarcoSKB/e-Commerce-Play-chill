@@ -1,5 +1,8 @@
 import React from "react";
 
-export default function InputField() {
-  return <div>InputField</div>;
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+export default function InputField(props: Props) {
+  const {} = props;
+  return <input {...props} className="flex px-3 py-[10px]" />;
 }

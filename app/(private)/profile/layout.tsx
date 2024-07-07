@@ -10,11 +10,11 @@ export default function Layout({ sidebar, mainContent }: Props) {
   return (
     <Container className="flex flex-col gap-6 py-8">
       <h1 className="text-5xl font-bold">Profile</h1>
-      <div className="flex w-full gap-6 border-t border-white border-opacity-10 pt-7">
+      <div className="flex items-start w-full gap-6 border-t border-white border-opacity-10 pt-7">
         <aside className="max-w-[280px] w-full bg-darkBlue rounded-lg">
           {sidebar}
         </aside>
-        <section className="w-full bg-darkBlue rounded-lg px-8 py-3">
+        <section className="w-full min-h-[400px] bg-darkBlue rounded-lg px-8 py-6">
           {mainContent}
         </section>
       </div>

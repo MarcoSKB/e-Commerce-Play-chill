@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function EditAvatar() {
-  return <div>EditAvatar</div>;
+  return <div className="w-[128px] h-[128px] rounded-full bg-gray-700" />;
 }
