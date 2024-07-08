@@ -1,7 +1,7 @@
 "use client";
 interface Props {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   /** @defaultValue 'green' */
   color?: "red" | "green";
   /** @defaultValue 'button' */

@@ -1,4 +1,4 @@
-import InputField from "./InputField/InputField";
+import { InputField } from "./InputField/InputField";
 import ProfileButton from "./ProfileButton/ProfileButton";
 import ProfileLink from "./ProfileLink/ProfileLink";
 
