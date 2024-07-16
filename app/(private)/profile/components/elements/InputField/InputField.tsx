@@ -1,11 +1,26 @@
 import React, { forwardRef } from "react";
+import InputSkeletonLoading from "./InputSkeletonLoading";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  loading?: boolean;
 }
 
 export const InputField: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
-  ({ label, ...props }, ref) => {
+  ({ label, loading, ...props }, ref) => {
+    if (typeof loading == "boolean" && loading) {
+      if (label) {
+        return (
+          <div className="flex flex-col gap-2">
+            <span className="text-sm text-white text-opacity-70">{label}</span>
+            <InputSkeletonLoading />
+          </div>
+        );
+      }
+
+      return <InputSkeletonLoading />;
+    }
+
     if (label) {
       return (
         <label className="flex flex-col gap-2">
