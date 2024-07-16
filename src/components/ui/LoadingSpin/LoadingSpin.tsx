@@ -1,11 +1,14 @@
 interface Props {
   width: number;
   height: number;
+  /** @defaultValue 'true' */
   isSpinning?: boolean;
+  /** @defaultColor '#366edc (Blue)' */
+  color?: string;
 }
 
 const LoadingSpin: React.FC<Props> = (props) => {
-  const { width, height, isSpinning = true } = props;
+  const { width, height, isSpinning = true, color = "#366edc" } = props;
 
   return (
     <svg
@@ -20,7 +23,7 @@ const LoadingSpin: React.FC<Props> = (props) => {
         cx="50"
         cy="50"
         fill="none"
-        stroke="#366edc"
+        stroke={color}
         strokeWidth="12"
         r="35"
         strokeDasharray="164.93361431346415 56.97787143782138"
