@@ -33,11 +33,14 @@ CREATE TABLE "Session" (
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT,
+    "lastName" TEXT,
+    "birthday" TIMESTAMP(3),
     "username" TEXT,
     "email" TEXT NOT NULL,
     "hashedPassword" TEXT NOT NULL,
     "image" TEXT,
     "email_verified" BOOLEAN NOT NULL DEFAULT false,
+    "emailVerified" BOOLEAN,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
