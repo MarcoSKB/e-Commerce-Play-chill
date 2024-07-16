@@ -32,11 +32,13 @@ const usersInputInfoData = [
 
 interface Props {
   register: UseFormRegister<UserProfileInputs>;
+  loading: boolean;
 }
 
-export default function UserInfoFields({ register }: Props) {
+export default function UserInfoFields(props: Props) {
+  const { register, loading } = props;
   return (
-    <div className="flex flex-col gap-4 min-w-[300px] w-fit">
+    <div className="flex flex-col mb-4 gap-4 min-w-[300px] w-fit">
       {usersInputInfoData.map((userInputInfo) => (
         <label
           className="flex items-center justify-between gap-3 w-full"
@@ -47,6 +49,7 @@ export default function UserInfoFields({ register }: Props) {
           </span>
           <InputField
             {...register(userInputInfo.inputName, { required: true })}
+            loading={loading}
             type={userInputInfo.type}
           />
         </label>
